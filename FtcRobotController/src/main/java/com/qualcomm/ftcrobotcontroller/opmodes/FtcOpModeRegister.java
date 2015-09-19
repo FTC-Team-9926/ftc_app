@@ -66,6 +66,8 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("PushBotManual", PushBotManual.class);
 
 
+    manager.register("MoveForward", MoveForward.class);
+    manager.register("MF2", MoveForward2.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
@@ -84,15 +86,31 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
 
+<<<<<<< a5e205c305062e63f214ed09108f17ca9d5ad5f2
+=======
+//    manager.register("K9TeleOp", K9TeleOp.class);
+//    manager.register("K9IrSeeker", K9IrSeeker.class);
+//    manager.register("K9Line", K9Line.class);
+>>>>>>> It works! Now we have a MoveForward program that moves two motors.
 
     //manager.register ("PushBotManual1", PushBotManual1.class);
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
 
+<<<<<<< a5e205c305062e63f214ed09108f17ca9d5ad5f2
     //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
     //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
     //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
     //manager.register ("PushBotTouchEvent", PushBotTouchEvent.class);
+=======
+    manager.register("PushBotManual", PushBotManual.class);
+    manager.register("PushBotAuto", PushBotAuto.class);
+
+// Linear Programs
+//    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
+//    manager.register("PushBotIrSeek", PushBotIrSeek.class);
+//    manager.register("PushBotSquare", PushBotSquare.class);
+>>>>>>> It works! Now we have a MoveForward program that moves two motors.
 
     //manager.register("PushBotDriveTouch", PushBotDriveTouch.java);
     //manager.register("PushBotIrSeek", PushBotIrSeek.java);
