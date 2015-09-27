@@ -32,7 +32,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
-import com.qualcomm.ftcrobotcontroller.opmodes.FTC9926.MoveForward2;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -57,17 +59,6 @@ public class FtcOpModeRegister implements OpModeRegister {
      * If two or more op modes are registered with the same name, the app will display an error.
      */
 
-    manager.register("NullOp", NullOp.class);
-
-    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-    manager.register("K9TeleOp", K9TeleOp.class);
-    manager.register("K9Line", K9Line.class);
-    manager.register ("PushBotAuto", PushBotAuto.class);
-    manager.register ("PushBotManual", PushBotManual.class);
-
-
-    manager.register("MoveForward", MoveForward.class);
-    manager.register("MF2", MoveForward2.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
@@ -86,31 +77,27 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
 
-<<<<<<< a5e205c305062e63f214ed09108f17ca9d5ad5f2
-=======
-//    manager.register("K9TeleOp", K9TeleOp.class);
-//    manager.register("K9IrSeeker", K9IrSeeker.class);
-//    manager.register("K9Line", K9Line.class);
->>>>>>> It works! Now we have a MoveForward program that moves two motors.
-
     //manager.register ("PushBotManual1", PushBotManual1.class);
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
 
-<<<<<<< a5e205c305062e63f214ed09108f17ca9d5ad5f2
-    //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
-    //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
-    //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
-    //manager.register ("PushBotTouchEvent", PushBotTouchEvent.class);
-=======
-    manager.register("PushBotManual", PushBotManual.class);
-    manager.register("PushBotAuto", PushBotAuto.class);
+
+    /*
+     * The following example op modes are designed to work with a pushbot-style robot.
+     *  - PushBotManual is a driver controled (tank drive) op mode.
+     *  - PushBotAuto uses the event driven (non linear) OpMode class for autonomous operation.
+     *  - PushBotDriveTouch uses the LinearOpMode class and shows how to autonomously drive if a button is not pressed.
+     *  - PushBotIrSeek uses the LinearOpMode class and shows how to track an IR beacon.
+     *  - PushBotSquare uses the LinearOpMOde class and shows how to drive in a square pattern autonomously.
+     */
+
+    //manager.register("PushBotManual", PushBotManual.class);
+    //manager.register("PushBotAuto", PushBotAuto.class);
 
 // Linear Programs
 //    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
 //    manager.register("PushBotIrSeek", PushBotIrSeek.class);
 //    manager.register("PushBotSquare", PushBotSquare.class);
->>>>>>> It works! Now we have a MoveForward program that moves two motors.
 
     //manager.register("PushBotDriveTouch", PushBotDriveTouch.java);
     //manager.register("PushBotIrSeek", PushBotIrSeek.java);
