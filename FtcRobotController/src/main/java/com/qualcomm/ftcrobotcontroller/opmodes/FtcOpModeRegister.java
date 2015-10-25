@@ -62,7 +62,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Tank", MoveTank.class);
     manager.register("Touch", TouchOp.class);
 
-      
+
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
