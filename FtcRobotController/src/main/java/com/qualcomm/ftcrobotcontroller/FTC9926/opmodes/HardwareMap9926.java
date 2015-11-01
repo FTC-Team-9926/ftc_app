@@ -24,6 +24,7 @@ public class HardwareMap9926 extends OpMode {
     // Servo ARM
     Servo Servo1;
     double SM1_Position;
+    double Get_Servo_Position;
 
 
     @Override
@@ -38,22 +39,30 @@ public class HardwareMap9926 extends OpMode {
     }
 
     @Override public void start(){
-
     }
 
     @Override public void loop(){
-
     }
-    @Override public void stop(){
 
+    @Override public void stop(){
     }
 
     //--------------------------------------------------------------------------
     // Access the hand position.
     //--------
-    double a_hand_position ()
+
+    public void Define_Hardware_Config_Names() {
+        Servo1 = hardwareMap.servo.get("SM1");
+    }
+
+    public double Get_Servo_Position()
     {
+//        SM1_Position = 0.2;
+     //   Servo1 = hardwareMap.servo.get("SM1");
         return Servo1.getPosition();
+
+
+//        return Servo1.getPosition();
 
     } // PushBotManual::a_hand_position
 
@@ -61,14 +70,14 @@ public class HardwareMap9926 extends OpMode {
     // Set the hand position.
     //--------
 
-    void m_hand_position (double p_position)
+    void Set_Servo_position (double p_position)
     {
         // Ensure the specifiec value is legal.
 //        double l_position = Range.clip(p_position, Servo.MIN_POSITION,Servo.MAX_POSITION);
 
         SM1_Position = Range.clip(p_position,0,1);
 
-        Servo1.getPosition();
+        Servo1.setPosition(SM1_Position);
 
         // Set the value.
 //        v_servo_left_hand.setDirection(1);
