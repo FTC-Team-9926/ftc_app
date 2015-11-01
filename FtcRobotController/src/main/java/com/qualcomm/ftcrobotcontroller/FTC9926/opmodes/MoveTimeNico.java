@@ -16,7 +16,10 @@ public class MoveTimeNico extends Telemetry9926{
 
     @Override
     public void init() {
-        Servo1 = hardwareMap.servo.get("SM1");
+        Define_Hardware_Config_Names();
+//        Servo1 = hardwareMap.servo.get("SM1");
+//        SM1_Position = 0.0;
+//        Servo1.setPosition(SM1_Position);
 
     }
 
@@ -33,6 +36,7 @@ public class MoveTimeNico extends Telemetry9926{
         {
             case 0:
                 /* might need to reset motor */
+//                Define_Hardware_Config_Names();
                 move_state++;
                 break;
 
@@ -47,13 +51,14 @@ public class MoveTimeNico extends Telemetry9926{
                 break;
 
             case 2:
-                //a_hand_position();
                 SM1_Position = 0.2;
-                Servo1.setPosition(SM1_Position);
+                Set_Servo_position(SM1_Position);
+ //               SM1_Position = 0.2;
+ //               Servo1.setPosition(SM1_Position);
 
                 //              Motor1.setPower(1);
   //              Motor2.setPower(0);
-                if (getRuntime() > 15)
+                if (getRuntime() > 10)
                 {
   //                  Motor1.setPower(0);
   //                  Motor2.setPower(0);
@@ -63,11 +68,12 @@ public class MoveTimeNico extends Telemetry9926{
 
             case 3:
                 SM1_Position = 0.3;
-                Servo1.setPosition(SM1_Position);
+                Set_Servo_position(SM1_Position);
+//                Servo1.setPosition(SM1_Position);
  //               m_hand_position(.8);
   //              Motor1.setPower(1);
   //              Motor2.setPower(1);
-                if (getRuntime() > 20){
+                if (getRuntime() > 15){
   //                  Motor1.setPower(0);
   //                  Motor2.setPower(0);
                     move_state++;
