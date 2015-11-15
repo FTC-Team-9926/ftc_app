@@ -9,13 +9,16 @@ public class MoveTimeMotor extends Telemetry9926{
 
     DcMotor Motor1;
     DcMotor Motor2;
+    double M1_Position;
+    double M2_Position;
 
     int move_state = 0;
 
     @Override
     public void init() {
         Define_Hardware_Config_Names();
-
+        Motor1 = hardwareMap.dcMotor.get("SM1");
+        Motor2 = hardwareMap.dcMotor.get("SM2");
     }
 
     @Override
@@ -25,19 +28,14 @@ public class MoveTimeMotor extends Telemetry9926{
 
     @Override public void loop()
     {
-
-
         switch (move_state)
         {
             case 0:
                 /* might need to reset motor */
-                Define_Hardware_Config_Names();
                 move_state++;
                 break;
 
             case 1:
-                //m_hand_position(0.2);
-
                 if (getRuntime() > 5){
                     Motor1.setPower(0);
                     Motor2.setPower(0);
@@ -57,7 +55,6 @@ public class MoveTimeMotor extends Telemetry9926{
                 break;
 
             case 3:
- //               m_hand_position(.8);
                 Motor1.setPower(1);
                 Motor2.setPower(1);
                 if (getRuntime() > 15){
@@ -68,39 +65,6 @@ public class MoveTimeMotor extends Telemetry9926{
                 break;
             default:
                 break;
-
-
-    /*        case 4:
-                Motor1.setPower(-1);
-                Motor2.setPower(-1);
-                if (getRuntime() > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }
-                break;
-
-            case 5:
-                Motor1.setPower(-1);
-                Motor2.setPower(0);
-                if (getRuntime() > 1.5)
-                {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }
-                break;
-
-            case 6:
-                Motor1.setPower(-1);
-                Motor2.setPower(-1);
-                if (getRuntime() > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }*/
-
-                //break;
         }
 
         UpdateTelemetry();
