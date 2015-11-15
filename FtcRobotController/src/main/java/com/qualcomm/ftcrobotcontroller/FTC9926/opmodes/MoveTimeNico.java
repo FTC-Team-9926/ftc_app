@@ -1,8 +1,8 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
+//import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+//import com.qualcomm.robotcore.hardware.DcMotor;
+//import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Nicolas Bravo on 10/30/15.
@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class MoveTimeNico extends Telemetry9926{
 
     int move_state = 0;
-    Servo Servo1;
+//    Servo Servo1;
     double SM1_Position;
 
 
