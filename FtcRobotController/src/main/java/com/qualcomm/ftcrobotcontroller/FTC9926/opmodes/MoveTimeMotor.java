@@ -15,8 +15,8 @@ public class MoveTimeMotor extends Telemetry9926{
     @Override
     public void init() {
         Define_Hardware_Config_Names();
-        Motor1 = hardwareMap.dcMotor.get("SM1");
-        Motor2 = hardwareMap.dcMotor.get("SM2");
+        Motor1 = hardwareMap.dcMotor.get("M1");
+        Motor2 = hardwareMap.dcMotor.get("M2");
     }
 
     @Override
