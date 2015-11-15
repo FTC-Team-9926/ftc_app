@@ -58,7 +58,7 @@ public class HardwareMap9926 extends OpMode {
     public double Get_Servo_Position()
     {
 //        SM1_Position = 0.2;
-     //   Servo1 = hardwareMap.servo.get("SM1");
+        Servo1 = hardwareMap.servo.get("SM1");
         return Servo1.getPosition();
 
 
