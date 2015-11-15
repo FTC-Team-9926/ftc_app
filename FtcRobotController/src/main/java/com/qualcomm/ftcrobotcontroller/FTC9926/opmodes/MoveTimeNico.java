@@ -13,15 +13,18 @@ public class MoveTimeNico extends Telemetry9926{
 
     int move_state = 0;
     Servo Servo1;
+    Servo Servo2;
     double SM1_Position;
+    double SM2_Position;
 
 
     @Override
     public void init() {
         Define_Hardware_Config_Names();
-//        Servo1 = hardwareMap.servo.get("SM1");
-//        SM1_Position = 0.0;
-//        Servo1.setPosition(SM1_Position);
+        Servo1 = hardwareMap.servo.get("SM1");
+        Servo2 = hardwareMap.servo.get("SM2");
+        Servo1.setPosition(SM1_Position);
+        Servo2.setPosition(SM2_Position);
 
     }
 
@@ -38,90 +41,44 @@ public class MoveTimeNico extends Telemetry9926{
         {
             case 0:
                 /* might need to reset motor */
-//                Define_Hardware_Config_Names();
                 move_state++;
                 break;
 
             case 1:
-                //m_hand_position(0.2);
-
                 if (getRuntime() > 5){
-//                    Motor1.setPower(0);
-//                    Motor2.setPower(0);
                     move_state++;
                 }
                 break;
 
             case 2:
                 SM1_Position = 0.2;
+                SM2_Position = 0.2;
                 Set_Servo_position(SM1_Position);
- //               SM1_Position = 0.2;
- //               Servo1.setPosition(SM1_Position);
-
-                //              Motor1.setPower(1);
-  //              Motor2.setPower(0);
+                Set_Servo_position(SM2_Position);
                 if (getRuntime() > 10)
                 {
-  //                  Motor1.setPower(0);
-  //                  Motor2.setPower(0);
                     move_state++;
                 }
                 break;
 
             case 3:
                 SM1_Position = 0.3;
+                SM2_Position = 0.3;
                 Set_Servo_position(SM1_Position);
-//                Servo1.setPosition(SM1_Position);
- //               m_hand_position(.8);
-  //              Motor1.setPower(1);
-  //              Motor2.setPower(1);
+                Set_Servo_position(SM2_Position);
                 if (getRuntime() > 15){
-  //                  Motor1.setPower(0);
-  //                  Motor2.setPower(0);
                     move_state++;
                 }
                 break;
             default:
                 break;
-
-
-    /*        case 4:
-                Motor1.setPower(-1);
-                Motor2.setPower(-1);
-                if (getRuntime() > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }
-                break;
-
-            case 5:
-                Motor1.setPower(-1);
-                Motor2.setPower(0);
-                if (getRuntime() > 1.5)
-                {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }
-                break;
-
-            case 6:
-                Motor1.setPower(-1);
-                Motor2.setPower(-1);
-                if (getRuntime() > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                }*/
-
-                //break;
         }
 
         UpdateTelemetry();
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time: " + getRuntime());
-        telemetry.addData("13","Servo: " + SM1_Position);
+        telemetry.addData("13","Servo 1: " + SM1_Position);
+        telemetry.addData("14", "Servo 2: " + SM2_Position);
     }
 
     @Override
