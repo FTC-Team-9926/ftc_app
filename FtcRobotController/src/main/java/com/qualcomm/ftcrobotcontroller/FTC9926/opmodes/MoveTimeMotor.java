@@ -9,8 +9,6 @@ public class MoveTimeMotor extends Telemetry9926{
 
     DcMotor Motor1;
     DcMotor Motor2;
-    double M1_Position;
-    double M2_Position;
 
     int move_state = 0;
 
