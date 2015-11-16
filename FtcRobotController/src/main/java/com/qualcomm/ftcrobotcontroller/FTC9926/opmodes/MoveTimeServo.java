@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 /**
  * Created by Nicolas Bravo on 10/30/15.
  */
-public class MoveTimeNico extends Telemetry9926{
+public class MoveTimeServo extends Telemetry9926{
 
     int move_state = 0;
     Servo Servo1;
