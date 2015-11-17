@@ -23,6 +23,8 @@ public class HardwareMap9926 extends OpMode {
 
     // Servo ARM
     Servo Servo1;
+    DcMotor Motor1;
+    DcMotor Motor2;
     double SM1_Position;
     double Get_Servo_Position;
 
@@ -34,7 +36,11 @@ public class HardwareMap9926 extends OpMode {
         double l_hand_position = 0.5;
 
         Servo1 = hardwareMap.servo.get("SM1");
+        Servo1.setPosition(SM1_Position);
         SM1_Position = 0.5;
+        Define_Hardware_Config_Names();
+        Motor1 = hardwareMap.dcMotor.get("M1");
+        Motor2 = hardwareMap.dcMotor.get("M2");
 
     }
 
