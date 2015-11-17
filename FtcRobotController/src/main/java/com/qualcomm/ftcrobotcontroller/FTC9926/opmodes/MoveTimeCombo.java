@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 public class MoveTimeCombo extends Telemetry9926{
 
+    /* Defines the actual motors
+     * Defines move_state as an integer with a value of 0 */
     DcMotor Motor1;
     DcMotor Motor2;
     Servo Servo1;
@@ -16,6 +18,7 @@ public class MoveTimeCombo extends Telemetry9926{
     @Override
     public void init() {
         Define_Hardware_Config_Names();
+        /* Defines the motor names */
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Servo1 = hardwareMap.servo.get("SM1");
@@ -32,13 +35,18 @@ public class MoveTimeCombo extends Telemetry9926{
         switch (move_state)
         {
             case 0:
-                /* might need to reset motor */
+                /* FIRST CASE
+                 * Only the servo moves
+                  * Waits 5 seconds */
                 SM1_Position = 0.2;
                 Set_Servo_position(SM1_Position);
                 move_state++;
                 break;
 
             case 1:
+                /* SECOND CASE
+                 * Nothing moves
+                  * Resets the DC Motors */
                 if (getRuntime() > 5){
                     Motor1.setPower(0);
                     Motor2.setPower(0);
@@ -47,6 +55,10 @@ public class MoveTimeCombo extends Telemetry9926{
                 break;
 
             case 2:
+                /* THIRD CASE
+                 * Servo and DC Motors move
+                  * Only one of the DC Motors move
+                  * Waits 10 seconds, and then resets motors */
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
                 Motor1.setPower(1);
@@ -60,6 +72,9 @@ public class MoveTimeCombo extends Telemetry9926{
                 break;
 
             case 3:
+                /* FOURTH CASE
+                 * Only DC Motors Move
+                  * Waits 15 seconds, and then resets motors */
                 Motor1.setPower(1);
                 Motor2.setPower(1);
                 if (getRuntime() > 15){
@@ -69,10 +84,15 @@ public class MoveTimeCombo extends Telemetry9926{
                 }
                 break;
             default:
+                /* DEFAULT CASE
+                 * States the default
+                  * For use if move_state is greater than four */
                 break;
         }
 
         UpdateTelemetry();
+        /* TELEMETRY
+         * Displays telemetry data on phone */
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time: " + getRuntime());
         telemetry.addData("13", "Servo 1: " + SM1_Position);
