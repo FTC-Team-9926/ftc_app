@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by nicolasbravo on 11/16/15.
+ * Created by Nicolas Bravo on 11/16/15.
+ * This program is a combination of MoveTimeServo.java and MoveTimeMotor.java
+ * It is for use in the autonomous section of an FTC match
  */
 public class MoveTimeCombo extends Telemetry9926{
 
@@ -58,7 +60,7 @@ public class MoveTimeCombo extends Telemetry9926{
                 /* THIRD CASE
                  * Servo and DC Motors move
                   * Only one of the DC Motors move
-                  * Waits 10 seconds, and then resets motors */
+                  * Waits 5 seconds, and then resets motors */
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
                 Motor1.setPower(1);
@@ -74,7 +76,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 3:
                 /* FOURTH CASE
                  * Only DC Motors Move
-                  * Waits 15 seconds, and then resets motors */
+                  * Waits 5 seconds, and then resets motors */
                 Motor1.setPower(1);
                 Motor2.setPower(1);
                 if (getRuntime() > 15){
