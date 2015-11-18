@@ -16,6 +16,7 @@ public class MoveTimeCombo extends Telemetry9926{
     DcMotor Motor2;
     Servo Servo1;
     int move_state = 0;
+    double SM1_Position;
 
     @Override
     public void init() {
@@ -39,7 +40,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 0:
                 /* FIRST CASE
                  * Only the servo moves
-                  * Waits 5 seconds */
+                 * Waits 5 seconds */
                 SM1_Position = 0.2;
                 Set_Servo_position(SM1_Position);
                 move_state++;
@@ -48,7 +49,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 1:
                 /* SECOND CASE
                  * Nothing moves
-                  * Resets the DC Motors */
+                 * Resets the DC Motors */
                 if (getRuntime() > 5){
                     Motor1.setPower(0);
                     Motor2.setPower(0);
@@ -59,8 +60,8 @@ public class MoveTimeCombo extends Telemetry9926{
             case 2:
                 /* THIRD CASE
                  * Servo and DC Motors move
-                  * Only one of the DC Motors move
-                  * Waits 5 seconds, and then resets motors */
+                 * Only one of the DC Motors move
+                 * Waits 5 seconds, and then resets motors */
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
                 Motor1.setPower(1);
@@ -76,7 +77,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 3:
                 /* FOURTH CASE
                  * Only DC Motors Move
-                  * Waits 5 seconds, and then resets motors */
+                 * Waits 5 seconds, and then resets motors */
                 Motor1.setPower(1);
                 Motor2.setPower(1);
                 if (getRuntime() > 15){
@@ -88,16 +89,16 @@ public class MoveTimeCombo extends Telemetry9926{
             default:
                 /* DEFAULT CASE
                  * States the default
-                  * For use if move_state is greater than four */
+                 * For use if move_state is greater than four */
                 break;
         }
 
         UpdateTelemetry();
         /* TELEMETRY
-         * Displays telemetry data on phone */
+         * Displays data on phone */
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time: " + getRuntime());
-        telemetry.addData("13", "Servo 1: " + SM1_Position);
+        telemetry.addData("13", "Servo: " + SM1_Position);
     }
 
     @Override

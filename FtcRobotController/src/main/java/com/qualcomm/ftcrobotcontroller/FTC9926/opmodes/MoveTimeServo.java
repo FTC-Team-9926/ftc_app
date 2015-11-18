@@ -43,7 +43,7 @@ public class MoveTimeServo extends Telemetry9926{
             case 0:
                 /* FIRST CASE
                  * Nothing moves
-                  * Waits 5 seconds */
+                 * Waits 5 seconds */
                 move_state++;
                 break;
 
@@ -58,7 +58,7 @@ public class MoveTimeServo extends Telemetry9926{
             case 2:
                 /* THIRD CASE
                  * Servo Motors move
-                  * Waits 5 seconds, and then resets motors */
+                 * Waits 5 seconds, and then resets motors */
                 SM1_Position = 0.2;
                 Set_Servo_position(SM1_Position);
                 if (getRuntime() > 10)
@@ -70,7 +70,7 @@ public class MoveTimeServo extends Telemetry9926{
             case 3:
                 /* FOURTH CASE
                  * Servo Motors Move
-                  * Waits 5 seconds, and then resets motors */
+                 * Waits 5 seconds, and then resets motors */
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
                 if (getRuntime() > 15){
@@ -80,7 +80,7 @@ public class MoveTimeServo extends Telemetry9926{
             default:
                 /* DEFAULT CASE
                  * States the default
-                  * For use if move_state is greater than four */
+                 * For use if move_state is greater than four */
                 break;
         }
 
@@ -89,7 +89,7 @@ public class MoveTimeServo extends Telemetry9926{
          * Displays telemetry data on phone */
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time: " + getRuntime());
-        telemetry.addData("13", "Servo 1: " + SM1_Position);
+        telemetry.addData("13", "Servo: " + SM1_Position);
     }
 
     @Override
