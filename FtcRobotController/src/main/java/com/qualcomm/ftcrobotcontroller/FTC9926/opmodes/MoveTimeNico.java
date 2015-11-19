@@ -43,7 +43,7 @@ public class MoveTimeNico extends Telemetry9926{
             case 1:
                 //m_hand_position(0.2);
 
-                if (getRuntime() > 5){
+                if (getRuntime() > 3){
 //                    Motor1.setPower(0);
 //                    Motor2.setPower(0);
                     move_state++;
@@ -73,7 +73,7 @@ public class MoveTimeNico extends Telemetry9926{
  //               m_hand_position(.8);
   //              Motor1.setPower(1);
   //              Motor2.setPower(1);
-                if (getRuntime() > 15){
+                if (getRuntime() > 10){
   //                  Motor1.setPower(0);
   //                  Motor2.setPower(0);
                     move_state++;
