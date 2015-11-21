@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 public class HardwareMap9926 extends OpMode {
 
-    //Define what hardware to use:
+     //Define what hardware to use:
     // Motor Controller
 //    private DcMotorController v_dc_motor_controller_drive;
 
@@ -58,7 +58,7 @@ public class HardwareMap9926 extends OpMode {
     public double Get_Servo_Position()
     {
 //        SM1_Position = 0.2;
-     //   Servo1 = hardwareMap.servo.get("SM1");
+        Servo1 = hardwareMap.servo.get("SM1");
         return Servo1.getPosition();
 
 
