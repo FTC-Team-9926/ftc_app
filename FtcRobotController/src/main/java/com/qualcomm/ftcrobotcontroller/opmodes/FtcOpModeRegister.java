@@ -63,16 +63,15 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Motor", MoveTimeMotor.class);
     manager.register("Combo", MoveTimeCombo.class);
     manager.register("Motor", MoveTimeMotor.class);
-    manager.register("Servo", MoveTimeServo.class);
-    manager.register("Touch", TouchOp.class);
-     */
+    manager.register("TimeServo", MoveTimeServo.class);
+    manager.register("Touch", TouchOp.class); 
 
     manager.register("NullOp", NullOp.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
     manager.register("K9TeleOp", K9TeleOp.class);
     manager.register("K9Line", K9Line.class);
-    manager.register ("PushBotAuto", PushBotAuto.class);
+    //manager.register ("PushBotAuto", PushBotAuto.class);
     manager.register ("PushBotManual", PushBotManual.class);
 
 
@@ -92,11 +91,13 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
+//    manager.register("K9TeleOp", K9TeleOp.class);
+//    manager.register("K9IrSeeker", K9IrSeeker.class);
+//    manager.register("K9Line", K9Line.class);
 
     //manager.register ("PushBotManual1", PushBotManual1.class);
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
-
 
     /*
      * The following example op modes are designed to work with a pushbot-style robot.
@@ -114,6 +115,10 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
 //    manager.register("PushBotIrSeek", PushBotIrSeek.class);
 //    manager.register("PushBotSquare", PushBotSquare.class);
+    //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
+    //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
+    //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
+    //manager.register ("PushBotTouchEvent", PushBotTouchEvent.class);
 
     //manager.register("PushBotDriveTouch", PushBotDriveTouch.java);
     //manager.register("PushBotIrSeek", PushBotIrSeek.java);
