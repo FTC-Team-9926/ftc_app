@@ -14,7 +14,7 @@ public class MoveInch extends Telemetry9926 {
     DcMotor Motor1;
     DcMotor Motor2;
     int move_state = 0;
-    double inch = 0.0888;
+    double inch = 0.08769231;
     double time = 0;
 
     @Override
@@ -43,9 +43,7 @@ public class MoveInch extends Telemetry9926 {
                 move_state++;
                 break;
             case 1:
-//                if (mydistance (distance, m1, m2))
-//                    if getruntime*
-                if (getRuntime() >= (inch * 150) + time) {
+                if (getRuntime() >= (inch * 150) + time) { //If getRuntime() is equal to or greater than 150 inches/second + time already passed
                     Motor1.setPower(0);
                     Motor2.setPower(0);
                     time = time + (inch * 150);
@@ -59,6 +57,8 @@ public class MoveInch extends Telemetry9926 {
         UpdateTelemetry();
         /* TELEMETRY
          * Displays telemetry data on phone */
+        telemetry.addData("M1","M1_Power: " + Motor1.getPower());
+        telemetry.addData("M2","M2 Power: " + Motor2.getPower());
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time: " + getRuntime());
     }
