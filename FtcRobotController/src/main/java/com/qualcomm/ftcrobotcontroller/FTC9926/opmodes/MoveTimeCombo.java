@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  * This program is a combination of MoveTimeServo.java and MoveTimeMotor.java
  * It is for use in the autonomous section of an FTC match
  */
-public class MoveTimeCombo extends Telemetry9926{
 
+public class MoveTimeCombo extends Telemetry9926{
     /* Defines the actual motors
      * Defines move_state as an integer with a value of 0 */
     DcMotor Motor1;
@@ -30,7 +30,6 @@ public class MoveTimeCombo extends Telemetry9926{
 
     @Override
     public void start() {
-
     }
 
     @Override public void loop()
@@ -45,7 +44,6 @@ public class MoveTimeCombo extends Telemetry9926{
                 Set_Servo_position(SM1_Position);
                 move_state++;
                 break;
-
             case 1:
                 /* SECOND CASE
                  * Nothing moves
@@ -56,7 +54,6 @@ public class MoveTimeCombo extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 2:
                 /* THIRD CASE
                  * Servo and DC Motors move
@@ -73,7 +70,6 @@ public class MoveTimeCombo extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 3:
                 /* FOURTH CASE
                  * Only DC Motors Move
@@ -103,6 +99,5 @@ public class MoveTimeCombo extends Telemetry9926{
 
     @Override
     public void stop() {
-
     }
 }

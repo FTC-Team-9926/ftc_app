@@ -7,14 +7,13 @@ import com.qualcomm.robotcore.hardware.Servo;
  * It is similar to MoveTimeCombo.java, but only using servo motors.
  * It is for use in the autonomous section of an FTC match.
  */
-public class MoveTimeServo extends Telemetry9926{
 
+public class MoveTimeServo extends Telemetry9926{
     /* Defines the actual motors
      * Defines move_state as an integer with a value of 0 */
     int move_state = 0;
     Servo Servo1;
     double SM1_Position;
-
 
     @Override
     public void init() {
@@ -22,18 +21,14 @@ public class MoveTimeServo extends Telemetry9926{
         /* Defines the motor names */
         Servo1 = hardwareMap.servo.get("SM1");
         Servo1.setPosition(SM1_Position);
-
     }
 
     @Override
     public void start() {
-
     }
 
     @Override public void loop()
     {
-
-
         switch (move_state)
         {
             case 0:
@@ -42,7 +37,6 @@ public class MoveTimeServo extends Telemetry9926{
                  * Waits 5 seconds */
                 move_state++;
                 break;
-
             case 1:
                 /* SECOND CASE
                  * Nothing moves */
@@ -50,7 +44,6 @@ public class MoveTimeServo extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 2:
                 /* THIRD CASE
                  * Servo Motors move
@@ -62,7 +55,6 @@ public class MoveTimeServo extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 3:
                 /* FOURTH CASE
                  * Servo Motors Move
@@ -90,6 +82,5 @@ public class MoveTimeServo extends Telemetry9926{
 
     @Override
     public void stop() {
-
     }
 }
