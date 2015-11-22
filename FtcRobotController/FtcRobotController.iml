@@ -101,14 +101,14 @@
     <orderEntry type="library" exported="" name="Analytics-release-" level="project" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
-<<<<<<< c62a93e3227688843cc2f7ec785038b66c080433
     <orderEntry type="library" exported="" name="WirelessP2p-release-" level="project" />
     <orderEntry type="library" exported="" name="Hardware-release-" level="project" />
     <orderEntry type="library" exported="" name="RobotCore-release-" level="project" />
-=======
     <orderEntry type="library" exported="" name="usb-android-19" level="project" />
     <orderEntry type="library" exported="" name="effects-android-19" level="project" />
     <orderEntry type="library" exported="" name="maps-android-19" level="project" />
->>>>>>> Tested MoveTimeNico
+    <orderEntry type="library" exported="" name="usb-android-19" level="project" />
+    <orderEntry type="library" exported="" name="effects-android-19" level="project" />
+    <orderEntry type="library" exported="" name="maps-android-19" level="project" />
   </component>
 </module>
