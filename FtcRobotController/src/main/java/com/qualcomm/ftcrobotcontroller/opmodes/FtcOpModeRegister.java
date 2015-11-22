@@ -56,11 +56,24 @@ public class FtcOpModeRegister implements OpModeRegister {
      * If two or more op modes are registered with the same name, the app will display an error.
     */
     manager.register("MoveForward", MoveForward.class);
+    manager.register("Inch", MoveInch.class);
     manager.register("Tank", MoveTank.class);
     manager.register("Touch", TouchOp.class);
     manager.register("ServoTime", MoveTimeServo.class);
     manager.register("Motor", MoveTimeMotor.class);
     manager.register("Combo", MoveTimeCombo.class);
+    manager.register("Motor", MoveTimeMotor.class);
+    manager.register("Servo", MoveTimeServo.class);
+    manager.register("Touch", TouchOp.class);
+     */
+
+    manager.register("NullOp", NullOp.class);
+
+    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
+    manager.register("K9TeleOp", K9TeleOp.class);
+    manager.register("K9Line", K9Line.class);
+    manager.register ("PushBotAuto", PushBotAuto.class);
+    manager.register ("PushBotManual", PushBotManual.class);
 
 
     /*
