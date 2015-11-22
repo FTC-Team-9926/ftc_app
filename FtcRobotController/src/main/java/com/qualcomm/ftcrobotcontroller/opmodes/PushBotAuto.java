@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 //------------------------------------------------------------------------------
@@ -244,6 +245,8 @@ public class PushBotAuto extends PushBotTelemetry
 
 } // PushBotAuto
 =======
+=======
+>>>>>>> origin/master
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 //------------------------------------------------------------------------------
@@ -471,5 +474,9 @@ public class PushBotAuto extends PushBotTelemetry
      */
     private int v_state = 0;
 
+<<<<<<< HEAD
 } // PushBotAuto
 >>>>>>> ftctechnh/master
+=======
+} // PushBotAuto
+>>>>>>> origin/master
