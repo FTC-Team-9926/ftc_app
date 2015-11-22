@@ -73,6 +73,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/Analytics-release/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/FtcCommon-release/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/Hardware-release/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/ModernRobotics-release/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/RobotCore-release/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/WirelessP2p-release/jars" />
@@ -100,8 +101,16 @@
     <orderEntry type="library" exported="" name="Analytics-release-" level="project" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" exported="" name="usb-android-19" level="project" />
     <orderEntry type="library" exported="" name="effects-android-19" level="project" />
+=======
+    <orderEntry type="library" exported="" name="WirelessP2p-release-" level="project" />
+    <orderEntry type="library" exported="" name="Hardware-release-" level="project" />
+    <orderEntry type="library" exported="" name="RobotCore-release-" level="project" />
+    <orderEntry type="library" exported="" name="effects-android-19" level="project" />
+    <orderEntry type="library" exported="" name="usb-android-19" level="project" />
+>>>>>>> ftctechnh/master
     <orderEntry type="library" exported="" name="maps-android-19" level="project" />
   </component>
 </module>
