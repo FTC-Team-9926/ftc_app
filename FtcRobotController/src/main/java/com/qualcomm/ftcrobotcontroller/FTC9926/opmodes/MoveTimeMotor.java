@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * It is similar to MoveTimeCombo.java, but only using DC motors.
  * It is for use in the autonomous section of an FTC match.
  */
+
 public class MoveTimeMotor extends Telemetry9926{
 
     /* Defines the actual motors
@@ -25,7 +26,6 @@ public class MoveTimeMotor extends Telemetry9926{
 
     @Override
     public void start() {
-
     }
 
     @Override public void loop()
@@ -38,7 +38,6 @@ public class MoveTimeMotor extends Telemetry9926{
                   * Waits 5 seconds */
                 move_state++;
                 break;
-
             case 1:
                 /* SECOND CASE
                  * Nothing moves
@@ -49,7 +48,6 @@ public class MoveTimeMotor extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 2:
                 /* THIRD CASE
                  * DC Motors move
@@ -64,7 +62,6 @@ public class MoveTimeMotor extends Telemetry9926{
                     move_state++;
                 }
                 break;
-
             case 3:
                 /* FOURTH CASE
                  * Both DC Motors Move
@@ -93,6 +90,5 @@ public class MoveTimeMotor extends Telemetry9926{
 
     @Override
     public void stop() {
-
     }
 }

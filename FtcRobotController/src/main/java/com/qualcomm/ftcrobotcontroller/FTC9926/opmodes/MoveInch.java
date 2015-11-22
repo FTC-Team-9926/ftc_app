@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Uses distance/time to move accurately
  * It is for use in the autonomous section of the FTC match
  */
+
 public class MoveInch extends Telemetry9926 {
 
     /* Defines the actual motors
@@ -29,7 +30,6 @@ public class MoveInch extends Telemetry9926 {
 
     @Override
     public void start() {
-
     }
 
     @Override public void loop()
@@ -66,6 +66,5 @@ public class MoveInch extends Telemetry9926 {
 
     @Override
     public void stop() {
-
     }
 }
