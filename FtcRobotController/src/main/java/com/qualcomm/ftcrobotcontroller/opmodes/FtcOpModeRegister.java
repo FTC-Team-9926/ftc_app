@@ -57,11 +57,12 @@ public class FtcOpModeRegister implements OpModeRegister {
 <<<<<<< HEAD
     */
     manager.register("MoveForward", MoveForward.class);
+    manager.register("Inch", MoveInch.class);
     manager.register("Tank", MoveTank.class);
-    manager.register("Touch", TouchOp.class);
-    manager.register("Servo", MoveTimeServo.class);
-    manager.register("Motor", MoveTimeMotor.class);
     manager.register("Combo", MoveTimeCombo.class);
+    manager.register("Motor", MoveTimeMotor.class);
+    manager.register("Servo", MoveTimeServo.class);
+    manager.register("Touch", TouchOp.class);
 =======
      */
 
