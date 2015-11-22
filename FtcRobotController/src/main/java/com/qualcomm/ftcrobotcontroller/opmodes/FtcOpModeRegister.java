@@ -1,4 +1,4 @@
-/* Copyright (c) 2014, 2015 Qualcomm Technologies Inc
+/* Copyright (c) 2014, 2015 Technologies Inc
 
 All rights reserved.
 
@@ -51,7 +51,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     /*
      * register your op modes here.
      * The first parameter is the name of the op mode
-     * The second parameter is the op mode class property 
+     * The second parameter is the op mode class property
      *
      * If two or more op modes are registered with the same name, the app will display an error.
     */
@@ -64,8 +64,6 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Combo", MoveTimeCombo.class);
     manager.register("Motor", MoveTimeMotor.class);
     manager.register("TimeServo", MoveTimeServo.class);
-    manager.register("Touch", TouchOp.class); 
-
     manager.register("NullOp", NullOp.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
