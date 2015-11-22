@@ -1,5 +1,8 @@
 /* Copyright (c) 2014, 2015 Technologies Inc
+<<<<<<< 133e5af2fee5b460f04e950b411384bc2d4fd568
 
+=======
+>>>>>>> Removed duplicated with Git.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -12,8 +15,12 @@ of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this
 list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
+<<<<<<< 133e5af2fee5b460f04e950b411384bc2d4fd568
 
 Neither the name of Qualcomm Technologies Inc nor the names of its contributors
+=======
+Neither the name of Technologies Inc nor the names of its contributors
+>>>>>>> Removed duplicated with Git.
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -32,6 +39,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.*;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeServo;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.TouchOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -54,6 +70,10 @@ public class FtcOpModeRegister implements OpModeRegister {
      * The second parameter is the op mode class property
      *
      * If two or more op modes are registered with the same name, the app will display an error.
+<<<<<<< 133e5af2fee5b460f04e950b411384bc2d4fd568
+=======
+
+>>>>>>> Removed duplicated with Git.
     */
     manager.register("MoveForward", MoveForward.class);
     manager.register("Inch", MoveInch.class);
@@ -72,6 +92,13 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAuto", PushBotAuto.class);
     manager.register ("PushBotManual", PushBotManual.class);
 
+    manager.register("NullOp", NullOp.class);
+
+    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
+//    manager.register("K9TeleOp", K9TeleOp.class);
+//    manager.register("K9Line", K9Line.class);
+//    manager.register ("PushBotAuto", PushBotAuto.class);
+//    manager.register ("PushBotManual", PushBotManual.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
@@ -89,6 +116,8 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
+
+
 //    manager.register("K9TeleOp", K9TeleOp.class);
 //    manager.register("K9IrSeeker", K9IrSeeker.class);
 //    manager.register("K9Line", K9Line.class);
@@ -97,8 +126,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
 
-    /*
-     * The following example op modes are designed to work with a pushbot-style robot.
+     /* The following example op modes are designed to work with a pushbot-style robot.
      *  - PushBotManual is a driver controled (tank drive) op mode.
      *  - PushBotAuto uses the event driven (non linear) OpMode class for autonomous operation.
      *  - PushBotDriveTouch uses the LinearOpMode class and shows how to autonomously drive if a button is not pressed.
