@@ -43,7 +43,7 @@ public class MoveInch extends Telemetry9926 {
                 move_state++;
                 break;
             case 1:
-                if (getRuntime() >= (inch * 150) + time) {
+                if (getRuntime() >= ((inch * 150) + time)) {
                 /* If getRuntime() is equal to or greater than 150 inches/second + time already passed */
                     Motor1.setPower(0);
                     Motor2.setPower(0);
