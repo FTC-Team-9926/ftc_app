@@ -224,5 +224,4 @@ public class PushBotAuto extends PushBotTelemetry
      * a state machine for the loop method.
      */
     private int v_state = 0;
-
 } // PushBotAuto
