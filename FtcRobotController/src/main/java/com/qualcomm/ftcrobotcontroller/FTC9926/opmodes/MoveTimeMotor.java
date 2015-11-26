@@ -32,39 +32,34 @@ public class MoveTimeMotor extends Telemetry9926{
         {
             case 0:
                 /* might need to reset motor */
-                move_state++;
                 time = getRuntime();
+                move_state++;
                 break;
 
             case 1:
                 if ((getRuntime() - time) >= 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
+                    stopMotor();
                     time = getRuntime();
+                    move_state++;
                 }
                 break;
 
             case 2:
-                Motor1.setPower(1);
-                Motor2.setPower(0);
+                goLeft();
                 if ((getRuntime() - time) >= 5)
                 {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
+                    stopMotor();
                     time = getRuntime();
+                    move_state++;
                 }
                 break;
 
             case 3:
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goForward();
                 if ((getRuntime() - time) >= 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
-                    move_state++;
-                    time = getRuntime();
+                    stopMotor();
+                    time = getRuntime()
+                    ;move_state++;
                 }
                 break;
             default:
