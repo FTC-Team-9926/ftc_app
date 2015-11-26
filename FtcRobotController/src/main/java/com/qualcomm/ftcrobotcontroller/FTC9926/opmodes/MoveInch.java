@@ -34,7 +34,7 @@ public class MoveInch extends Telemetry9926 {
         switch (move_state)
         {
             case 0:
-                Move(1, 1);
+                Move(1, 1); //go forwards
                 time = getRuntime();
                 move_state++;
                 break;
@@ -50,7 +50,7 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 2:
-                Move(-1, -1);
+                Move(-1, -1); //go backwards
                 time = getRuntime();
                 move_state++;
                 break;
@@ -65,7 +65,7 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 4:
-                Move(.7, 1);
+                Move(.7, 1); //tilt slightly right
                 time = getRuntime();
                 move_state++;
                 break;
@@ -80,7 +80,7 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 6:
-                Turn(1);
+                Turn(1); //rotate right
                 time = getRuntime();
                 move_state++;
                 break;
@@ -95,7 +95,7 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 8:
-                Turn(-1);
+                Turn(-1); //rotate left
                 time = getRuntime();
                 move_state++;
                 break;
@@ -108,6 +108,19 @@ public class MoveInch extends Telemetry9926 {
                 else {
                     time = getRuntime();
                 }
+                break;
+            case 10:
+                Arm (1, 1); //move arm
+                time = getRuntime();
+                move_state++;
+                break;
+            case 11:
+                if ((getRuntime() - time) >= 0.3){
+                    Stop();
+                    time = getRuntime();
+                    move_state++;
+                }
+                break;
             default:
                 break;
         }
