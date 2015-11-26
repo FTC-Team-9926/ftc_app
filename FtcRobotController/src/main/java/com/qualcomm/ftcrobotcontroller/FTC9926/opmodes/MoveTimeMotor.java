@@ -39,7 +39,7 @@ public class MoveTimeMotor extends Telemetry9926{
                 }
                 break;
             case 2:
-                Turn(-1);
+                Turn(-1); //rotate left
                 if ((getRuntime() - time) >= 5)
                 {
                     Stop();
@@ -48,7 +48,7 @@ public class MoveTimeMotor extends Telemetry9926{
                 }
                 break;
             case 3:
-                Move(1,1);
+                Move(1,1); //move forwards
                 if ((getRuntime() - time) >= 5){
                     Stop();
                     time = getRuntime()

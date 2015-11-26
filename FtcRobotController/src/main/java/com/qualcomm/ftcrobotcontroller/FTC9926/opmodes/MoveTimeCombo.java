@@ -42,7 +42,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 2:
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
-                Move(1,1);
+                Move(1,1); //move forwards
                 if ((getRuntime() - time) >= 5)
                 {
                     Stop();
@@ -51,7 +51,7 @@ public class MoveTimeCombo extends Telemetry9926{
                 }
                 break;
             case 3:
-                Turn(-1);
+                Turn(-1); //tilt left
                 if ((getRuntime() - time) > 5){
                     Stop();
                     move_state++;
