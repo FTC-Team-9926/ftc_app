@@ -38,16 +38,14 @@ public class MoveInch extends Telemetry9926 {
         switch (move_state)
         {
             case 0:
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goForward();
                 time = getRuntime();
                 move_state++;
                 break;
             case 1:
                 if ((getRuntime() - time) >= (inch * 150)) {
-                /* If getRuntime() is equal to or greater than 150 inches/second + time already passed */
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
+                    stopMotor();
                     time = getRuntime();
                     move_state++;
                 }
@@ -56,17 +54,13 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 2:
-                Motor1.setDirection(DcMotor.Direction.REVERSE);
-                Motor2.setDirection(DcMotor.Direction.FORWARD);
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goReverse();
                 time = getRuntime();
                 move_state++;
                 break;
             case 3:
                 if ((getRuntime() - time) >= (inch * 75)) {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     time=getRuntime();
                     move_state++;
                 }
@@ -75,17 +69,13 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 4:
-                Motor1.setDirection(DcMotor.Direction.FORWARD);
-                Motor2.setDirection(DcMotor.Direction.REVERSE);
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goForward();
                 time = getRuntime();
                 move_state++;
                 break;
             case 5:
                 if((getRuntime() - time) >= (inch * 25)) {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     time = getRuntime();
                     move_state++;
                 }
@@ -94,29 +84,19 @@ public class MoveInch extends Telemetry9926 {
                 }
                 break;
             case 6:
-                Motor1.setDirection(DcMotor.Direction.REVERSE);
-                Motor2.setDirection(DcMotor.Direction.FORWARD);
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goReverse();
                 time = getRuntime();
                 move_state++;
                 break;
             case 7:
                 if ((getRuntime() - time) >= (inch * 100)) {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     time = getRuntime();
                     move_state++;
                 }
                 else {
                     time = getRuntime();
                 }
-                break;
-            case 8:
-                Motor1.setDirection(DcMotor.Direction.FORWARD);
-                Motor2.setDirection(DcMotor.Direction.REVERSE);
-                time = getRuntime();
-                move_state++;
                 break;
             default:
                 break;

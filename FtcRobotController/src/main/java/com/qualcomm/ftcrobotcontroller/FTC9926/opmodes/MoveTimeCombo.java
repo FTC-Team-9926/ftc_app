@@ -45,8 +45,7 @@ public class MoveTimeCombo extends Telemetry9926{
 
             case 1:
                 if ((getRuntime() - time) >= 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     move_state++;
                     time = getRuntime();
                 }
@@ -55,23 +54,19 @@ public class MoveTimeCombo extends Telemetry9926{
             case 2:
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
-                Motor1.setPower(1);
-                Motor2.setPower(1);
+                goForward();
                 if ((getRuntime() - time) >= 5)
                 {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     move_state++;
                     time = getRuntime();
                 }
                 break;
 
             case 3:
-                Motor1.setPower(1);
-                Motor2.setPower(0);
+                goLeft();
                 if ((getRuntime() - time) > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    stopMotor();
                     move_state++;
                     time = getRuntime();
                 }
