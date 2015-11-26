@@ -8,12 +8,13 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Nicolas Bravo on 10/30/15.
+ * Created by Nicolas Bravo on 10/30/15
+ * Uses just the Servo Motors
+ * It is for use in the autonomous section of the FTC match
  */
 public class MoveTimeServo extends Telemetry9926{
 
     int move_state = 0;
-    Servo Servo1;
     double SM1_Position;
     double time = 0;
 

@@ -1,14 +1,15 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
- * Created by Nicolas Bravo on 10/30/15.
+ * Created by Nicolas Bravo on 10/30/15
+ * Uses just the DC Motors
+ * It is for use in the autonomous section of the FTC match
  */
 public class MoveTimeMotor extends Telemetry9926{
 
-    DcMotor Motor1;
-    DcMotor Motor2;
     double time = 0;
 
     int move_state = 0;

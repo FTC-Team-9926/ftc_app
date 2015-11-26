@@ -41,6 +41,7 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
+        Motor2.setDirection(DcMotor.Direction.REVERSE);
 
     }
 
