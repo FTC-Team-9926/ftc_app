@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by nicolasbravo on 11/16/15.
+ * Created by Nicolas Bravo on 11/16/15
+ * Uses both the DC Motors and the Servo Motors
+ * It is for use in the autonomous section of the FTC match
  */
 public class MoveTimeCombo extends Telemetry9926{
 

@@ -1,6 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
  * Created by Nicolas Bravo on 11/18/15
@@ -10,10 +11,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public class MoveInch extends Telemetry9926 {
 
-    /* Defines the actual motors
+    /* Defines the motors
      * Defines move_state as an integer with a value of 0 */
-    DcMotor Motor1;
-    DcMotor Motor2;
+
     int move_state = 0;
     double inch = 0.08769231;
     double time = 0;
@@ -40,16 +40,83 @@ public class MoveInch extends Telemetry9926 {
             case 0:
                 Motor1.setPower(1);
                 Motor2.setPower(1);
+                time = getRuntime();
                 move_state++;
                 break;
             case 1:
-                if (getRuntime() >= ((inch * 150) + time)) {
+                if ((getRuntime() - time) >= (inch * 150)) {
                 /* If getRuntime() is equal to or greater than 150 inches/second + time already passed */
                     Motor1.setPower(0);
                     Motor2.setPower(0);
-                    time = time + (inch * 150);
+                    time = getRuntime();
                     move_state++;
                 }
+                else {
+                    time = getRuntime();
+                }
+                break;
+            case 2:
+                Motor1.setDirection(DcMotor.Direction.REVERSE);
+                Motor2.setDirection(DcMotor.Direction.FORWARD);
+                Motor1.setPower(1);
+                Motor2.setPower(1);
+                time = getRuntime();
+                move_state++;
+                break;
+            case 3:
+                if ((getRuntime() - time) >= (inch * 75)) {
+                    Motor1.setPower(0);
+                    Motor2.setPower(0);
+                    time=getRuntime();
+                    move_state++;
+                }
+                else {
+                    time = getRuntime();
+                }
+                break;
+            case 4:
+                Motor1.setDirection(DcMotor.Direction.FORWARD);
+                Motor2.setDirection(DcMotor.Direction.REVERSE);
+                Motor1.setPower(1);
+                Motor2.setPower(1);
+                time = getRuntime();
+                move_state++;
+                break;
+            case 5:
+                if((getRuntime() - time) >= (inch * 25)) {
+                    Motor1.setPower(0);
+                    Motor2.setPower(0);
+                    time = getRuntime();
+                    move_state++;
+                }
+                else {
+                    time = getRuntime();
+                }
+                break;
+            case 6:
+                Motor1.setDirection(DcMotor.Direction.REVERSE);
+                Motor2.setDirection(DcMotor.Direction.FORWARD);
+                Motor1.setPower(1);
+                Motor2.setPower(1);
+                time = getRuntime();
+                move_state++;
+                break;
+            case 7:
+                if ((getRuntime() - time) >= (inch * 100)) {
+                    Motor1.setPower(0);
+                    Motor2.setPower(0);
+                    time = getRuntime();
+                    move_state++;
+                }
+                else {
+                    time = getRuntime();
+                }
+                break;
+            case 8:
+                Motor1.setDirection(DcMotor.Direction.FORWARD);
+                Motor2.setDirection(DcMotor.Direction.REVERSE);
+                time = getRuntime();
+                move_state++;
                 break;
             default:
                 break;
