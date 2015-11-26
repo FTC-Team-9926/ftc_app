@@ -9,6 +9,13 @@ import com.qualcomm.robotcore.util.Range;
  */
 public class Control_1 extends Telemetry9926 {
 
+    // position of the claw servo
+    double ServoPosition;
+
+    // amount to change the claw servo position by
+    double ServoDelta = 0.01;
+
+
     @Override
     public void start() {
         //
@@ -73,6 +80,26 @@ public class Control_1 extends Telemetry9926 {
         ************************************
          */
 
+        /*
+        **********************************
+        *     Move Servo Up and Down
+        **********************************
+        */
+        if (gamepad1.left_bumper) {
+            ServoPosition += ServoDelta;
+        }
+        if (gamepad1.right_bumper) {
+            ServoPosition -= ServoDelta;
+        }
+        ServoPosition = Range.clip(ServoPosition, 0, .9);
+
+        // write position values to the wrist and claw servo
+        Servo1.setPosition(ServoPosition);
+
+        /*
+        ************************************
+         */
+
 		/*
 		 * Send telemetry data back to driver station. Note that if we are using
 		 * a legacy NXT-compatible motor controller, then the getPower() method
@@ -81,6 +108,7 @@ public class Control_1 extends Telemetry9926 {
 		 */
 
         telemetry.addData("Text", "*** Robot Data***");
+        telemetry.addData("Servo", "Servo:  " + String.format("%.2f", ServoPosition));
         telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
         telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", M1Power));
         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
