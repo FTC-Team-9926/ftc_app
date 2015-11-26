@@ -33,13 +33,13 @@ public class Auto9926 extends Telemetry9926 {
 
             case 1:
                 if (getRuntime() > 5){
-                    MoveRobot(.01, .01);
+                    MoveRobot(.1, .1);
                     move_state++;
                     break;
                 }
             case 2:
                 if (getRuntime() > 10){
-                    MoveRobot(-.01, -.01);
+                    MoveRobot(-.1, -.1);
                     move_state++;
                     break;
                 }
