@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+import java.lang.String;
 
 /**
  * Created by ibravo on 10/30/15.
@@ -90,35 +91,28 @@ public class HardwareMap9926 extends OpMode {
 //        v_servo_left_hand.setPosition(.2);
 
     } // PushBotManual::m_hand_position
-    void goForward() {
-        Motor1.setDirection(DcMotor.Direction.FORWARD);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Motor1.setPower(1);
-        Motor2.setPower(1);
+    void Move (double Motor1power, double Motor2power){
+        if (Motor1 != null)
+        {
+            Motor1.setPower (Motor1power);
+        }
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Motor2power);
+        }
     }
-    void goReverse() {
-        Motor1.setDirection(DcMotor.Direction.REVERSE);
-        Motor2.setDirection(DcMotor.Direction.FORWARD);
-        Motor1.setPower(1);
-        Motor2.setPower(1);
+    void Turn (double Turn){
+        if (Motor1 != null)
+        {
+            Motor1.setPower (Turn);
+        }
+        if (Motor2 != null)
+        {
+            Motor2.setPower (-1 * Turn);
+        }
     }
-    void goLeft() {
-        Motor1.setDirection(DcMotor.Direction.FORWARD);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Motor1.setPower(1);
-        Motor2.setPower(0);
-    }
-    void goRight() {
-        Motor1.setDirection(DcMotor.Direction.FORWARD);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Motor1.setPower(0);
-        Motor2.setPower(1);
-    }
-    void stopMotor() {
-        Motor1.setDirection(DcMotor.Direction.FORWARD);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
+    void Stop() {
         Motor1.setPower(0);
         Motor2.setPower(0);
     }
-
 }
