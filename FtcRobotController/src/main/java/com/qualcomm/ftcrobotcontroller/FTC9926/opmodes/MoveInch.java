@@ -34,87 +34,64 @@ public class MoveInch extends Telemetry9926 {
         switch (move_state)
         {
             case 0:
-                Move(1, 1); //go forwards
                 time = getRuntime();
                 move_state++;
                 break;
             case 1:
+                while ((getRuntime() - time) < (inch * 150)) {
+                    Move(1, 1);
+                }
                 if ((getRuntime() - time) >= (inch * 150)) {
                 /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
                     Stop();
                     time = getRuntime();
                     move_state++;
                 }
-                else {
-                    time = getRuntime();
-                }
                 break;
             case 2:
-                Move(-1, -1); //go backwards
-                time = getRuntime();
-                move_state++;
-                break;
-            case 3:
+                while ((getRuntime() - time) < (inch * 75)) {
+                    Move(-1, -1);
+                }
                 if ((getRuntime() - time) >= (inch * 75)) {
                     Stop();
                     time=getRuntime();
                     move_state++;
                 }
-                else {
-                    time = getRuntime();
+                break;
+            case 3:
+                while ((getRuntime() - time) < (inch * 25)) {
+                    Move(0.7, 1);
                 }
-                break;
-            case 4:
-                Move(.7, 1); //tilt slightly right
-                time = getRuntime();
-                move_state++;
-                break;
-            case 5:
                 if((getRuntime() - time) >= (inch * 25)) {
                     Stop();
                     time = getRuntime();
                     move_state++;
                 }
-                else {
+                break;
+            case 4:
+                while ((getRuntime() - time) < 5) {
+                    Turn(1);
+                }
+                if ((getRuntime() - time) >= 5) {
+                    Stop();
                     time = getRuntime();
+                    move_state++;
+                }
+                break;
+            case 5:
+                while ((getRuntime() - time) < 5) {
+                    Turn(-1);
+                }
+                if ((getRuntime() - time) >= 5) {
+                    Stop();
+                    time = getRuntime();
+                    move_state++;
                 }
                 break;
             case 6:
-                Turn(1); //rotate right
-                time = getRuntime();
-                move_state++;
-                break;
-            case 7:
-                if ((getRuntime() - time) >= 5) {
-                    Stop();
-                    time = getRuntime();
-                    move_state++;
+                while ((getRuntime() - time) < 0.3) {
+                    Arm (1, 0.5);
                 }
-                else {
-                    time = getRuntime();
-                }
-                break;
-            case 8:
-                Turn(-1); //rotate left
-                time = getRuntime();
-                move_state++;
-                break;
-            case 9:
-                if ((getRuntime() - time) >= 5) {
-                    Stop();
-                    time = getRuntime();
-                    move_state++;
-                }
-                else {
-                    time = getRuntime();
-                }
-                break;
-            case 10:
-                Arm (1, 1); //move arm
-                time = getRuntime();
-                move_state++;
-                break;
-            case 11:
                 if ((getRuntime() - time) >= 0.3){
                     Stop();
                     time = getRuntime();
@@ -128,11 +105,8 @@ public class MoveInch extends Telemetry9926 {
         UpdateTelemetry();
         /* TELEMETRY
          * Displays telemetry data on phone */
-        telemetry.addData("M1","M1_Power: " + Motor1.getPower());
-        telemetry.addData("M2","M2 Power: " + Motor2.getPower());
         telemetry.addData("11", "State: " + move_state);
         telemetry.addData("12", "Time (Total): " + getRuntime());
-        telemetry.addData("13", "Time (Task): " + (getRuntime() - time));
     }
 
     @Override
