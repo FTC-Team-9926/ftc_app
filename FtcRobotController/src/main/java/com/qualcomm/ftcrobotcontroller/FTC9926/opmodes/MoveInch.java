@@ -45,7 +45,7 @@ public class MoveInch extends Telemetry9926 {
                 First moves for a foot
                 Then stops and prepares for the next case
                  */
-                Move(1, 1);
+                MoveMotor(1, 1);
                 if ((getRuntime() - time) >= (inch * 12)) {
                 /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
                     Stop();
@@ -58,7 +58,7 @@ public class MoveInch extends Telemetry9926 {
                 First moves backwards for a foot
                 Then stops and prepares for the next case
                  */
-                Move(-1, -1);
+                MoveMotor(-1, -1);
                 if ((getRuntime() - time) >= (inch * 12)) {
                     Stop();
                     time=getRuntime();
@@ -70,7 +70,7 @@ public class MoveInch extends Telemetry9926 {
                 First moves slightly to the right for a foot
                 Then stops and prepares for the next case
                  */
-                Move(0.7, 1);
+                MoveMotor(0.7, 1);
                 if((getRuntime() - time) >= (inch * 12)) {
                     Stop();
                     time = getRuntime();

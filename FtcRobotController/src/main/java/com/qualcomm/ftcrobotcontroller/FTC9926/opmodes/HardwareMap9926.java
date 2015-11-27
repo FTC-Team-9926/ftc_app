@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
-import java.lang.String;
 import java.util.Set;
 
 /**
@@ -44,8 +43,8 @@ public class HardwareMap9926 extends OpMode {
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
-        Motor3.setDirection(DcMotor.Direction.REVERSE);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
+//        Motor3.setDirection(DcMotor.Direction.REVERSE);
+//        Motor2.setDirection(DcMotor.Direction.REVERSE);
 
     }
 
@@ -95,16 +94,16 @@ public class HardwareMap9926 extends OpMode {
 //        v_servo_left_hand.setPosition(.2);
 
     } // PushBotManual::m_hand_position
-    void Move (double Motor1power, double Motor2power){
+    void MoveMotor (double Motor1power, double Motor2power){
         Motor1.setPower(Motor1power);
-        Motor2.setPower(Motor2power);
+        Motor2.setPower(-1 * Motor2power);
     }
     void Turn (double Turn){
         /* Left motor is Motor2, right one is Motor1
         *  If you put a negative input, then the robot will turn left
         *  If you put a positive input, then the robot will turn right */
         Motor1.setPower(-1 * Turn);
-        Motor2.setPower(Turn);
+        Motor2.setPower(-Turn);
     }
     void Arm (double ArmMotorPower, double ArmServoPower){
         Motor3.setPower(ArmMotorPower);
