@@ -13,7 +13,7 @@ public class Encoders extends Telemetry9926{
     }
 
     public void loop(){
-        if(GetM1Position() <= 720){
+        if(run_using_encoders(720,720); <= 720){
             MoveRobot(1,1);
         }
         else{

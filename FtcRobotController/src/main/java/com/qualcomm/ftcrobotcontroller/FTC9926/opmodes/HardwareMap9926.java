@@ -164,4 +164,18 @@ public class HardwareMap9926 extends OpMode {
         reset_left_drive_encoder();
         reset_right_drive_encoder();
     }
+    void run_using_right_drive_encoder (){
+        if (Motor1 != null){
+            Motor1.setMode( DcMotorController.RunMode.RUN_USING_ENCODERS);
+        }
+    }
+    void run_using_left_drive_encoder (){
+        if (Motor2 != null){
+            Motor2.setMode( DcMotorController.RunMode.RUN_USING_ENCODERS);
+        }
+    }
+    void run_using_encoders(){
+        run_using_left_drive_encoder();
+        run_using_right_drive_encoder();
+    }
 }
