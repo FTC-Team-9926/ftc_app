@@ -25,6 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Auto9926;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Control_1;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
@@ -59,15 +61,16 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     */
     manager.register("MoveForward", MoveForward.class);
-    manager.register("Servo", MoveServo.class);
-    manager.register("Stick", MoveStick.class);
-    manager.register("Tank", MoveTank.class);
-    manager.register("Touch", TouchOp.class);
+    manager.register("Control_1", Control_1.class);
+//    manager.register("Stick", MoveStick.class);
+//    manager.register("Tank", MoveTank.class);
+//    manager.register("Touch", TouchOp.class);
     manager.register("ServoTime", MoveTimeServo.class);
     manager.register("Motor", MoveTimeMotor.class);
     manager.register("Combo", MoveTimeCombo.class);
 
     manager.register("NullOp", NullOp.class);
+    manager.register("Coach", Auto9926.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
 //    manager.register("K9TeleOp", K9TeleOp.class);
@@ -78,7 +81,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
-    manager.register("MR Gyro Test", MRGyroTest.class);
+//    manager.register("MR Gyro Test", MRGyroTest.class);
 
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
