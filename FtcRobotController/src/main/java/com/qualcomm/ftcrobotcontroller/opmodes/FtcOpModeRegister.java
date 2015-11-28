@@ -1,4 +1,8 @@
 /* Copyright (c) 2014, 2015 Technologies Inc
+<<<<<<< HEAD
+=======
+
+>>>>>>> MoveTime
 All rights reserved.
 Redistribution and use in source and binary forms, with or without modification,
 are permitted (subject to the limitations in the disclaimer below) provided that
@@ -56,6 +60,7 @@ public class FtcOpModeRegister implements OpModeRegister {
      * The second parameter is the op mode class property
      *
      * If two or more op modes are registered with the same name, the app will display an error.
+<<<<<<< HEAD
 
     */
     manager.register("MoveForward", MoveForward.class);
@@ -74,6 +79,26 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
 //    manager.register ("PushBotManual", PushBotManual.class);
+=======
+    */
+    manager.register("MoveForward", MoveForward.class);
+    manager.register("Inch", MoveInch.class);
+    manager.register("Tank", MoveTank.class);
+    manager.register("Combo", MoveTimeCombo.class);
+    manager.register("Motor", MoveTimeMotor.class);
+    manager.register("TimeServo", MoveTimeServo.class);
+    manager.register("Touch", TouchOp.class);
+
+    manager.register("NullOp", NullOp.class);
+
+    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
+    manager.register("K9TeleOp", K9TeleOp.class);
+    manager.register("K9Line", K9Line.class);
+    //manager.register ("PushBotAuto", PushBotAuto.class);
+    manager.register ("PushBotManual", PushBotManual.class);
+
+
+>>>>>>> MoveTime
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
@@ -93,7 +118,10 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> MoveTime
 //    manager.register("K9TeleOp", K9TeleOp.class);
 //    manager.register("K9IrSeeker", K9IrSeeker.class);
 //    manager.register("K9Line", K9Line.class);
@@ -102,7 +130,10 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> MoveTime
     //manager.register("PushBotManual", PushBotManual.class);
     //manager.register("PushBotAuto", PushBotAuto.class);
 
@@ -110,7 +141,10 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
 //    manager.register("PushBotIrSeek", PushBotIrSeek.class);
 //    manager.register("PushBotSquare", PushBotSquare.class);
+<<<<<<< HEAD
 
+=======
+>>>>>>> MoveTime
     //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
     //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
     //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
