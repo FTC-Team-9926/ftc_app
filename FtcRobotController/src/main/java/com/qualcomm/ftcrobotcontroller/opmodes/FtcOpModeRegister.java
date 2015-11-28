@@ -59,23 +59,24 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("MoveForward", MoveForward.class);
 //    manager.register("Servo", MoveServo.class);
 //    manager.register("Stick", MoveStick.class);
-    manager.register("Tank", MoveTank.class);
-    manager.register("Touch", TouchOp.class);
-    manager.register("Servo", MoveTimeServo.class);
-    manager.register("Motor", MoveTimeMotor.class);
-    manager.register("Combo", MoveTimeCombo.class);
-    manager.register("NullOp", NullOp.class);
+      manager.register("Tank", MoveTank.class);
+      manager.register("Touch", TouchOp.class);
+      manager.register("Servo", MoveTimeServo.class);
+      manager.register("Motor", MoveTimeMotor.class);
+      manager.register("Combo", MoveTimeCombo.class);
+      manager.register("NullOp", NullOp.class);
+      manager.register("Control_1", Control_1.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-    manager.register("K9TeleOp", K9TeleOp.class);
-    manager.register("K9Line", K9Line.class);
+      manager.register("K9TeleOp", K9TeleOp.class);
+      manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
-    manager.register ("PushBotManual", PushBotManual.class);
+      manager.register ("PushBotManual", PushBotManual.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
-    manager.register("MR Gyro Test", MRGyroTest.class);
+      manager.register("MR Gyro Test", MRGyroTest.class);
 
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
