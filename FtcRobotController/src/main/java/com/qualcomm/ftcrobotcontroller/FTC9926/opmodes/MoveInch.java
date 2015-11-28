@@ -19,9 +19,9 @@ public class MoveInch extends Telemetry9926 {
     double inch = 0.08769231;
     double time = 0;
 
-    @Override
-    public void init() {
-    }
+//    @Override
+//    public void init() {
+//    }
 
     @Override
     public void start() {
@@ -30,7 +30,6 @@ public class MoveInch extends Telemetry9926 {
 
     @Override public void loop()
     {
-
         switch (move_state)
         {
             case 0:
@@ -48,9 +47,9 @@ public class MoveInch extends Telemetry9926 {
                 while ((getRuntime() - time) < (inch * 12)) {
                     MoveMotor(1, 1);
                 }
-                while ((getRuntime() - time) >= (inch * 12)) {
+                if ((getRuntime() - time) >= (inch * 12)) {
                 /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
-                    StopMotor();
+                    MoveMotor(-1, -1);
                     time = getRuntime();
                     move_state++;
                 }
@@ -60,9 +59,8 @@ public class MoveInch extends Telemetry9926 {
                 First moves backwards for a foot
                 Then stops and prepares for the next case
                  */
-                MoveMotor(-1, -1);
                 if ((getRuntime() - time) >= (inch * 12)) {
-                    StopMotor();
+                    MoveMotor(0.7, 1);
                     time=getRuntime();
                     move_state++;
                 }
@@ -72,9 +70,8 @@ public class MoveInch extends Telemetry9926 {
                 First moves slightly to the right for a foot
                 Then stops and prepares for the next case
                  */
-                MoveMotor(0.7, 1);
-                if((getRuntime() - time) >= (inch * 12)) {
-                    StopMotor();
+                if ((getRuntime() - time) >= (inch * 12)) {
+                    Turn(1);
                     time = getRuntime();
                     move_state++;
                 }
@@ -84,9 +81,8 @@ public class MoveInch extends Telemetry9926 {
                 First tank turns to the right for three seconds
                 Then stops and prepares for the next case
                  */
-                Turn(1);
                 if ((getRuntime() - time) >= 3) {
-                    StopMotor();
+                    Turn(-1);
                     time = getRuntime();
                     move_state++;
                 }
@@ -96,9 +92,8 @@ public class MoveInch extends Telemetry9926 {
                 First tank turns to the left for three seconds
                 Then stops and prepares for the next case
                  */
-                Turn(-1);
                 if ((getRuntime() - time) >= 3) {
-                    StopMotor();
+                    MoveArm(1, 0);
                     time = getRuntime();
                     move_state++;
                 }
@@ -109,8 +104,7 @@ public class MoveInch extends Telemetry9926 {
                 While moving the servo 0.5
                 Then stops and prepares for the next case
                  */
-                MoveArm(1, 0.5);
-                if ((getRuntime() - time) >= 0.3){
+                if ((getRuntime() - time) >= 0.1){
                     StopMotor();
                     time = getRuntime();
                     move_state++;
