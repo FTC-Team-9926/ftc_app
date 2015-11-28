@@ -5,6 +5,7 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
  * Uses just the DC Motors
  * It is for use in the autonomous section of the FTC match
  */
+
 public class MoveTimeMotor extends Telemetry9926{
     public MoveTimeMotor (){
     }
