@@ -24,9 +24,9 @@ public class HardwareMap9926 extends OpMode {
 
     // Servo ARM
     Servo Servo1;
-    DcMotor Motor1;
-    DcMotor Motor2;
-    DcMotor Motor3;
+//    DcMotor Motor1;
+//    DcMotor Motor2;
+//    DcMotor Motor3;
     double SM1_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
@@ -43,6 +43,11 @@ public class HardwareMap9926 extends OpMode {
         Servo1 = hardwareMap.servo.get("SM1");
         Servo1.setPosition(SM1_Position);
         SM1_Position = 0.5;
+
+        Motor1 = hardwareMap.dcMotor.get("M1");
+        Motor2 = hardwareMap.dcMotor.get("M2");
+        Motor3 = hardwareMap.dcMotor.get("M3");
+
         Define_Hardware_Config_Names();
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
@@ -98,6 +103,7 @@ public class HardwareMap9926 extends OpMode {
 //        v_servo_left_hand.setPosition(.2);
 
     } // PushBotManual::m_hand_position
+
 
 
     void Move (double Motor1power, double Motor2power){
@@ -157,6 +163,8 @@ public class HardwareMap9926 extends OpMode {
         }
     }
 
+
+
     /*
  * This method scales the joystick input so for low joystick values, the
  * scaled value is less than linear.  This is to make it easier to drive
@@ -215,4 +223,44 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
-}
+
+
+    void Turn (double Turn){
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (-1 * Turn);
+            }
+
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Turn);
+        }
+        /* Left motor is Motor2, right one is Motor1
+        *  If you put a negative input, then the robot will turn left
+        *  If you put a positive input, then the robot will turn right */
+    }
+    void MoveServo (double ServoPosition) {
+        SM1_Position = ServoPosition;
+        Set_Servo_position(SM1_Position);
+    }
+    void StopMotor() {
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (0);
+            }
+
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (0);
+        }
+        if (Motor3 != null)
+        {
+            Motor3.setPower(0);
+        }
+    }
+
+    }

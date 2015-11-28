@@ -41,8 +41,9 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.*;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveInch;
+//import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
+//import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
@@ -76,21 +77,6 @@ public class FtcOpModeRegister implements OpModeRegister {
 >>>>>>> Removed duplicated with Git.
     */
     manager.register("MoveForward", MoveForward.class);
-    manager.register("Inch", MoveInch.class);
-    manager.register("Tank", MoveTank.class);
-    manager.register("Touch", TouchOp.class);
-    manager.register("ServoTime", MoveTimeServo.class);
-    manager.register("Motor", MoveTimeMotor.class);
-    manager.register("Combo", MoveTimeCombo.class);
-    manager.register("Motor", MoveTimeMotor.class);
-    manager.register("TimeServo", MoveTimeServo.class);
-    manager.register("NullOp", NullOp.class);
-
-    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-    manager.register("K9TeleOp", K9TeleOp.class);
-    manager.register("K9Line", K9Line.class);
-    //manager.register ("PushBotAuto", PushBotAuto.class);
-    manager.register ("PushBotManual", PushBotManual.class);
 
     manager.register("NullOp", NullOp.class);
 
@@ -100,6 +86,24 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register ("PushBotAuto", PushBotAuto.class);
 //    manager.register ("PushBotManual", PushBotManual.class);
 
+//    manager.register("MoveForward", MoveForward.class);
+    manager.register("Inch", MoveInch.class);
+//    manager.register("Tank", MoveTank.class);
+//    manager.register("Combo", MoveTimeCombo.class);
+//    manager.register("Motor", MoveTimeMotor.class);
+//    manager.register("TimeServo", MoveTimeServo.class);
+//    manager.register("Touch", TouchOp.class);
+
+//    manager.register("NullOp", NullOp.class);
+>>>>>>> Changed some of the commands with the previously merged files with MoveTime to make them work
+
+    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
+    manager.register("K9TeleOp", K9TeleOp.class);
+    manager.register("K9Line", K9Line.class);
+    //manager.register ("PushBotAuto", PushBotAuto.class);
+    manager.register ("PushBotManual", PushBotManual.class);
+
+    manager.register("NullOp", NullOp.class);
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
