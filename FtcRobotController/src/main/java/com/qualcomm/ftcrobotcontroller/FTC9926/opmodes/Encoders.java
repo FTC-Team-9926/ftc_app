@@ -6,9 +6,9 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 public class Encoders extends Telemetry9926{
 
     public void start(){
-        super.start ();
-        reset_encoders();
+        super.start();
         run_using_encoders();
+        reset_encoders();
     }
 
     public void loop(){
