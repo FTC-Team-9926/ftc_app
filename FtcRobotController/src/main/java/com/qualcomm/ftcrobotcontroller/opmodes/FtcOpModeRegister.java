@@ -1,10 +1,3 @@
-<<<<<<< 77b2f7b42eb340e150c0c7deeba4a0601ea7a9d0
-/* Copyright (c) 2014, 2015 Technologies Inc
-<<<<<<< 133e5af2fee5b460f04e950b411384bc2d4fd568
-
-=======
->>>>>>> Removed duplicated with Git.
-=======
 /* Copyright (c) 2014, 2015 Qualcomm Technologies Inc
 
 >>>>>>> Edits
@@ -49,7 +42,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.*;
-<<<<<<< 77b2f7b42eb340e150c0c7deeba4a0601ea7a9d0
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveInch;
@@ -60,8 +52,6 @@ import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeServo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.TouchOp;
-=======
->>>>>>> Edits
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -113,23 +103,23 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("MoveForward", MoveForward.class);
 //    manager.register("Servo", MoveServo.class);
 //    manager.register("Stick", MoveStick.class);
-    manager.register("Tank", MoveTank.class);
-    manager.register("Touch", TouchOp.class);
-    manager.register("Servo", MoveTimeServo.class);
-    manager.register("Motor", MoveTimeMotor.class);
-    manager.register("Combo", MoveTimeCombo.class);
-    manager.register("NullOp", NullOp.class);
+      manager.register("Tank", MoveTank.class);
+      manager.register("Touch", TouchOp.class);
+      manager.register("Servo", MoveTimeServo.class);
+      manager.register("Motor", MoveTimeMotor.class);
+      manager.register("Combo", MoveTimeCombo.class);
+      manager.register("NullOp", NullOp.class);
+      manager.register("Control_1", Control_1.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-    manager.register("K9TeleOp", K9TeleOp.class);
-    manager.register("K9Line", K9Line.class);
+      manager.register("K9TeleOp", K9TeleOp.class);
+      manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
-    manager.register ("PushBotManual", PushBotManual.class);
+      manager.register ("PushBotManual", PushBotManual.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
-
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
 
@@ -152,8 +142,6 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotManual1", PushBotManual1.class);
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
-
-<<<<<<< 77b2f7b42eb340e150c0c7deeba4a0601ea7a9d0
      /* The following example op modes are designed to work with a pushbot-style robot.
      *  - PushBotManual is a driver controled (tank drive) op mode.
      *  - PushBotAuto uses the event driven (non linear) OpMode class for autonomous operation.
@@ -161,9 +149,6 @@ public class FtcOpModeRegister implements OpModeRegister {
      *  - PushBotIrSeek uses the LinearOpMode class and shows how to track an IR beacon.
      *  - PushBotSquare uses the LinearOpMOde class and shows how to drive in a square pattern autonomously.
      */
-=======
->>>>>>> Edits
-
     //manager.register("PushBotManual", PushBotManual.class);
     //manager.register("PushBotAuto", PushBotAuto.class);
 
