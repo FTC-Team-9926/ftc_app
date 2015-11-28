@@ -25,6 +25,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Control_1;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Encoders;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
@@ -69,6 +70,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Combo", MoveTimeCombo.class);
     manager.register("Encoders", Encoders.class);
     manager.register("NullOp", NullOp.class);
+    manager.register("Control_1", Control_1.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
 //    manager.register("K9TeleOp", K9TeleOp.class);
