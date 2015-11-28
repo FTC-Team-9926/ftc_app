@@ -31,8 +31,9 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveInch;
+//import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
+//import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
@@ -64,8 +65,8 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     */
     manager.register("MoveForward", MoveForward.class);
-    manager.register("Servo", MoveServo.class);
-    manager.register("Stick", MoveStick.class);
+//    manager.register("Servo", MoveServo.class);
+//    manager.register("Stick", MoveStick.class);
     manager.register("Tank", MoveTank.class);
     manager.register("Touch", TouchOp.class);
     manager.register("ServoTime", MoveTimeServo.class);
@@ -79,17 +80,16 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
 //    manager.register ("PushBotManual", PushBotManual.class);
-=======
-    */
-    manager.register("MoveForward", MoveForward.class);
-    manager.register("Inch", MoveInch.class);
-    manager.register("Tank", MoveTank.class);
-    manager.register("Combo", MoveTimeCombo.class);
-    manager.register("Motor", MoveTimeMotor.class);
-    manager.register("TimeServo", MoveTimeServo.class);
-    manager.register("Touch", TouchOp.class);
 
-    manager.register("NullOp", NullOp.class);
+//    manager.register("MoveForward", MoveForward.class);
+    manager.register("Inch", MoveInch.class);
+//    manager.register("Tank", MoveTank.class);
+//    manager.register("Combo", MoveTimeCombo.class);
+//    manager.register("Motor", MoveTimeMotor.class);
+//    manager.register("TimeServo", MoveTimeServo.class);
+//    manager.register("Touch", TouchOp.class);
+
+//    manager.register("NullOp", NullOp.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
     manager.register("K9TeleOp", K9TeleOp.class);
@@ -97,8 +97,6 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAuto", PushBotAuto.class);
     manager.register ("PushBotManual", PushBotManual.class);
 
-
->>>>>>> MoveTime
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
@@ -118,10 +116,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> MoveTime
 //    manager.register("K9TeleOp", K9TeleOp.class);
 //    manager.register("K9IrSeeker", K9IrSeeker.class);
 //    manager.register("K9Line", K9Line.class);
@@ -130,10 +125,6 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> MoveTime
     //manager.register("PushBotManual", PushBotManual.class);
     //manager.register("PushBotAuto", PushBotAuto.class);
 
@@ -141,10 +132,7 @@ public class FtcOpModeRegister implements OpModeRegister {
 //    manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
 //    manager.register("PushBotIrSeek", PushBotIrSeek.class);
 //    manager.register("PushBotSquare", PushBotSquare.class);
-<<<<<<< HEAD
 
-=======
->>>>>>> MoveTime
     //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
     //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
     //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);

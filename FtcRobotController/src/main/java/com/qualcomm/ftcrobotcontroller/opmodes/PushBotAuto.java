@@ -209,7 +209,6 @@ public class PushBotAuto extends PushBotTelemetry
         //
         update_telemetry (); // Update common telemetry
         telemetry.addData ("18", "State: " + v_state);
-<<<<<<< HEAD
 
     } // loop
 
@@ -226,22 +225,3 @@ public class PushBotAuto extends PushBotTelemetry
      */
     private int v_state = 0;
 } // PushBotAuto
-=======
-
-    } // loop
-
-    //--------------------------------------------------------------------------
-    //
-    // v_state
-    //
-    /**
-     * This class member remembers which state is currently active.  When the
-     * start method is called, the state will be initialized (0).  When the loop
-     * starts, the state will change from initialize to state_1.  When state_1
-     * actions are complete, the state will change to state_2.  This implements
-     * a state machine for the loop method.
-     */
-    private int v_state = 0;
-
-} // PushBotAuto
->>>>>>> MoveTime

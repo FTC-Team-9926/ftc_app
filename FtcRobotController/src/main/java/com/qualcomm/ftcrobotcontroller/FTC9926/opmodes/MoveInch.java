@@ -19,10 +19,6 @@ public class MoveInch extends Telemetry9926 {
     double inch = 0.08769231;
     double time = 0;
 
-//    @Override
-//    public void init() {
-//    }
-
     @Override
     public void start() {
         super.start();
@@ -45,11 +41,11 @@ public class MoveInch extends Telemetry9926 {
                 Then stops and prepares for the next case
                  */
                 while ((getRuntime() - time) < (inch * 12)) {
-                    MoveMotor(1, 1);
+                    MoveRobot(1, 1);
                 }
                 if ((getRuntime() - time) >= (inch * 12)) {
                 /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
-                    MoveMotor(-1, -1);
+                    MoveRobot(-1, -1);
                     time = getRuntime();
                     move_state++;
                 }
@@ -60,7 +56,7 @@ public class MoveInch extends Telemetry9926 {
                 Then stops and prepares for the next case
                  */
                 if ((getRuntime() - time) >= (inch * 12)) {
-                    MoveMotor(0.7, 1);
+                    MoveRobot(0.7, 1);
                     time=getRuntime();
                     move_state++;
                 }
@@ -93,7 +89,7 @@ public class MoveInch extends Telemetry9926 {
                 Then stops and prepares for the next case
                  */
                 if ((getRuntime() - time) >= 3) {
-                    MoveArm(1, 0);
+                    MoveArm(1);
                     time = getRuntime();
                     move_state++;
                 }
@@ -105,6 +101,7 @@ public class MoveInch extends Telemetry9926 {
                 Then stops and prepares for the next case
                  */
                 if ((getRuntime() - time) >= 0.1){
+                    MoveServo(1);
                     StopMotor();
                     time = getRuntime();
                     move_state++;

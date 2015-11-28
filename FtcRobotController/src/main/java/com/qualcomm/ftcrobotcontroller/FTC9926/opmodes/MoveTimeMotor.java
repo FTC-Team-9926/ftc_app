@@ -49,7 +49,7 @@ public class MoveTimeMotor extends Telemetry9926{
                 }
                 break;
             case 3:
-                MoveMotor(1,1); //move forwards
+                MoveRobot(1,1); //move forwards
                 if ((getRuntime() - time) >= 5){
                     StopMotor();
                     time = getRuntime();

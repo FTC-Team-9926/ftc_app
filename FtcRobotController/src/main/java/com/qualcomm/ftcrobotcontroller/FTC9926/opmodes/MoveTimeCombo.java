@@ -42,7 +42,7 @@ public class MoveTimeCombo extends Telemetry9926{
             case 2:
                 SM1_Position = 0.3;
                 Set_Servo_position(SM1_Position);
-                MoveMotor(1,1); //move forwards
+                MoveRobot(1,1); //move forwards
                 if ((getRuntime() - time) >= 5)
                 {
                     StopMotor();
