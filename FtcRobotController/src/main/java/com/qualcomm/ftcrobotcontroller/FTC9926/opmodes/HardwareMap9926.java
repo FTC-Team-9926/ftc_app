@@ -105,23 +105,56 @@ public class HardwareMap9926 extends OpMode {
 
         Motor1.setPower(Motor1power);
         Motor2.setPower(-1 * Motor2power);
+    void MoveMotor (double Motor1power, double Motor2power)
+    {
+        if (Motor1 != null)
+        {
+            Motor1.setPower (Motor1power);
+        }
+        // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Motor2power);
+        }
     }
     void Turn (double Turn){
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (-1 * Turn);
+            }
+
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Turn);
+        }
         /* Left motor is Motor2, right one is Motor1
         *  If you put a negative input, then the robot will turn left
         *  If you put a positive input, then the robot will turn right */
-        Motor1.setPower(-1 * Turn);
-        Motor2.setPower(-Turn);
     }
-    void Arm (double ArmMotorPower, double ArmServoPower){
+    void MoveArm (double ArmMotorPower, double ArmServoPower){
+        
         Motor3.setPower(ArmMotorPower);
         SM1_Position = ArmServoPower;
         Set_Servo_position(SM1_Position);
     }
-    void Stop() {
-        Motor1.setPower(0);
-        Motor2.setPower(0);
-        Motor3.setPower(0);
+    void StopMotor() {
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (0);
+            }
+
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (0);
+        }
+        if (Motor3 != null)
+        {
+            Motor3.setPower(0);
+        }
     }
 
     /*
