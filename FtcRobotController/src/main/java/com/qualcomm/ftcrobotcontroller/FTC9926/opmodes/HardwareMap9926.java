@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+import java.util.Set;
 
 /**
  * Created by ibravo on 10/30/15.
@@ -23,6 +24,9 @@ public class HardwareMap9926 extends OpMode {
 
     // Servo ARM
     Servo Servo1;
+//    DcMotor Motor1;
+//    DcMotor Motor2;
+//    DcMotor Motor3;
     double SM1_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
@@ -37,10 +41,17 @@ public class HardwareMap9926 extends OpMode {
         double l_hand_position = 0.5;
 
         Servo1 = hardwareMap.servo.get("SM1");
+        Servo1.setPosition(SM1_Position);
         SM1_Position = 0.5;
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
+        Define_Hardware_Config_Names();
+        Motor1 = hardwareMap.dcMotor.get("M1");
+        Motor2 = hardwareMap.dcMotor.get("M2");
+        Motor3 = hardwareMap.dcMotor.get("M3");
+//        Motor3.setDirection(DcMotor.Direction.REVERSE);
+//        Motor2.setDirection(DcMotor.Direction.REVERSE);
 
     }
 
@@ -146,7 +157,30 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
+    void Turn (double Turn){
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (-1 * Turn);
+            }
 
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Turn);
+        }
+        /* Left motor is Motor2, right one is Motor1
+        *  If you put a negative input, then the robot will turn left
+        *  If you put a positive input, then the robot will turn right */
+    }
+    void StopMotor() {
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (0);
+            }
+
+<<<<<<< HEAD
     void reset_left_drive_encoder() {
         if (Motor1 != null) {
             Motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
@@ -224,4 +258,16 @@ public class HardwareMap9926 extends OpMode {
 
 
 
+=======
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (0);
+        }
+        if (Motor3 != null)
+        {
+            Motor3.setPower(0);
+        }
+    }
+>>>>>>> master
 }
