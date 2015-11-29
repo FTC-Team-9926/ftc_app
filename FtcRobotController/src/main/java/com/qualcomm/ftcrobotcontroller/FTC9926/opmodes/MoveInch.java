@@ -118,7 +118,6 @@ public class MoveInch extends Telemetry9926 {
         /* TELEMETRY
          * Displays telemetry data on phone */
         telemetry.addData("11", "State: " + move_state);
-        telemetry.addData("12", "Time (Total): " + getRuntime());
     }
 
     @Override
