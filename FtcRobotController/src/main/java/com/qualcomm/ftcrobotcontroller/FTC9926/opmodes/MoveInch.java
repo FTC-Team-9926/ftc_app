@@ -42,6 +42,7 @@ public class MoveInch extends Telemetry9926 {
                  */
                 while ((getRuntime() - time) < (inch * 12)) {
                     MoveRobot(1, 1);
+                    MoveServo(1);
                 }
                 if ((getRuntime() - time) >= (inch * 12)) {
                 /* If getRuntime() minus time is greater than or equal to inch * amount of inches */
@@ -101,7 +102,7 @@ public class MoveInch extends Telemetry9926 {
                 Then stops and prepares for the next case
                  */
                 if ((getRuntime() - time) >= 0.1){
-                    MoveServo(1);
+                    MoveServo(-1);
                     StopMotor();
                     time = getRuntime();
                     move_state++;
