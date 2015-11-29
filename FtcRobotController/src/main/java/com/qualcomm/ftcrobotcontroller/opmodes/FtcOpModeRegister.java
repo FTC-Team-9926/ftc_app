@@ -62,7 +62,6 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Motor", MoveTimeMotor.class);
     manager.register("TimeServo", MoveTimeServo.class);
     manager.register("Touch", TouchOp.class);
-    manager.register("2 Gamepads", TwoGamepads.class);
     manager.register("NullOp", NullOp.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
