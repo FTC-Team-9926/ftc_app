@@ -31,21 +31,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
-<<<<<<< HEAD
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Control_1;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Encoders;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveForward;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveServo;
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveStick;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeServo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.TouchOp;
-=======
-import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.*;
->>>>>>> master
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -71,9 +65,6 @@ public class FtcOpModeRegister implements OpModeRegister {
 <<<<<<< HEAD
     */
     manager.register("MoveForward", MoveForward.class);
-<<<<<<< HEAD
-    manager.register("Servo", MoveServo.class);
-    manager.register("Stick", MoveStick.class);
     manager.register("Tank", MoveTank.class);
     manager.register("Touch", TouchOp.class);
     manager.register("ServoTime", MoveTimeServo.class);
@@ -82,23 +73,12 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Encoders", Encoders.class);
     manager.register("NullOp", NullOp.class);
     manager.register("Control_1", Control_1.class);
-=======
-//    manager.register("Servo", MoveServo.class);
-//    manager.register("Stick", MoveStick.class);
-      manager.register("Tank", MoveTank.class);
-      manager.register("Touch", TouchOp.class);
-      manager.register("Servo", MoveTimeServo.class);
-      manager.register("Motor", MoveTimeMotor.class);
-      manager.register("Combo", MoveTimeCombo.class);
-      manager.register("NullOp", NullOp.class);
-      manager.register("Control_1", Control_1.class);
->>>>>>> master
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-      manager.register("K9TeleOp", K9TeleOp.class);
-      manager.register("K9Line", K9Line.class);
+//      manager.register("K9TeleOp", K9TeleOp.class);
+//      manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
-      manager.register ("PushBotManual", PushBotManual.class);
+//      manager.register ("PushBotManual", PushBotManual.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
