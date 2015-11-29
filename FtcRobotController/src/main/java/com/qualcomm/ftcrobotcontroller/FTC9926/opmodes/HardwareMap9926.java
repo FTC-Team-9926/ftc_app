@@ -176,10 +176,6 @@ public class HardwareMap9926 extends OpMode {
         *  If you put a negative input, then the robot will turn left
         *  If you put a positive input, then the robot will turn right */
     }
-    void MoveServo (double ServoPosition) {
-        SM1_Position = ServoPosition;
-        Set_Servo_position(SM1_Position);
-    }
     void StopMotor() {
         {
             if (Motor1 != null)
