@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.Range;
  * For use in the Driver Controlled section of the competition
  * Based on MoveTank.java
  */
+
 public class TwoGamepads extends Telemetry9926{
 
     @Override
@@ -35,10 +36,23 @@ public class TwoGamepads extends Telemetry9926{
         Motor3.setPower(M3);
         Set_Servo_position(SM1_Position);
 
+        UpdateTelemetry();
         telemetry.addData("M1", "Right: " + M1);
         telemetry.addData("M2", "Left: " + M2);
         telemetry.addData("M3", "Arm: " + M3);
         telemetry.addData("SM1", "Hand: " + SM1);
+        if (gamepad1 != null) {
+            telemetry.addData("GP1", "Gamepad 1: connected");
+        }
+        else {
+            telemetry.addData("GP1", "Gamepad 1: disconnected");
+        }
+        if (gamepad2 != null) {
+            telemetry.addData("GP2", "Gamepad 2: connected");
+        }
+        else {
+            telemetry.addData("GP2", "Gamepad 2: disconnected");
+        }
     }
 
     @Override

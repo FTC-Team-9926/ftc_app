@@ -19,10 +19,6 @@ public class MoveInch extends Telemetry9926 {
     double inch = 0.08769231;
     double time = 0;
 
-//    @Override
-//    public void init() {
-//    }
-
     @Override
     public void start() {
         super.start();
