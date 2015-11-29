@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+import java.util.Set;
 
 /**
  * Created by ibravo on 10/30/15.
@@ -13,7 +14,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 public class HardwareMap9926 extends OpMode {
 
-    //Define what hardware to use:
+     //Define what hardware to use:
     // Motor Controller
 //    private DcMotorController v_dc_motor_controller_drive;
 
@@ -23,6 +24,9 @@ public class HardwareMap9926 extends OpMode {
 
     // Servo ARM
     Servo Servo1;
+//    DcMotor Motor1;
+//    DcMotor Motor2;
+//    DcMotor Motor3;
     double SM1_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
@@ -31,29 +35,33 @@ public class HardwareMap9926 extends OpMode {
 
 
     @Override
-    public void init() {
+    public void init(){
 
         // Define Config Name in Driver Station
         double l_hand_position = 0.5;
 
         Servo1 = hardwareMap.servo.get("SM1");
+        Servo1.setPosition(SM1_Position);
         SM1_Position = 0.5;
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
+        Define_Hardware_Config_Names();
+        Motor1 = hardwareMap.dcMotor.get("M1");
+        Motor2 = hardwareMap.dcMotor.get("M2");
+        Motor3 = hardwareMap.dcMotor.get("M3");
+//        Motor3.setDirection(DcMotor.Direction.REVERSE);
+//        Motor2.setDirection(DcMotor.Direction.REVERSE);
 
     }
 
-    @Override
-    public void start() {
+    @Override public void start(){
     }
 
-    @Override
-    public void loop() {
+    @Override public void loop(){
     }
 
-    @Override
-    public void stop() {
+    @Override public void stop(){
     }
 
     //--------------------------------------------------------------------------
@@ -64,7 +72,8 @@ public class HardwareMap9926 extends OpMode {
         Servo1 = hardwareMap.servo.get("SM1");
     }
 
-    public double Get_Servo_Position() {
+    public double Get_Servo_Position()
+    {
 //        SM1_Position = 0.2;
         Servo1 = hardwareMap.servo.get("SM1");
         return Servo1.getPosition();
@@ -78,11 +87,12 @@ public class HardwareMap9926 extends OpMode {
     // Set the hand position.
     //--------
 
-    void Set_Servo_position(double p_position) {
+    void Set_Servo_position (double p_position)
+    {
         // Ensure the specifiec value is legal.
 //        double l_position = Range.clip(p_position, Servo.MIN_POSITION,Servo.MAX_POSITION);
 
-        SM1_Position = Range.clip(p_position, 0, 1);
+        SM1_Position = Range.clip(p_position,0,1);
 
         Servo1.setPosition(SM1_Position);
 
@@ -97,9 +107,9 @@ public class HardwareMap9926 extends OpMode {
  * scaled value is less than linear.  This is to make it easier to drive
  * the robot more precisely at slower speeds.
  */
-    double scaleInput(double dVal) {
-        double[] scaleArray = {0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
-                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00};
+    double scaleInput(double dVal)  {
+        double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
+                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
 
         // get the corresponding index for the scaleInput array.
         int index = (int) (dVal * 16.0);
@@ -126,102 +136,61 @@ public class HardwareMap9926 extends OpMode {
         return dScale;
     }
 
-    void MoveRobot(double Engine1, double Engine2) {
+    void MoveRobot (double Engine1, double Engine2)
+    {
         {
-            if (Motor1 != null) {
-                Motor1.setPower(Engine1);
+            if (Motor1 != null)
+            {
+                Motor1.setPower (Engine1);
             }
 
         } // set_drive_power
-        if (Motor2 != null) {
-            Motor2.setPower(Engine2);
-        }
+            if (Motor2 != null)
+            {
+                Motor2.setPower (Engine2);
+            }
     }
-
-    void MoveArm(double Engine3) {
+    void MoveArm (double Engine3)
+    {
         {
-            if (Motor3 != null) {
-                Motor3.setPower(Engine3);
+            if (Motor3 != null)
+            {
+                Motor3.setPower (Engine3);
             }
 
         } // set_arm_power
     }
+    void Turn (double Turn){
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (-1 * Turn);
+            }
 
-    void reset_left_drive_encoder() {
-        if (Motor1 != null) {
-            Motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Turn);
+        }
+        /* Left motor is Motor2, right one is Motor1
+        *  If you put a negative input, then the robot will turn left
+        *  If you put a positive input, then the robot will turn right */
+    }
+    void StopMotor() {
+        {
+            if (Motor1 != null)
+            {
+                Motor1.setPower (0);
+            }
+
+        } // set_drive_power
+        if (Motor2 != null)
+        {
+            Motor2.setPower (0);
+        }
+        if (Motor3 != null)
+        {
+            Motor3.setPower(0);
         }
     }
-
-    void reset_right_drive_encoder() {
-        if (Motor2 != null) {
-            Motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        }
-    }
-
-    void reset_encoders() {
-        reset_left_drive_encoder();
-        reset_right_drive_encoder();
-    }
-
-    void run_using_left_drive_encoder() {
-        if (Motor1 != null) {
-            Motor1.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        }
-    }
-
-    void run_using_right_drive_encoder() {
-        if (Motor2 != null) {
-            Motor2.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        }
-    }
-
-    void run_using_encoders() {
-        run_using_left_drive_encoder();
-        run_using_right_drive_encoder();
-    }
-
-    int left_encoder_count() {
-        int left_return = 0;
-        if (Motor1 != null) {
-            left_return = Motor1.getCurrentPosition();
-        }
-        return left_return;
-    }
-
-    int right_encoder_count() {
-        int right_return = 0;
-        if (Motor2 != null) {
-            right_return = Motor2.getCurrentPosition();
-        }
-        return right_return;
-    }
-
-    boolean has_left_drive_encoders_reached(double left_count){
-        boolean left_return = false;
-        if(Motor1!=null){
-            if(Math.abs(Motor1.getCurrentPosition()) > left_count)
-                left_return = true;
-        }
-        return left_return;
-    }
-    boolean has_right_drive_encoders_reached(double right_count){
-        boolean right_return = false;
-        if(Motor2 !=null){
-            if(Math.abs(Motor2.getCurrentPosition()) > right_count)
-                right_return = true;
-        }
-        return right_return;
-    }
-    boolean have_drive_encoders_reached(double left_count, double right_count){
-        boolean encoder_return = false;
-        if(has_left_drive_encoders_reached(left_count)&& has_right_drive_encoders_reached(right_count)){
-            encoder_return = true;
-        }
-        return encoder_return;
-    }
-
-
-
-
 }
