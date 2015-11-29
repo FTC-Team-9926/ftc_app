@@ -24,10 +24,12 @@ public class HardwareMap9926 extends OpMode {
 
     // Servo ARM
     Servo Servo1;
+    Servo Servo2;
 //    DcMotor Motor1;
 //    DcMotor Motor2;
 //    DcMotor Motor3;
     double SM1_Position;
+    double SM2_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
     DcMotor Motor2;
@@ -43,13 +45,13 @@ public class HardwareMap9926 extends OpMode {
         Servo1 = hardwareMap.servo.get("SM1");
         Servo1.setPosition(SM1_Position);
         SM1_Position = 0.5;
+        Servo2 = hardwareMap.servo.get("SM2");
+        Servo2.setPosition(SM2_Position);
+        SM2_Position = 0.5;
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
         Define_Hardware_Config_Names();
-        Motor1 = hardwareMap.dcMotor.get("M1");
-        Motor2 = hardwareMap.dcMotor.get("M2");
-        Motor3 = hardwareMap.dcMotor.get("M3");
 //        Motor3.setDirection(DcMotor.Direction.REVERSE);
 //        Motor2.setDirection(DcMotor.Direction.REVERSE);
 
@@ -101,6 +103,10 @@ public class HardwareMap9926 extends OpMode {
 //        v_servo_left_hand.setPosition(.2);
 
     } // PushBotManual::m_hand_position
+    void Set_Servo2_position (double position2) {
+        SM2_Position = Range.clip(position2,0,1);
+        Servo2.setPosition(SM2_Position);
+    }
 
     /*
  * This method scales the joystick input so for low joystick values, the
