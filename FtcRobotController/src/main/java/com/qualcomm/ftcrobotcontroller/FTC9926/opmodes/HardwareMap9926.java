@@ -175,12 +175,11 @@ public class HardwareMap9926 extends OpMode {
     }
     void StopMotor() {
         {
-            if (Motor1 != null)
-            {
-                Motor1.setPower (0);
+            if (Motor1 != null) {
+                Motor1.setPower(0);
             }
-
-<<<<<<< HEAD
+        }
+    }
     void reset_left_drive_encoder() {
         if (Motor1 != null) {
             Motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
@@ -254,12 +253,8 @@ public class HardwareMap9926 extends OpMode {
         }
         return encoder_return;
     }
-
-
-
-
-=======
-        } // set_drive_power
+    {
+    // set_drive_power
         if (Motor2 != null)
         {
             Motor2.setPower (0);
@@ -269,5 +264,4 @@ public class HardwareMap9926 extends OpMode {
             Motor3.setPower(0);
         }
     }
->>>>>>> master
 }

@@ -5,24 +5,26 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
  */
 public class Encoders extends Telemetry9926{
 
-    public void start(){
-        super.start();
+    @Override public void init(){
         run_using_encoders();
         reset_encoders();
     }
 
-    public void loop(){
-       if(have_drive_encoders_reached(720,720)){
-            MoveRobot(0,0);
-        }
-       else{
-            MoveRobot(1,1);
-        }
+    @Override public void start(){
+        super.start();
+    }
+
+    @Override public void loop(){
+       while(!have_drive_encoders_reached(720,720)){
+           MoveRobot(1,1);
+       }
+            MoveRobot(0, 0);
+
         UpdateTelemetry();
         telemetry.addData("Program", "Runtime:"+ getRuntime());
         telemetry.addData("Left","State:"+ left_encoder_count());
         telemetry.addData("Right","State:"+ right_encoder_count());
     }
 
-    public void stop(){}
+    @Override public void stop(){}
 }
