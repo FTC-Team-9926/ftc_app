@@ -16,8 +16,8 @@ public class Control_1 extends Telemetry9926 {
     // amount to change the claw servo position by
     double ServoDelta = 0.01;
 
-    boolean Backwards = false;
     int MyReverse = 1;
+    double Dpad = 1;
 
     @Override
     public void start() {
@@ -38,6 +38,14 @@ public class Control_1 extends Telemetry9926 {
             MyReverse = 1;
         }
 
+        if (gamepad1.dpad_down && Dpad > 0.1) {
+            Dpad = Dpad - 0.1;
+        }
+        if (gamepad1.dpad_up && Dpad < 1) {
+            Dpad = Dpad + 0.1;
+        }
+
+
             //Backwards = true;
 
 //        if (Backwards == false) {
@@ -53,8 +61,8 @@ public class Control_1 extends Telemetry9926 {
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
             // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse, -1, 1);
-            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse, -1, 1);
+            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
+            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
 
             // scale the joystick value to make it easier to control
             // the robot more precisely at slower speeds.
@@ -108,10 +116,6 @@ public class Control_1 extends Telemetry9926 {
 
             // write position values to the wrist and claw servo
             Servo1.setPosition(ServoPosition);
-
-            if (gamepad1.a) {
-                Backwards = true;
-            }
 
         /*
         ************************************
