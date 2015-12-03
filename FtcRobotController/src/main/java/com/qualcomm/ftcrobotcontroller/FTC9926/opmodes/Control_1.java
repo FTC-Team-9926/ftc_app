@@ -17,6 +17,7 @@ public class Control_1 extends Telemetry9926 {
     double ServoDelta = 0.01;
 
     boolean Backwards = false;
+    int MyReverse = 1;
 
     @Override
     public void start() {
@@ -29,9 +30,17 @@ public class Control_1 extends Telemetry9926 {
 
     @Override
     public void loop() {
-        if (Backwards == false) {
-            Motor1.setDirection(DcMotor.Direction.FORWARD);
-            Motor2.setDirection(DcMotor.Direction.FORWARD);
+
+        if (gamepad1.a) {
+            MyReverse = -1;
+        }
+        if (gamepad1.b) {
+            MyReverse = 1;
+        }
+
+            //Backwards = true;
+
+//        if (Backwards == false) {
             /*
 		 * Gamepad 1
 		 */
@@ -44,8 +53,8 @@ public class Control_1 extends Telemetry9926 {
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
             // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.left_stick_y, -1, 1);
-            float M2Power = Range.clip(gamepad1.right_stick_y, -1, 1);
+            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse, -1, 1);
+            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse, -1, 1);
 
             // scale the joystick value to make it easier to control
             // the robot more precisely at slower speeds.
@@ -119,99 +128,6 @@ public class Control_1 extends Telemetry9926 {
             telemetry.addData("Servo", "Servo:  " + String.format("%.2f", ServoPosition));
             telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
             telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", M1Power));
-            telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
-        }
-        else {
-            Motor1.setDirection(DcMotor.Direction.REVERSE);
-            Motor2.setDirection(DcMotor.Direction.REVERSE);
-            /*
-		 * Gamepad 1
-		 */
-
-        /*
-        ************************************
-        *     Move Tank Robot
-        ************************************
-         */
-            // tank drive
-            // note that if y equal -1 then joystick is pushed all of the way forward.
-            // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.right_stick_y, -1, 1);
-            float M2Power = Range.clip(gamepad1.left_stick_y, -1, 1);
-
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
-//        right = (float)scaleInput(right);
-//        left =  (float)scaleInput(left);
-
-            // write the values to the motors
-            MoveRobot(M1Power, M2Power);
-        /*
-        ************************************
-         */
-
-        /*
-        ************************************
-        *     Move Arm Up and Down
-        ************************************
-         */
-            // Use left trigger to speed Up
-            // Use right trigger to speed down
-//        float GoUp = Range.clip(-gamepad1.left_stick_y,-1,1);
-//        float M2Power = Range.clip(gamepad1.right_stick_y,-1,1);
-
-            double GoUp = (gamepad1.left_trigger + 1) / 2 - (gamepad1.right_trigger + 1) / 2;
-            GoUp = Range.clip(GoUp, -1, 1);
-            GoUp = (float)scaleInput(GoUp);
-
-
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
-//        right = (float)scaleInput(right);
-//        left =  (float)scaleInput(left);
-
-            // write the values to the motors
-            MoveArm(GoUp);
-        /*
-        ************************************
-         */
-
-        /*
-        **********************************
-        *     Move Servo Up and Down
-        **********************************
-        */
-            if (gamepad1.left_bumper) {
-                ServoPosition += ServoDelta;
-            }
-            if (gamepad1.right_bumper) {
-                ServoPosition -= ServoDelta;
-            }
-            ServoPosition = Range.clip(ServoPosition, 0, .9);
-
-            // write position values to the wrist and claw servo
-            Servo1.setPosition(ServoPosition);
-
-            if (gamepad1.b) {
-                Backwards = false;
-            }
-
-        /*
-        ************************************
-         */
-
-		/*
-		 * Send telemetry data back to driver station. Note that if we are using
-		 * a legacy NXT-compatible motor controller, then the getPower() method
-		 * will return a null value. The legacy NXT-compatible motor controllers
-		 * are currently write only.
-		 */
-
-            telemetry.addData("Text", "*** Robot Data***");
-            telemetry.addData("Servo", "Servo:  " + String.format("%.2f", ServoPosition));
-            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
-            telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", M1Power));
-            telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
-        }
+         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
     }
 }
