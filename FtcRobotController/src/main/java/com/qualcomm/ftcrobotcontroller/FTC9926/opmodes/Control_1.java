@@ -128,10 +128,12 @@ public class Control_1 extends Telemetry9926 {
 		 * are currently write only.
 		 */
 
+        UpdateTelemetry();
             telemetry.addData("Text", "*** Robot Data***");
-            telemetry.addData("Servo", "Servo:  " + String.format("%.2f", ServoPosition));
-            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
-            telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", M1Power));
-         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
+            telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", ServoPosition) + "/" + String.format("%.2f", GoUp));
+//            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
+            telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
+ //        telemetry.addData("right tgt pwr", "right: " + String.format("%.2f", M2Power));
+//        telemetry.addData("DPad", "Power Limit: " + String.format("%.2f", Dpad));
     }
 }
