@@ -97,9 +97,11 @@ public class TwoGamepads extends Telemetry9926 {
 
 
             UpdateTelemetry();
-            telemetry.addData("Text", "*** Robot Data***");
-            telemetry.addData("arm tgt pwr", "Arm: " + String.format("%.2f", M3Power));
-            telemetry.addData("left tgt pwr", "left pwr: " + String.format("%.2f", M1Power));
-            telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
+        telemetry.addData("Text", "*** Robot Data***");
+        telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power));
+//            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
+        telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
+        //        telemetry.addData("right tgt pwr", "right: " + String.format("%.2f", M2Power));
+//        telemetry.addData("DPad", "Power Limit: " + String.format("%.2f", Dpad));
     }
 }
