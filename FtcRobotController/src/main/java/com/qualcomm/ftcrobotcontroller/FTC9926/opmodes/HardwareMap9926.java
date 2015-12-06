@@ -1,11 +1,12 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.Range;
-import java.util.Set;
 
 /**
  * Created by ibravo on 10/30/15.
@@ -32,6 +33,8 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor1;
     DcMotor Motor2;
     DcMotor Motor3;
+    ColorSensor Color1;
+    TouchSensor Touch1;
 
 
     @Override
@@ -253,15 +256,24 @@ public class HardwareMap9926 extends OpMode {
         }
         return encoder_return;
     }
-    {
-    // set_drive_power
-        if (Motor2 != null)
-        {
-            Motor2.setPower (0);
+    boolean turn_color_sensor_light_on(boolean light){
+        if(light == true){
+            Color1.enableLed(true);
         }
-        if (Motor3 != null)
-        {
-            Motor3.setPower(0);
+        else{
+            Color1.enableLed(false);
         }
+        return light;
     }
+    boolean is_button_pressed(){
+        boolean button_state = false;
+        if(Touch1.isPressed()){
+            button_state = true;
+        }
+        else{
+            button_state = false;
+        }
+        return button_state;
+    }
+
 }
