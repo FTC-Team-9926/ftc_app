@@ -36,7 +36,6 @@ public class Sensors extends Telemetry9926{
                 telemetry.addData("Touch Sensor State: ", Touch1.isPressed());
             }
         }
-        //light sensor
     }
 
     @Override
