@@ -18,6 +18,7 @@ public class TwoGamepads extends Telemetry9926 {
     float rightTrigger;
     int MyReverse;
     double Dpad;
+    boolean DpadPressed = false;
 
     @Override
     public void start() {
@@ -33,10 +34,21 @@ public class TwoGamepads extends Telemetry9926 {
         if (gamepad1.b) {
             MyReverse = 1;
         }
-        if (gamepad1.dpad_down && Dpad > 0.1) {
+
+        if (gamepad1.dpad_down) {
+            DpadPressed = true;
+        }
+        else if (gamepad1.dpad_up) {
+            DpadPressed = true;
+        }
+        else {
+            DpadPressed = false;
+        }
+
+        if (gamepad1.dpad_down && Dpad > 0.1 && DpadPressed == true) {
             Dpad = Dpad - 0.1;
         }
-        if (gamepad1.dpad_up && Dpad < 1) {
+        if (gamepad1.dpad_up && Dpad < 1 && DpadPressed == true) {
             Dpad = Dpad + 0.1;
         }
             // tank drive

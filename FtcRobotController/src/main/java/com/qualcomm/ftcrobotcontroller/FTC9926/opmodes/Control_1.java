@@ -18,6 +18,7 @@ public class Control_1 extends Telemetry9926 {
 
     int MyReverse = 1;
     double Dpad = 1;
+    boolean DpadPressed = false;
 
     @Override
     public void start() {
@@ -38,10 +39,20 @@ public class Control_1 extends Telemetry9926 {
             MyReverse = 1;
         }
 
-        if (gamepad1.dpad_down && Dpad > 0.1) {
+        if (gamepad1.dpad_down) {
+            DpadPressed = true;
+        }
+        else if (gamepad1.dpad_up) {
+            DpadPressed = true;
+        }
+        else {
+            DpadPressed = false;
+        }
+
+        if (gamepad1.dpad_down && Dpad > 0.1 && DpadPressed == true) {
             Dpad = Dpad - 0.1;
         }
-        if (gamepad1.dpad_up && Dpad < 1) {
+        if (gamepad1.dpad_up && Dpad < 1 && DpadPressed == true) {
             Dpad = Dpad + 0.1;
         }
 
@@ -61,8 +72,8 @@ public class Control_1 extends Telemetry9926 {
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
             // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
-            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
+            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
+            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
 
             // scale the joystick value to make it easier to control
             // the robot more precisely at slower speeds.
