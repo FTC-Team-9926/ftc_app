@@ -19,6 +19,7 @@ public class TwoGamepads extends Telemetry9926 {
     int MyReverse;
     double Dpad;
     boolean DpadPressed = false;
+    boolean BumperPressed = false;
 
     @Override
     public void start() {
@@ -80,20 +81,29 @@ public class TwoGamepads extends Telemetry9926 {
 
             //Moves Hand
 
-            double Servo1Gamepad = (gamepad2.left_trigger + 1) / 2;
-            Servo1Gamepad = Range.clip(Servo1Gamepad, -1, 1);
+            double Servo1Gamepad = (gamepad2.left_trigger);
+            Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
             Servo1Gamepad = (float)scaleInput(Servo1Gamepad);
             Set_Servo_position(Servo1Gamepad);
 
-            if (gamepad2.a) {
-                if (Servo2.getPosition() == .8) {
+            if (gamepad2.right_bumper && BumperPressed == false) {
+                BumperPressed = true;
+            }
+            else {
+                BumperPressed = false;
+            }
+            if (BumperPressed == true) {
+                if (Servo2.getPosition() == .8 && BumperPressed == true) {
                     Set_Servo2_position(.1);
+                    BumperPressed = false;
                 }
-                else if (Servo2.getPosition() == .1) {
+                else if (Servo2.getPosition() == .1 && BumperPressed == true) {
                     Set_Servo2_position(.8);
+                    BumperPressed = false;
                 }
                 else {
                     Set_Servo2_position(.8);
+                    BumperPressed = false;
                 }
             }
 
