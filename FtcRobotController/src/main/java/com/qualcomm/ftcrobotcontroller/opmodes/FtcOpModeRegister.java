@@ -39,6 +39,7 @@ import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTank;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeCombo;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeMotor;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.MoveTimeServo;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Sensors;
 import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.TouchOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
@@ -73,6 +74,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Encoders", Encoders.class);
     manager.register("NullOp", NullOp.class);
     manager.register("Control_1", Control_1.class);
+    manager.register("Sensors", Sensors.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
 //      manager.register("K9TeleOp", K9TeleOp.class);

@@ -1,5 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
+import android.graphics.Color;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -275,5 +277,6 @@ public class HardwareMap9926 extends OpMode {
         }
         return button_state;
     }
+
 
 }
