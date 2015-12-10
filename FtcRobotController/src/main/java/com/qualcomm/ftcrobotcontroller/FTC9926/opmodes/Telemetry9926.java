@@ -9,17 +9,9 @@ public class Telemetry9926 extends HardwareMap9926
 {
     public void UpdateTelemetry ()
     {
-        // servo position
-         telemetry.addData
-                ( "01",
-                "a_hand_position()"
-                );
-        // timer?
+        // timer - needed for al programs
         telemetry.addData
-                ("02",
-                getRuntime()
-                );
+                ("Time: " ,getRuntime());
     }
-
 }
 

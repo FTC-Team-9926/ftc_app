@@ -1,27 +1,26 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-
 /**
- * Created by Nicolas Bravo on 10/30/15.
+ * Created by Nicolas Bravo on 10/30/15
+ * Uses just the DC Motors
+ * It is for use in the autonomous section of the FTC match
  */
-public class MoveTimeMotor extends Telemetry9926{
 
-    DcMotor Motor1;
-    DcMotor Motor2;
+public class MoveTimeMotor extends Telemetry9926{
+    public MoveTimeMotor (){
+    }
+
+    double time = 0;
 
     int move_state = 0;
 
     @Override
     public void init() {
-        Define_Hardware_Config_Names();
-        Motor1 = hardwareMap.dcMotor.get("M1");
-        Motor2 = hardwareMap.dcMotor.get("M2");
     }
 
     @Override
     public void start() {
-
+        super.start ();
     }
 
     @Override public void loop()
@@ -30,34 +29,30 @@ public class MoveTimeMotor extends Telemetry9926{
         {
             case 0:
                 /* might need to reset motor */
+                time = getRuntime();
                 move_state++;
                 break;
-
             case 1:
-                if (getRuntime() > 5){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                if ((getRuntime() - time) >= 5){
+                    StopMotor();
+                    time = getRuntime();
                     move_state++;
                 }
                 break;
-
             case 2:
-                Motor1.setPower(1);
-                Motor2.setPower(0);
-                if (getRuntime() > 10)
+                Turn(-1); //rotate left
+                if ((getRuntime() - time) >= 5)
                 {
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                    StopMotor();
+                    time = getRuntime();
                     move_state++;
                 }
                 break;
-
             case 3:
-                Motor1.setPower(1);
-                Motor2.setPower(1);
-                if (getRuntime() > 15){
-                    Motor1.setPower(0);
-                    Motor2.setPower(0);
+                MoveRobot(1,1); //move forwards
+                if ((getRuntime() - time) >= 5){
+                    StopMotor();
+                    time = getRuntime();
                     move_state++;
                 }
                 break;
@@ -67,7 +62,8 @@ public class MoveTimeMotor extends Telemetry9926{
 
         UpdateTelemetry();
         telemetry.addData("11", "State: " + move_state);
-        telemetry.addData("12", "Time: " + getRuntime());
+        telemetry.addData("12", "Time (Total): " + getRuntime());
+        telemetry.addData("13", "Time (Task): " + (getRuntime() - time));
     }
 
     @Override
