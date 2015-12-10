@@ -18,9 +18,8 @@ public class TwoGamepads extends Telemetry9926 {
     float rightTrigger;
     int MyReverse;
     double Dpad;
-    boolean DpadPressed = false;
-    boolean BumperPressed = false;
-    int BumperTimes = 0;
+    boolean ChangeTopSpeed = true;
+    boolean Claw = true;
 
     @Override
     public void start() {
@@ -30,6 +29,8 @@ public class TwoGamepads extends Telemetry9926 {
 
     @Override
     public void loop() {
+        Servo2.setPosition(.5);
+        // Switch Forward/Backward drive direction
         if (gamepad1.a) {
             MyReverse = -1;
         }
@@ -40,30 +41,30 @@ public class TwoGamepads extends Telemetry9926 {
             MyReverse = 1;
         }
 
-        if (gamepad1.dpad_down) {
-            DpadPressed = true;
+        // Set Maximum Speed of Drive
+        if (gamepad1.dpad_up && Dpad < .9) {
+            if (ChangeTopSpeed) {
+                Dpad= Dpad + .1;
+                ChangeTopSpeed = false;
+            }
         }
-        else if (gamepad1.dpad_up) {
-            DpadPressed = true;
+        else if (gamepad1.dpad_down && Dpad > 0.1) {
+            if (ChangeTopSpeed) {
+                Dpad = Dpad - .1;
+                ChangeTopSpeed = false;
+            }
         }
-        else {
-            DpadPressed = false;
-        }
+        else
+            {ChangeTopSpeed = true;}
 
-        if (gamepad1.dpad_down && Dpad > 0.1 && DpadPressed == true) {
-            Dpad = Dpad - 0.1;
-        }
-        if (gamepad1.dpad_up && Dpad < 1 && DpadPressed == true) {
-            Dpad = Dpad + 0.1;
-        }
-        else {
-            DpadPressed = false;
-        }
+
+
+
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
             // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
-            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
+            float M1Power = Range.clip(gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
+            float M2Power = Range.clip(-gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
 
             // scale the joystick value to make it easier to control
             // the robot more precisely at slower speeds.
@@ -82,7 +83,7 @@ public class TwoGamepads extends Telemetry9926 {
 //          MoveArm(scaleInput(M3Power));
 
             double M3Power = (gamepad2.right_stick_y);
-            M3Power = Range.clip(M3Power, -.5, .1);
+            M3Power = Range.clip(M3Power, -1, .1);
             M3Power = (float)scaleInput(M3Power);
             MoveArm(M3Power);
 
@@ -90,24 +91,19 @@ public class TwoGamepads extends Telemetry9926 {
 
             double Servo1Gamepad = (gamepad2.left_trigger);
             Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
-            Servo1Gamepad = (float)scaleInput(Servo1Gamepad);
             Set_Servo_position(Servo1Gamepad);
 
-            if (gamepad2.right_bumper && BumperPressed == false) {
-                BumperPressed = true;
-            }
-            else {
-                BumperPressed = false;
-            }
-            if (BumperPressed == true) {
-                if (Servo2.getPosition() == .6 && BumperPressed == true) {
-                    Set_Servo2_position(.1);
-                }
-                else if (Servo2.getPosition() == .1 && BumperPressed == true) {
-                    Set_Servo2_position(.6);
-                }
-                else {
-                    Set_Servo2_position(.6);
+            if (gamepad2.right_bumper) {
+                if (Claw) {
+                    if (Servo2.getPosition() == .5) {
+                        Set_Servo2_position(.1);
+                    }
+                    else if (Servo2.getPosition() == .1) {
+                        Set_Servo2_position(.5);
+                    }
+                    else {
+                        Set_Servo2_position(.5);
+                    }
                 }
             }
 
