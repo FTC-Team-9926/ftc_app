@@ -20,6 +20,7 @@ public class TwoGamepads extends Telemetry9926 {
     double Dpad;
     boolean DpadPressed = false;
     boolean BumperPressed = false;
+    int BumperTimes = 0;
 
     @Override
     public void start() {
@@ -32,7 +33,10 @@ public class TwoGamepads extends Telemetry9926 {
         if (gamepad1.a) {
             MyReverse = -1;
         }
-        if (gamepad1.b) {
+        else if (gamepad1.b) {
+            MyReverse = 1;
+        }
+        else {
             MyReverse = 1;
         }
 
@@ -51,6 +55,9 @@ public class TwoGamepads extends Telemetry9926 {
         }
         if (gamepad1.dpad_up && Dpad < 1 && DpadPressed == true) {
             Dpad = Dpad + 0.1;
+        }
+        else {
+            DpadPressed = false;
         }
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
@@ -75,7 +82,7 @@ public class TwoGamepads extends Telemetry9926 {
 //          MoveArm(scaleInput(M3Power));
 
             double M3Power = (gamepad2.right_stick_y);
-            M3Power = Range.clip(M3Power, -.25, .1);
+            M3Power = Range.clip(M3Power, -.5, .1);
             M3Power = (float)scaleInput(M3Power);
             MoveArm(M3Power);
 
@@ -93,17 +100,14 @@ public class TwoGamepads extends Telemetry9926 {
                 BumperPressed = false;
             }
             if (BumperPressed == true) {
-                if (Servo2.getPosition() == .8 && BumperPressed == true) {
+                if (Servo2.getPosition() == .6 && BumperPressed == true) {
                     Set_Servo2_position(.1);
-                    BumperPressed = false;
                 }
                 else if (Servo2.getPosition() == .1 && BumperPressed == true) {
-                    Set_Servo2_position(.8);
-                    BumperPressed = false;
+                    Set_Servo2_position(.6);
                 }
                 else {
-                    Set_Servo2_position(.8);
-                    BumperPressed = false;
+                    Set_Servo2_position(.6);
                 }
             }
 
