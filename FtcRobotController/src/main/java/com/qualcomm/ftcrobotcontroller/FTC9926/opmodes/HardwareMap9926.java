@@ -268,7 +268,7 @@ public class HardwareMap9926 extends OpMode {
         return light;
     }
     boolean is_button_pressed(){
-        boolean button_state = false;
+        boolean button_state;
         if(Touch1.isPressed()){
             button_state = true;
         }
