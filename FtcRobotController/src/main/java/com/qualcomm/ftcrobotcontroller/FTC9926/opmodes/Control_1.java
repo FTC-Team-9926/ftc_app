@@ -1,6 +1,5 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -18,7 +17,8 @@ public class Control_1 extends Telemetry9926 {
 
     int MyReverse = 1;
     double Dpad = 1;
-    boolean DpadPressed = false;
+    boolean ChangeTopSpeed = true;
+    boolean Claw = true;
 
     @Override
     public void start() {
@@ -26,7 +26,6 @@ public class Control_1 extends Telemetry9926 {
         // Call the PushBotHardware (super/base class) start method.
         //
         super.start ();
-
     }
 
     @Override
@@ -42,25 +41,21 @@ public class Control_1 extends Telemetry9926 {
             MyReverse = 1;
         }
 
-        if (gamepad1.dpad_down) {
-            DpadPressed = true;
+        if (gamepad1.dpad_down && Dpad > 0.1) {
+            if (ChangeTopSpeed) {
+                Dpad = Dpad + 0.1;
+                ChangeTopSpeed = false;
+            }
         }
         else if (gamepad1.dpad_up) {
-            DpadPressed = true;
+            if (ChangeTopSpeed) {
+                Dpad = Dpad - 0.1;
+                ChangeTopSpeed = false;
+            }
         }
         else {
-            DpadPressed = false;
+            ChangeTopSpeed = true;
         }
-
-        if (gamepad1.dpad_down && Dpad > 0.1 && DpadPressed == true) {
-            Dpad = Dpad - 0.1;
-            DpadPressed = false;
-        }
-        if (gamepad1.dpad_up && Dpad < 1 && DpadPressed == true) {
-            Dpad = Dpad + 0.1;
-            DpadPressed = false;
-        }
-
 
             //Backwards = true;
 
@@ -77,8 +72,8 @@ public class Control_1 extends Telemetry9926 {
             // tank drive
             // note that if y equal -1 then joystick is pushed all of the way forward.
             // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
-            float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
+        float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
+        float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
 
             // scale the joystick value to make it easier to control
             // the robot more precisely at slower speeds.
@@ -86,7 +81,7 @@ public class Control_1 extends Telemetry9926 {
 //        left =  (float)scaleInput(left);
 
             // write the values to the motors
-            MoveRobot(M1Power, M2Power);
+        MoveRobot(M1Power, M2Power);
         /*
         ************************************
          */
@@ -101,9 +96,9 @@ public class Control_1 extends Telemetry9926 {
 //        float GoUp = Range.clip(-gamepad1.left_stick_y,-1,1);
 //        float M2Power = Range.clip(gamepad1.right_stick_y,-1,1);
 
-            double GoUp = (gamepad1.left_trigger + 1) / 2 - (gamepad1.right_trigger + 1) / 2;
-            GoUp = Range.clip(GoUp, -1, 1);
-            GoUp = (float)scaleInput(GoUp);
+        double GoUp = (gamepad1.left_trigger + 1) / 2 - (gamepad1.right_trigger + 1) / 2;
+        GoUp = Range.clip(GoUp, -1, 1);
+        GoUp = (float)scaleInput(GoUp);
 
 
             // scale the joystick value to make it easier to control
@@ -112,7 +107,7 @@ public class Control_1 extends Telemetry9926 {
 //        left =  (float)scaleInput(left);
 
             // write the values to the motors
-            MoveArm(GoUp);
+        MoveArm(GoUp);
         /*
         ************************************
          */
@@ -122,34 +117,36 @@ public class Control_1 extends Telemetry9926 {
         *     Move Servo Up and Down
         **********************************
         */
-            if (gamepad1.left_bumper) {
-                ServoPosition += ServoDelta;
+        if (gamepad1.left_bumper) {
+            ServoPosition += ServoDelta;
+        }
+        if (gamepad1.right_bumper) {
+            ServoPosition -= ServoDelta;
+        }
+        ServoPosition = Range.clip(ServoPosition, 0, .9);
+
+
+
+        // write position values to the wrist and claw servo
+        Servo1.setPosition(ServoPosition);
+
+        if (gamepad2.right_bumper) {
+            if (Claw) {
+                if (Servo2.getPosition() == .5) {
+                    Set_Servo2_position(.1);
+                }
+                else if (Servo2.getPosition() == .1) {
+                    Set_Servo2_position(.5);
+                }
+                else {
+                    Set_Servo2_position(.5);
+                }
             }
-            if (gamepad1.right_bumper) {
-                ServoPosition -= ServoDelta;
-            }
-            ServoPosition = Range.clip(ServoPosition, 0, .9);
-
-            // write position values to the wrist and claw servo
-            Servo1.setPosition(ServoPosition);
-
-        /*
-        ************************************
-         */
-
-		/*
-		 * Send telemetry data back to driver station. Note that if we are using
-		 * a legacy NXT-compatible motor controller, then the getPower() method
-		 * will return a null value. The legacy NXT-compatible motor controllers
-		 * are currently write only.
-		 */
+        }
 
         UpdateTelemetry();
-            telemetry.addData("Text", "*** Robot Data***");
-            telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", ServoPosition) + "/" + String.format("%.2f", GoUp));
-//            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
-            telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
- //        telemetry.addData("right tgt pwr", "right: " + String.format("%.2f", M2Power));
-//        telemetry.addData("DPad", "Power Limit: " + String.format("%.2f", Dpad));
+        telemetry.addData("Text", "*** Robot Data***");
+        telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", ServoPosition) + "/" + String.format("%.2f", GoUp));
+        telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
     }
 }
