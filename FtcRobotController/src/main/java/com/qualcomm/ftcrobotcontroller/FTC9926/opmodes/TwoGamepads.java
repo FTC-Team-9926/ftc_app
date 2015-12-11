@@ -1,7 +1,5 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -12,10 +10,6 @@ import com.qualcomm.robotcore.util.Range;
  */
 public class TwoGamepads extends Telemetry9926 {
 
-    // position of the claw servo
-    double Servo2_position;
-    float leftTrigger;
-    float rightTrigger;
     int MyReverse;
     double Dpad;
     boolean ChangeTopSpeed = true;
@@ -30,7 +24,7 @@ public class TwoGamepads extends Telemetry9926 {
     @Override
     public void loop() {
         Servo2.setPosition(.5);
-        // Switch Forward/Backward drive direction
+        // Switch Drive direction
         if (gamepad1.a) {
             MyReverse = -1;
         }
@@ -41,7 +35,7 @@ public class TwoGamepads extends Telemetry9926 {
             MyReverse = 1;
         }
 
-        // Set Maximum Speed of Drive
+        // Changes speed when Dpad is clicked
         if (gamepad1.dpad_up && Dpad < .9) {
             if (ChangeTopSpeed) {
                 Dpad= Dpad + .1;
@@ -54,76 +48,54 @@ public class TwoGamepads extends Telemetry9926 {
                 ChangeTopSpeed = false;
             }
         }
-        else
-            {ChangeTopSpeed = true;}
+        else {
+            ChangeTopSpeed = true;
+        }
 
 
 
 
-            // tank drive
-            // note that if y equal -1 then joystick is pushed all of the way forward.
-            // clip the right/left values so that the values never exceed +/- 1
-            float M1Power = Range.clip(gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
-            float M2Power = Range.clip(-gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
+        // Tells the amount to move
+        float M1Power = Range.clip(gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
+        float M2Power = Range.clip(-gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
 
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
-//          right = (float)scaleInput(right);
-//          left =  (float)scaleInput(left);
+        // write the values to the motors
+        MoveRobot(M1Power, M2Power);
 
-            // write the values to the motors
-            MoveRobot(M1Power, M2Power);
-            // Use left trigger to speed Up
-            // Use right trigger to speed down
-//          float GoUp = Range.clip(-gamepad1.left_stick_y,-1,1);
-//          float M2Power = Range.clip(gamepad1.right_stick_y,-1,1);
+        // Determines the speed of arm
+        double M3Power = (gamepad2.right_stick_y);
+        M3Power = Range.clip(M3Power, -1, .1);
+        M3Power = (float)scaleInput(M3Power);
 
-//          double GoUp = (gamepad2.left_stick_y + 1) / 2 - (gamepad2.right_stick_y + 1) / 2;
-//          double M3Power = Range.clip(-gamepad2.right_stick_y, -1, 1);
-//          MoveArm(scaleInput(M3Power));
+        // Writes the values to the arm
+        MoveArm(M3Power);
 
-            double M3Power = (gamepad2.right_stick_y);
-            M3Power = Range.clip(M3Power, -1, .1);
-            M3Power = (float)scaleInput(M3Power);
-            MoveArm(M3Power);
+        // Determines speed of first gamepad
+        double Servo1Gamepad = gamepad2.left_trigger;
+        Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
 
-            //Moves Hand
+        // Writes the values to the motors
+        Set_Servo_position(Servo1Gamepad);
 
-            double Servo1Gamepad = (gamepad2.left_trigger);
-            Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
-            Set_Servo_position(Servo1Gamepad);
-
-            if (gamepad2.right_bumper) {
-                if (Claw) {
-                    if (Servo2.getPosition() == .5) {
-                        Set_Servo2_position(.1);
-                    }
-                    else if (Servo2.getPosition() == .1) {
-                        Set_Servo2_position(.5);
-                    }
-                    else {
-                        Set_Servo2_position(.5);
-                    }
+        // Determines the speed of the claw
+        if (gamepad2.right_bumper) {
+            if (Claw) {
+                if (Servo2.getPosition() == .5) {
+                    Set_Servo2_position(.1);
+                }
+                else if (Servo2.getPosition() == .1) {
+                    Set_Servo2_position(.5);
+                }
+                else {
+                    Set_Servo2_position(.5);
                 }
             }
+        }
 
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
-//          right = (float)scaleInput(right);
-//          left =  (float)scaleInput(left);
-
-
-            /*
-            ************************************
-            */
-
-
-            UpdateTelemetry();
+        // Updates the telemetry
+        UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power));
-//            telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
         telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
-        //        telemetry.addData("right tgt pwr", "right: " + String.format("%.2f", M2Power));
-//        telemetry.addData("DPad", "Power Limit: " + String.format("%.2f", Dpad));
     }
 }
