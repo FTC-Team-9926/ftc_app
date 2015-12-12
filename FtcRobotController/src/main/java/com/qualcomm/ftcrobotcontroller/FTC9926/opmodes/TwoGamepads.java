@@ -91,27 +91,9 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo1Gamepad);
 
-        // If Gamepad 2's right bumper is pressed
-        if (gamepad2.right_bumper) {
-            // If "Claw" is true
-            if (Claw) {
-                // If SM2's position is 0.5
-                if (Servo2.getPosition() == .5) {
-                    // Set SM2's position to 0.1
-                    Set_Servo2_position(.1);
-                }
-                // If SM2's position is 0.1
-                else if (Servo2.getPosition() == .1) {
-                    // Set SM2's position to 0.5
-                    Set_Servo2_position(.5);
-                }
-                // If none of those are true
-                else {
-                    // Set SM2's position to 0.5
-                    Set_Servo2_position(.5);
-                }
-            }
-        }
+        double Servo2Gamepad = gamepad2.right_trigger;
+        Servo2Gamepad = Range.clip(Servo2Gamepad, .3, .8);
+        Set_Servo2_position(Servo2Gamepad);
 
         // Updates the telemetry
         UpdateTelemetry();
