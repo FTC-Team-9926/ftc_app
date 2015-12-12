@@ -11,12 +11,10 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
-    int MyReverse;
     double Dpad = 0.5;
     boolean ChangeTopSpeed = true;
     boolean Claw = true;
     boolean Forwards = true;
-
     @Override
     public void start() {
         // Call the PushBotHardware (super/base class) start method.
@@ -27,22 +25,29 @@ public class TwoGamepads extends Telemetry9926 {
     public void loop() {
         // Sets SM2's position to 0.5
         Servo2.setPosition(.5);
-
         // If Gamepad 1's A button is pressed
-        if (gamepad1.a) {
-            // If "Forwards" is true
-            if (Forwards) {
-                // Multiply "MyReverse" by -1
-                MyReverse = -1;
-                // Make "Forwards" false
-                Forwards = false;
-            }
+        if (gamepad1.b) {
+            Forwards = true;
         }
-        // If Gamepad 1's A button is not pressed
-        else {
-            // Make "Forwards" false
+        // If Gamepad 1's B button is pressed
+        else if (gamepad1.a) {
             Forwards = false;
         }
+        else {
+            if (Forwards) {
+                // Go forwards
+                float M1Power = Range.clip(-gamepad1.right_stick_y * (float) Dpad, -1, 1);
+                float M2Power = Range.clip(gamepad1.left_stick_y * (float) Dpad, -1, 1);
+                MoveRobot(M1Power, M2Power);
+            }
+            if (!Forwards) {
+                // Go backwards
+                float M1Power = Range.clip(gamepad1.left_stick_y * (float) Dpad, -1, 1);
+                float M2Power = Range.clip(-gamepad1.right_stick_y * (float) Dpad, -1, 1);
+                MoveRobot(M1Power, M2Power);
+            }
+        }
+        // If neither of those are true
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
         if (gamepad1.dpad_up && Dpad < .9) {
@@ -69,15 +74,6 @@ public class TwoGamepads extends Telemetry9926 {
             // Makes "ChangeTopSpeed" false
             ChangeTopSpeed = true;
         }
-
-
-
-
-        // Tells the amount to move each motor
-        float M1Power = Range.clip(gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
-        float M2Power = Range.clip(-gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
-        // Write the values to the motors
-        MoveRobot(M1Power, M2Power);
 
         // Makes "M3Power" equal Gamepad 2's right stick
         double M3Power = (gamepad2.right_stick_y);
@@ -121,6 +117,6 @@ public class TwoGamepads extends Telemetry9926 {
         UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power));
-        telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
+        telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
     }
 }
