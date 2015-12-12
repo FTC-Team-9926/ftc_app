@@ -15,10 +15,6 @@ public class Control_1 extends Telemetry9926 {
     // amount to change the claw servo position by
     double ServoDelta = 0.01;
 
-    int MyReverse = 1;
-    double Dpad = 1;
-    boolean ChangeTopSpeed = true;
-    boolean Claw = true;
 
     @Override
     public void start() {
@@ -26,41 +22,13 @@ public class Control_1 extends Telemetry9926 {
         // Call the PushBotHardware (super/base class) start method.
         //
         super.start ();
+
     }
 
     @Override
     public void loop() {
 
-        if (gamepad1.a) {
-            MyReverse = -1;
-        }
-        else if (gamepad1.b) {
-            MyReverse = 1;
-        }
-        else {
-            MyReverse = 1;
-        }
-
-        if (gamepad1.dpad_down && Dpad > 0.1) {
-            if (ChangeTopSpeed) {
-                Dpad = Dpad + 0.1;
-                ChangeTopSpeed = false;
-            }
-        }
-        else if (gamepad1.dpad_up) {
-            if (ChangeTopSpeed) {
-                Dpad = Dpad - 0.1;
-                ChangeTopSpeed = false;
-            }
-        }
-        else {
-            ChangeTopSpeed = true;
-        }
-
-            //Backwards = true;
-
-//        if (Backwards == false) {
-            /*
+		/*
 		 * Gamepad 1
 		 */
 
@@ -69,18 +37,18 @@ public class Control_1 extends Telemetry9926 {
         *     Move Tank Robot
         ************************************
          */
-            // tank drive
-            // note that if y equal -1 then joystick is pushed all of the way forward.
-            // clip the right/left values so that the values never exceed +/- 1
-        float M1Power = Range.clip(-gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
-        float M2Power = Range.clip(gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1 * (float) 0.8);
+        // tank drive
+        // note that if y equal -1 then joystick is pushed all of the way forward.
+        // clip the right/left values so that the values never exceed +/- 1
+        float M1Power = Range.clip(-gamepad1.left_stick_y, -1, 1);
+        float M2Power = Range.clip(gamepad1.right_stick_y, -1, 1);
 
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
+        // scale the joystick value to make it easier to control
+        // the robot more precisely at slower speeds.
 //        right = (float)scaleInput(right);
 //        left =  (float)scaleInput(left);
 
-            // write the values to the motors
+        // write the values to the motors
         MoveRobot(M1Power, M2Power);
         /*
         ************************************
@@ -91,8 +59,8 @@ public class Control_1 extends Telemetry9926 {
         *     Move Arm Up and Down
         ************************************
          */
-            // Use left trigger to speed Up
-            // Use right trigger to speed down
+        // Use left trigger to speed Up
+        // Use right trigger to speed down
 //        float GoUp = Range.clip(-gamepad1.left_stick_y,-1,1);
 //        float M2Power = Range.clip(gamepad1.right_stick_y,-1,1);
 
@@ -101,12 +69,12 @@ public class Control_1 extends Telemetry9926 {
         GoUp = (float)scaleInput(GoUp);
 
 
-            // scale the joystick value to make it easier to control
-            // the robot more precisely at slower speeds.
+        // scale the joystick value to make it easier to control
+        // the robot more precisely at slower speeds.
 //        right = (float)scaleInput(right);
 //        left =  (float)scaleInput(left);
 
-            // write the values to the motors
+        // write the values to the motors
         MoveArm(GoUp);
         /*
         ************************************
@@ -125,28 +93,24 @@ public class Control_1 extends Telemetry9926 {
         }
         ServoPosition = Range.clip(ServoPosition, 0, .9);
 
-
-
         // write position values to the wrist and claw servo
         Servo1.setPosition(ServoPosition);
 
-        if (gamepad2.right_bumper) {
-            if (Claw) {
-                if (Servo2.getPosition() == .5) {
-                    Set_Servo2_position(.1);
-                }
-                else if (Servo2.getPosition() == .1) {
-                    Set_Servo2_position(.5);
-                }
-                else {
-                    Set_Servo2_position(.5);
-                }
-            }
-        }
+        /*
+        ************************************
+         */
 
-        UpdateTelemetry();
+		/*
+		 * Send telemetry data back to driver station. Note that if we are using
+		 * a legacy NXT-compatible motor controller, then the getPower() method
+		 * will return a null value. The legacy NXT-compatible motor controllers
+		 * are currently write only.
+		 */
+
         telemetry.addData("Text", "*** Robot Data***");
-        telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", ServoPosition) + "/" + String.format("%.2f", GoUp));
-        telemetry.addData("Power", "Power (L/R/Max): " + String.format("%.2f", M1Power) + "/" + String.format("%.2f", M2Power)+ "/" + String.format("%.2f", Dpad));
+        telemetry.addData("Servo", "Servo:  " + String.format("%.2f", ServoPosition));
+        telemetry.addData("arm", "arm:  " + String.format("%.2f", GoUp));
+        telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", M1Power));
+        telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", M2Power));
     }
 }
