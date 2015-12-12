@@ -259,16 +259,17 @@ public class HardwareMap9926 extends OpMode {
         return encoder_return;
     }
     boolean turn_color_sensor_light_on(boolean light){
-        if(light == true){
-            Color1.enableLed(true);
-        }
-        else{
-            Color1.enableLed(false);
+        if(Color1 != null) {
+            if (light == true) {
+                Color1.enableLed(true);
+            } else {
+                Color1.enableLed(false);
+            }
         }
         return light;
     }
     boolean is_button_pressed(){
-        boolean button_state = false;
+        boolean button_state;
         if(Touch1.isPressed()){
             button_state = true;
         }

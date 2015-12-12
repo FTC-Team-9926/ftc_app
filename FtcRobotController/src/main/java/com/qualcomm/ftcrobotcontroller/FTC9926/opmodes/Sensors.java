@@ -1,8 +1,6 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
-import android.graphics.Color;
 
-import com.qualcomm.robotcore.robocol.Telemetry;
 
 
 /**
@@ -20,7 +18,7 @@ public class Sensors extends Telemetry9926{
     public void loop() {
         //color sensor
         turn_color_sensor_light_on(true);
-        while(is_button_pressed() != true){
+        while(is_button_pressed() == true){
         telemetry.addData("Clear: ", Color1.alpha());
         telemetry.addData("Red: ", Color1.red());
         telemetry.addData("Green: ", Color1.green());
