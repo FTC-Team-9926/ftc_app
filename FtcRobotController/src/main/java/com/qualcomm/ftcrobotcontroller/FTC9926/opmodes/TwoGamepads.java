@@ -23,8 +23,6 @@ public class TwoGamepads extends Telemetry9926 {
 
     @Override
     public void loop() {
-        // Sets SM2's position to 0.5
-        Servo2.setPosition(.5);
         // If Gamepad 1's A button is pressed
         if (gamepad1.b) {
             Forwards = true;
@@ -33,21 +31,25 @@ public class TwoGamepads extends Telemetry9926 {
         else if (gamepad1.a) {
             Forwards = false;
         }
+        // If neither of those are pressed
         else {
+            // If "Forwards" is true
             if (Forwards) {
-                // Go forwards
+                // Calculates values to go forwards at a certain speed
                 float M1Power = Range.clip(-gamepad1.right_stick_y * (float) Dpad, -1, 1);
                 float M2Power = Range.clip(gamepad1.left_stick_y * (float) Dpad, -1, 1);
+                // Writes values to motors
                 MoveRobot(M1Power, M2Power);
             }
+            // If "Forwards" is false
             if (!Forwards) {
-                // Go backwards
+                // Calculates values to go backwards at a certain speed
                 float M1Power = Range.clip(gamepad1.left_stick_y * (float) Dpad, -1, 1);
                 float M2Power = Range.clip(-gamepad1.right_stick_y * (float) Dpad, -1, 1);
+                // Writes values to motors
                 MoveRobot(M1Power, M2Power);
             }
         }
-        // If neither of those are true
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
         if (gamepad1.dpad_up && Dpad < .9) {
@@ -71,7 +73,7 @@ public class TwoGamepads extends Telemetry9926 {
         }
         // If neither of those are true
         else {
-            // Makes "ChangeTopSpeed" false
+            // Makes "ChangeTopSpeed" true
             ChangeTopSpeed = true;
         }
 
@@ -91,14 +93,17 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo1Gamepad);
 
+        // Makes "Servo2Gamepad" equal Gamepad 2's right trigger
         double Servo2Gamepad = gamepad2.right_trigger;
+        // Makes the boundaries to not exceed certain values
         Servo2Gamepad = Range.clip(Servo2Gamepad, .3, .8);
+        // Writes the values to the motors
         Set_Servo2_position(Servo2Gamepad);
 
         // Updates the telemetry
         UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
-        telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power));
+        telemetry.addData("Servo", "Servo/Arm/Claw:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power) + String.format("%.2f", Servo2Gamepad));
         telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
     }
 }
