@@ -78,7 +78,7 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // Makes "M3Power" equal Gamepad 2's right stick
-        double M3Power = (gamepad2.right_stick_y);
+        double M3Power = (-gamepad2.right_stick_y);
         // Adds boundaries to not exceed certain values
         M3Power = Range.clip(M3Power, -1, 1);
         // Adds "scaleInput" to make easier to control
@@ -86,24 +86,17 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the arm
         MoveArm(M3Power * 0.2);
 
-        // Makes "Servo1Gamepad" equal Gamepad 2's left trigger
-        double Servo1Gamepad = gamepad2.left_trigger;
+        // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
+        double Servo2Gamepad = gamepad2.left_trigger;
         // Makes boundaries to not exceed certain values
-        Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
+        Servo2Gamepad = Range.clip(Servo2Gamepad, 0, 1);
         // Writes the values to the motors
-        Set_Servo_position(Servo1Gamepad);
-
-        // Makes "Servo2Gamepad" equal Gamepad 2's right trigger
-        double Servo2Gamepad = gamepad2.right_trigger;
-        // Makes the boundaries to not exceed certain values
-        Servo2Gamepad = Range.clip(Servo2Gamepad, .5, .8);
-        // Writes the values to the motors
-        Set_Servo2_position(Servo2Gamepad);
+        Set_Servo_position(Servo2Gamepad);
 
         // Updates the telemetry
         UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
-        telemetry.addData("Servo", "Servo/Arm/Claw:  " + String.format("%.2f", Servo1Gamepad) + "/" + String.format("%.2f", M3Power) + String.format("%.2f", Servo2Gamepad));
+        telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo2Gamepad) + "/" + String.format("%.2f", M3Power));
         telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
     }
 }
