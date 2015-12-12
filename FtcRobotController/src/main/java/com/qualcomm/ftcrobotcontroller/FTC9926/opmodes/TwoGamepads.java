@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.Range;
  * For use in the driver controlled section of the competition
  * Based on Control_1.java
  */
+ 
 public class TwoGamepads extends Telemetry9926 {
 
     int MyReverse;
@@ -23,70 +24,92 @@ public class TwoGamepads extends Telemetry9926 {
 
     @Override
     public void loop() {
+        // Sets SM2's position to 0.5
         Servo2.setPosition(.5);
-        // Switch Drive direction
+        // If Gamepad 1's A button is pressed
         if (gamepad1.a) {
+            // Go backwards
             MyReverse = -1;
         }
+        // If Gamepad 1's B button is pressed
         else if (gamepad1.b) {
+            // Go forwards
             MyReverse = 1;
         }
+        // If neither of those are true
         else {
+            // Go forwards
             MyReverse = 1;
         }
 
-        // Changes speed when Dpad is clicked
+        // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
         if (gamepad1.dpad_up && Dpad < .9) {
+            // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
+                // Adds 0.1 to "Dpad"
                 Dpad= Dpad + .1;
+                // Makes "ChangeTopSpeed" false
                 ChangeTopSpeed = false;
             }
         }
+        // If Gamepad 1's Dpad is pressed down and "Dpad" is greater than 0.1
         else if (gamepad1.dpad_down && Dpad > 0.1) {
+            // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
+                // Subtracts 0.1 from "Dpad"
                 Dpad = Dpad - .1;
+                // Makes "ChangeTopSpeed" false
                 ChangeTopSpeed = false;
             }
         }
+        // If neither of those are true
         else {
+            // Makes "ChangeTopSpeed" false
             ChangeTopSpeed = true;
         }
 
 
 
 
-        // Tells the amount to move
+        // Tells the amount to move each motor
         float M1Power = Range.clip(gamepad1.left_stick_y * MyReverse * (float) Dpad, -1, 1);
         float M2Power = Range.clip(-gamepad1.right_stick_y * MyReverse * (float) Dpad, -1, 1);
-
-        // write the values to the motors
+        // Write the values to the motors
         MoveRobot(M1Power, M2Power);
 
-        // Determines the speed of arm
+        // Makes "M3Power" equal Gamepad 2's right stick
         double M3Power = (gamepad2.right_stick_y);
-        M3Power = Range.clip(M3Power, -1, .1);
+        // Adds boundaries to not exceed certain values
+        M3Power = Range.clip(M3Power, -1, 1);
+        // Adds "scaleInput" to make easier to control
         M3Power = (float)scaleInput(M3Power);
-
         // Writes the values to the arm
-        MoveArm(M3Power);
+        MoveArm(M3Power * 0.2);
 
-        // Determines speed of first gamepad
+        // Makes "Servo1Gamepad" equal Gamepad 2's left trigger
         double Servo1Gamepad = gamepad2.left_trigger;
+        // Makes boundaries to not exceed certain values
         Servo1Gamepad = Range.clip(Servo1Gamepad, 0, 1);
-
         // Writes the values to the motors
         Set_Servo_position(Servo1Gamepad);
 
-        // Determines the speed of the claw
+        // If Gamepad 2's right bumper is pressed
         if (gamepad2.right_bumper) {
+            // If "Claw" is true
             if (Claw) {
+                // If SM2's position is 0.5
                 if (Servo2.getPosition() == .5) {
+                    // Set SM2's position to 0.1
                     Set_Servo2_position(.1);
                 }
+                // If SM2's position is 0.1
                 else if (Servo2.getPosition() == .1) {
+                    // Set SM2's position to 0.5
                     Set_Servo2_position(.5);
                 }
+                // If none of those are true
                 else {
+                    // Set SM2's position to 0.5
                     Set_Servo2_position(.5);
                 }
             }
