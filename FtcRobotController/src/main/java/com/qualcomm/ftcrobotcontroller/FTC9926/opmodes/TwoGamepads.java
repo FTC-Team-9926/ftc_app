@@ -96,7 +96,7 @@ public class TwoGamepads extends Telemetry9926 {
         // Makes "Servo2Gamepad" equal Gamepad 2's right trigger
         double Servo2Gamepad = gamepad2.right_trigger;
         // Makes the boundaries to not exceed certain values
-        Servo2Gamepad = Range.clip(Servo2Gamepad, .3, .8);
+        Servo2Gamepad = Range.clip(Servo2Gamepad, .5, .8);
         // Writes the values to the motors
         Set_Servo2_position(Servo2Gamepad);
 
