@@ -12,9 +12,10 @@ import com.qualcomm.robotcore.util.Range;
 public class TwoGamepads extends Telemetry9926 {
 
     int MyReverse;
-    double Dpad;
+    double Dpad = 0.5;
     boolean ChangeTopSpeed = true;
     boolean Claw = true;
+    boolean Forwards = true;
 
     @Override
     public void start() {
@@ -26,20 +27,21 @@ public class TwoGamepads extends Telemetry9926 {
     public void loop() {
         // Sets SM2's position to 0.5
         Servo2.setPosition(.5);
+
         // If Gamepad 1's A button is pressed
         if (gamepad1.a) {
-            // Go backwards
-            MyReverse = -1;
+            // If "Forwards" is true
+            if (Forwards) {
+                // Multiply "MyReverse" by -1
+                MyReverse = -1;
+                // Make "Forwards" false
+                Forwards = false;
+            }
         }
-        // If Gamepad 1's B button is pressed
-        else if (gamepad1.b) {
-            // Go forwards
-            MyReverse = 1;
-        }
-        // If neither of those are true
+        // If Gamepad 1's A button is not pressed
         else {
-            // Go forwards
-            MyReverse = 1;
+            // Make "Forwards" false
+            Forwards = false;
         }
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
