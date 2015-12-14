@@ -44,7 +44,7 @@ public class Autonomous_Red_2 extends Telemetry9926{
                     }
                 case 2:
                     if (getRuntime() > 3) {
-                        MoveRobot(0, .0);
+                        MoveRobot(0, 0);
                         //if time is greater than 3 second stop for one second
                         move_state++;
                     }
@@ -57,7 +57,7 @@ public class Autonomous_Red_2 extends Telemetry9926{
                     }
                 case 4:
                     if (getRuntime() > 9) {
-                        MoveRobot(0, .0);
+                        MoveRobot(0, 0);
                         //if time is greater than nine seconds stop for one second
                         move_state++;
                     }
