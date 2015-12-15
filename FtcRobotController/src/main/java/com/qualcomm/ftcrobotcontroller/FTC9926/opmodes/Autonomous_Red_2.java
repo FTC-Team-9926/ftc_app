@@ -77,15 +77,22 @@ public class Autonomous_Red_2 extends Telemetry9926{
                     }
                 case 7:
                     if (getRuntime() > 16) {
-                        MoveRobot(.4, .4);
-                        //if time is greater than 16 seconds move forwards for 3 seconds
+                        MoveRobot(0, .5);
+                        //if time is greater than 16 seconds point turn for 3 seconds
                         move_state++;
                         break;
                     }
                 case 8:
                     if (getRuntime() > 19) {
+                        MoveRobot(.5, .5);
+                        //if time is greater than 19 seconds go forwards for 3 seconds
+                        move_state++;
+                        break;
+                    }
+                case 9:
+                    if (getRuntime() > 22) {
                         MoveRobot(0, 0);
-                        //if time is greater than 19 seconds stop the autonomous program
+                        //if time is greater than 22 seconds stop the autonomous program
                         move_state++;
                         break;
                     }
