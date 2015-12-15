@@ -50,7 +50,7 @@ public class Autonomous_Blue_1 extends Telemetry9926{
                 }
             case 3:
                 if (getRuntime() > 5) {
-                    MoveRobot(0, .4);
+                    MoveRobot(.4, 0);
                     //if time is greater than 5 seconds point turn towards rescue zone
                     move_state++;
                     break;
@@ -78,7 +78,7 @@ public class Autonomous_Blue_1 extends Telemetry9926{
                 }
             case 7:
                 if (getRuntime() > 11) {
-                    MoveRobot(0, .5);
+                    MoveRobot(.5, 0);
                     //if time is greater than ten seconds point turn for 3 seconds
                     move_state++;
                     break;
