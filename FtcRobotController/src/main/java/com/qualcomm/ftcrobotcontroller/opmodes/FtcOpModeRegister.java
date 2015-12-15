@@ -113,6 +113,9 @@ public class FtcOpModeRegister implements OpModeRegister {
       manager.register("2 Gamepads", TwoGamepads.class);
       manager.register("AUTO_RED_2", Autonomous_Red_2.class);
       manager.register("AUTO_RED_1", Autonomous_Red_1.class);
+      manager.register("AUTO_BLUE_2", Autonomous_Blue_2.class);
+      manager.register("AUTO_BLUE_1", Autonomous_Blue_1.class );
+
 
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
