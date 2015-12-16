@@ -44,16 +44,16 @@ public class HardwareMap9926 extends OpMode {
 
         Servo1 = hardwareMap.servo.get("SM1");
         Servo1.setPosition(SM1_Position);
-        SM1_Position = 0.5;
+        SM1_Position = 0;
         Servo2 = hardwareMap.servo.get("SM2");
         Servo2.setPosition(SM2_Position);
-        SM2_Position = 0.5;
+        SM2_Position = 0;
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
         Define_Hardware_Config_Names();
-//        Motor3.setDirection(DcMotor.Direction.REVERSE);
-//        Motor2.setDirection(DcMotor.Direction.REVERSE);
+        Motor1.setDirection(DcMotor.Direction.FORWARD);
+        Motor2.setDirection(DcMotor.Direction.FORWARD);
 
     }
 
