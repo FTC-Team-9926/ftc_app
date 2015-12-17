@@ -43,32 +43,33 @@ public class AutoRed1 extends Telemetry9926 {
                 break;
 
             case 1:
-                if (TimeNow > 1.5) {
+                if (TimeNow > .75) {
                     //if time is greater than one second then move forwards for 3 seconds
                     MoveRobot(0, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
             case 2:
                 if (TimeNow > .5) {
                     //if time is greater than 4 second stop for one second
-                    MoveRobot(.375, 0);
+                    MoveRobot(.5, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
+
             case 3:
-                if ( TimeNow > 6.5) {
+                if ( TimeNow > 2) {
                     //if time is greater than 5 seconds point turn towards rescue zone
                     MoveRobot(0, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
             case 4:
                 if ( TimeNow > .5) {
                     //if time is greater than nine seconds stop for one second
@@ -76,8 +77,9 @@ public class AutoRed1 extends Telemetry9926 {
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
+
             case 5:
                 if ( TimeNow > 3) {
                     //if time is greater than nine seconds move forwards for 5 seconds
@@ -85,16 +87,18 @@ public class AutoRed1 extends Telemetry9926 {
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
+
             case 6:
                 if ( TimeNow > 5) {
                     //if time is greater than ten seconds stop for one second
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
-                    break;
                 }
+                break;
+
 /*            case 7:
                 if (getRuntime() > 13) {
                     MoveRobot(.5, 0);
@@ -132,9 +136,10 @@ public class AutoRed1 extends Telemetry9926 {
         TimeNow = getRuntime() - Variance;
 
         UpdateTelemetry();
-        telemetry.addData("TimeNow", "Time/Var: "+ TimeNow + " / " + Variance);
         telemetry.addData("11", "State: " + move_state);
-        telemetry.addData("12", "Time: " + getRuntime());
+        telemetry.addData("12", "Clock: " + getRuntime());
+        telemetry.addData("13", "Var: "+ Variance);
+        telemetry.addData("14", "TimeNow: "+ TimeNow );
         //Telemetry data includes state number and time
     }
 
