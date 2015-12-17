@@ -40,11 +40,12 @@ public class HardwareMap9926 extends OpMode {
     public void init(){
 
         // Define Config Name in Driver Station
-        double l_hand_position = 0.5;
+        double l_hand_position = 0;
 
         Servo1 = hardwareMap.servo.get("SM1");
         Servo1.setPosition(SM1_Position);
 
+        
         SM1_Position = 0.5;
 
         Servo2 = hardwareMap.servo.get("SM2");
@@ -56,6 +57,12 @@ public class HardwareMap9926 extends OpMode {
         Servo2 = hardwareMap.servo.get("SM2");
         Servo2.setPosition(SM2_Position);
         SM2_Position = 0;
+
+
+        SM1_Position = 1;
+        Servo2 = hardwareMap.servo.get("SM2");
+        Servo2.setPosition(SM2_Position);
+        SM2_Position = 1;
 
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
