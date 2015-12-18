@@ -26,7 +26,6 @@ public class AutoRed1 extends Telemetry9926 {
         super.start();
         // sets Motor2's direction to go backwards, since the motor is flipped
         Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Set_Servo2_position(0);
     }
 
     @Override public void loop()
