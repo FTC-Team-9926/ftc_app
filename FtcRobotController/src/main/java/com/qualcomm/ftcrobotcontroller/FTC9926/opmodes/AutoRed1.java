@@ -25,6 +25,7 @@ public class AutoRed1 extends Telemetry9926 {
         // Call the PushBotHardware (super/base class) start method.
         //
         Motor2.setDirection(DcMotor.Direction.REVERSE);
+        Set_Servo2_position(0.5);
         super.start();
     }
 
@@ -37,24 +38,22 @@ public class AutoRed1 extends Telemetry9926 {
                 move_state++;
                 Variance = getRuntime();
                 TimeNow = 0;
-                MoveRobot(.5, .5);
-
                 //moves to next state
                 break;
 
             case 1:
+                MoveRobot(.5, .5);
                 if (TimeNow > .75) {
                     //if time is greater than one second then move forwards for 3 seconds
-                    MoveRobot(0, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
                 }
                 break;
             case 2:
+                MoveRobot(0, 0);
                 if (TimeNow > .5) {
                     //if time is greater than 4 second stop for one second
-                    MoveRobot(.5, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
@@ -62,18 +61,18 @@ public class AutoRed1 extends Telemetry9926 {
                 break;
 
             case 3:
-                if ( TimeNow > 2) {
+                MoveRobot(.6, 0);
+                if ( TimeNow > 1.5) {
                     //if time is greater than 5 seconds point turn towards rescue zone
-                    MoveRobot(0, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
                 }
                 break;
             case 4:
+                MoveRobot(0, 0);
                 if ( TimeNow > .5) {
                     //if time is greater than nine seconds stop for one second
-                    MoveRobot(.6, .6);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
@@ -81,9 +80,9 @@ public class AutoRed1 extends Telemetry9926 {
                 break;
 
             case 5:
-                if ( TimeNow > 3) {
+                MoveRobot(.6, .6);
+                if ( TimeNow > 2.2) {
                     //if time is greater than nine seconds move forwards for 5 seconds
-                    MoveRobot(0, 0);
                     move_state++;
                     Variance = getRuntime();
                     TimeNow = 0;
@@ -91,6 +90,34 @@ public class AutoRed1 extends Telemetry9926 {
                 break;
 
             case 6:
+                MoveRobot(0, 0);
+                if ( TimeNow > 1) {
+                    //if time is greater than ten seconds stop for one second
+                    move_state++;
+                    Variance = getRuntime();
+                    TimeNow = 0;
+                }
+                break;
+            case 7:
+                MoveRobot(0, -.6);
+                if ( TimeNow > 1.0) {
+                    //if time is greater than ten seconds stop for one second
+                    move_state++;
+                    Variance = getRuntime();
+                    TimeNow = 0;
+                }
+                break;
+            case 8:
+                MoveRobot(.5, .5);
+                if ( TimeNow > 1.75) {
+                    //if time is greater than ten seconds stop for one second
+                    move_state++;
+                    Variance = getRuntime();
+                    TimeNow = 0;
+                }
+                break;
+            case 9:
+                MoveRobot(0, 0);
                 if ( TimeNow > 5) {
                     //if time is greater than ten seconds stop for one second
                     move_state++;
