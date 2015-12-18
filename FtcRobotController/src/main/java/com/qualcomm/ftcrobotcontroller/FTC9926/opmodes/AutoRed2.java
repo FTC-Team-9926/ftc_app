@@ -80,7 +80,7 @@ public class AutoRed2 extends Telemetry9926 {
 
             case 5:
                 MoveRobot(.6, .6);
-                if ( TimeNow > 2.2) {
+                if ( TimeNow > 3.5) {
                     //if time is greater than nine seconds move forwards for 5 seconds
                     move_state++;
                     Variance = getRuntime();
