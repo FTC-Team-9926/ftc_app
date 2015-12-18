@@ -24,9 +24,9 @@ public class AutoRed1 extends Telemetry9926 {
         //
         // Call the PushBotHardware (super/base class) start method.
         //
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Set_Servo2_position(0.5);
         super.start();
+        Motor2.setDirection(DcMotor.Direction.REVERSE);
+        Set_Servo2_position(1);
     }
 
     @Override public void loop()
