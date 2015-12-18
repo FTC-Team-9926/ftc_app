@@ -22,9 +22,9 @@ public class AutoRed1 extends Telemetry9926 {
 
     @Override
     public void start() {
-        // Call the PushBotHardware (super/base class) start method.
+        // call the PushBotHardware (super/base class) start method.
         super.start();
-        // Sets Motor2's direction to go backwards, since the motor is flipped
+        // sets Motor2's direction to go backwards, since the motor is flipped
         Motor2.setDirection(DcMotor.Direction.REVERSE);
         Set_Servo2_position(0);
     }
@@ -170,36 +170,6 @@ public class AutoRed1 extends Telemetry9926 {
                 // move on to the next case
                 break;
 
-/*            case 7:
-                if (getRuntime() > 13) {
-                    MoveRobot(.5, 0);
-                    //if time is greater than ten seconds point turn for 3 seconds
-                    move_state++;
-                    break;
-                }
-            case 8:
-                if (getRuntime() > 13) {
-                    MoveRobot(0, 0);
-                    //if time is greater than 12 seconds stop for one second
-                    move_state++;
-                    break;
-                }
-            case 9:
-                if (getRuntime() > 14) {
-                    MoveRobot(.4, .4);
-                    //if time is greater than 13 seconds move forwards for 2 seconds
-                    move_state++;
-                    break;
-                }
-            case 10:
-                if (getRuntime() > 16.5) {
-                    MoveRobot(0, 0);
-                    //if time is greater than 15 seconds stop
-                    move_state++;
-                    break;
-                }
-                break;
-*/
             // if none of the cases match up with move_state
             default:
                 // end the movement of the robot
@@ -219,6 +189,6 @@ public class AutoRed1 extends Telemetry9926 {
 
     @Override
     public void stop() {
-//stops program
+        //stops program
     }
 }
