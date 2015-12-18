@@ -19,6 +19,7 @@ public class TwoGamepads extends Telemetry9926 {
     public void start() {
         // Call the PushBotHardware (super/base class) start method.
         super.start ();
+        Set_Servo2_position(0);
     }
 
     @Override
