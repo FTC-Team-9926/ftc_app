@@ -100,33 +100,33 @@ public class FtcOpModeRegister implements OpModeRegister {
 
 //    manager.register("NullOp", NullOp.class);
     */
-    manager.register("MoveForward", MoveForward.class);
+    //manager.register("MoveForward", MoveForward.class);
 //    manager.register("Servo", MoveServo.class);
 //    manager.register("Stick", MoveStick.class);
-      manager.register("Tank", MoveTank.class);
-      manager.register("Touch", TouchOp.class);
-      manager.register("Servo", MoveTimeServo.class);
-      manager.register("Motor", MoveTimeMotor.class);
-      manager.register("Combo", MoveTimeCombo.class);
-      manager.register("NullOp", NullOp.class);
-      manager.register("Control_1", Control_1.class);
-      manager.register("2 Gamepads", TwoGamepads.class);
-      manager.register("AUTO_RED_2", Autonomous_Red_2.class);
-      manager.register("AUTO_RED_1", Autonomous_Red_1.class);
-      manager.register("AUTO_BLUE_2", Autonomous_Blue_2.class);
-      manager.register("AUTO_BLUE_1", Autonomous_Blue_1.class );
-      manager.register("AUTORED1!", AutoRed1.class);
-      manager.register("AUTORED2!", AutoRed2.class);
-      manager.register("AUTOBLUE1!", AutoBlue1.class);
-      manager.register("AUTOBLUE2!", AutoBlue2.class);
+      //manager.register("Tank", MoveTank.class);
+      //manager.register("Touch", TouchOp.class);
+      //manager.register("Servo", MoveTimeServo.class);
+      //manager.register("Motor", MoveTimeMotor.class);
+      //manager.register("Combo", MoveTimeCombo.class);
+      //manager.register("NullOp", NullOp.class);
+      //manager.register("Control_1", Control_1.class);
+      manager.register("Driver Control", TwoGamepads.class);
+      //manager.register("AUTO_RED_2", Autonomous_Red_2.class);
+      //manager.register("AUTO_RED_1", Autonomous_Red_1.class);
+      //manager.register("AUTO_BLUE_2", Autonomous_Blue_2.class);
+      //manager.register("AUTO_BLUE_1", Autonomous_Blue_1.class );
+      manager.register("Red 1", AutoRed1.class);
+      manager.register("Red 2", AutoRed2.class);
+      manager.register("Blue 1", AutoBlue1.class);
+      manager.register("Blue 2", AutoBlue2.class);
 
 
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
-      manager.register("K9TeleOp", K9TeleOp.class);
-      manager.register("K9Line", K9Line.class);
+      //manager.register("K9TeleOp", K9TeleOp.class);
+      //manager.register("K9Line", K9Line.class);
 //    manager.register ("PushBotAuto", PushBotAuto.class);
-      manager.register ("PushBotManual", PushBotManual.class);
+      //manager.register ("PushBotManual", PushBotManual.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
