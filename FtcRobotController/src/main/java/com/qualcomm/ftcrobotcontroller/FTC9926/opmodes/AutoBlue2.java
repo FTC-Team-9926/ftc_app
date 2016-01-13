@@ -1,15 +1,20 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
+/**
+ * Created by nicolasbravo on 12/17/15.
+ */
+
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
  * Created by Nicolas Bravo on 12/17/2015.
  */
-public class AutoRed2 extends Telemetry9926 {
+public class AutoBlue2 extends Telemetry9926 {
 
 
 
-    public AutoRed2() {
+    public AutoBlue2() {
         // Copying same logic as PushBotAuto.java
     }
 
@@ -60,7 +65,7 @@ public class AutoRed2 extends Telemetry9926 {
                 break;
 
             case 3:
-                MoveRobot(.5, 0);
+                MoveRobot(0, .5);
                 if ( TimeNow > 1.5) {
                     //if time is greater than 5 seconds point turn towards rescue zone
                     move_state++;
@@ -80,7 +85,7 @@ public class AutoRed2 extends Telemetry9926 {
 
             case 5:
                 MoveRobot(.6, .6);
-                if ( TimeNow > 2.2) {
+                if ( TimeNow > 3.5) {
                     //if time is greater than nine seconds move forwards for 5 seconds
                     move_state++;
                     Variance = getRuntime();
@@ -98,7 +103,7 @@ public class AutoRed2 extends Telemetry9926 {
                 }
                 break;
             case 7:
-                MoveRobot(0, -.5);
+                MoveRobot(-.5, 0);
                 if ( TimeNow > 1.1) {
                     //if time is greater than ten seconds stop for one second
                     move_state++;

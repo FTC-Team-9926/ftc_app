@@ -1,16 +1,18 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.HardwareMap9926;
+import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Telemetry9926;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
- * Created by vijay on 12/14/2015.
+ * Created by nicolasbravo on 12/17/15.
  */
-public class AutoRed1 extends Telemetry9926 {
+public class AutoBlue1 extends Telemetry9926{
 
 
 
-    public AutoRed1() {
-        // Copying same logic as PushBotAuto.java
+    public AutoBlue1() {
+
     }
 
     // used for keeping track of the state
@@ -39,7 +41,7 @@ public class AutoRed1 extends Telemetry9926 {
                 Variance = getRuntime();
                 // resets the value of TimeNow
                 TimeNow = 0;
-                // moves to next state
+                //moves to next state
                 break;
             case 1:
                 // moves the robot at 50% power
@@ -58,7 +60,7 @@ public class AutoRed1 extends Telemetry9926 {
             case 2:
                 // stops the robot
                 MoveRobot(0, 0);
-                // if the robot stopped for at least .5 seconds
+                // if the robot is stopped for at least .5 seconds
                 if (TimeNow > .5) {
                     // adds one to the case
                     move_state++;
@@ -69,12 +71,11 @@ public class AutoRed1 extends Telemetry9926 {
                 }
                 // moves to the next case
                 break;
-
             case 3:
-                // turns the robot with 60% power on Motor 1
-                MoveRobot(.6, 0);
+                // turns the robot with 60% power on Motor 2
+                MoveRobot(0, .6);
                 // if the robot moved for at least 1.5 seconds
-                if (TimeNow > 1.5) {
+                if ( TimeNow > 1.5) {
                     // adds one to move_state
                     move_state++;
                     // gives a new value to Variance
@@ -88,7 +89,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // stops the robot
                 MoveRobot(0, 0);
                 // if the robot stopped for at least .5 seconds
-                if (TimeNow > .5) {
+                if ( TimeNow > .5) {
                     // adds one to the counter
                     move_state++;
                     // gives a new value to Variance
@@ -102,7 +103,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // moves the robot forwards at 60% power
                 MoveRobot(.6, .6);
                 // if the robot moves for at least 2.2 seconds
-                if (TimeNow > 2.2) {
+                if ( TimeNow > 2.2) {
                     // increase the value of move_state
                     move_state++;
                     // give a new value to Variance
@@ -116,7 +117,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // stops the robot
                 MoveRobot(0, 0);
                 // if the robot stopped for at least 1 second
-                if (TimeNow > 1) {
+                if ( TimeNow > 1) {
                     // add one to move_state
                     move_state++;
                     // give a new value to Variance
@@ -127,10 +128,10 @@ public class AutoRed1 extends Telemetry9926 {
                 // moves on to the next case
                 break;
             case 7:
-                // turns the robot in reverse at 60% power on Motor2
-                MoveRobot(0, -.6);
+                // turns the robot in reverse at 60% power on Motor 1
+                MoveRobot(-.6, 0);
                 // if the robot turned for at least 1 second
-                if (TimeNow > 1.0) {
+                if ( TimeNow > 1.0) {
                     // add one to the counter
                     move_state++;
                     // give a new value to Variance
@@ -144,7 +145,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // move the robot forwards at 50% power
                 MoveRobot(.5, .5);
                 // if the robot moved for at least 1.75 seconds
-                if (TimeNow > 1.75) {
+                if ( TimeNow > 1.75) {
                     // add one to move_state
                     move_state++;
                     // give a new value to Variance
@@ -157,8 +158,8 @@ public class AutoRed1 extends Telemetry9926 {
             case 9:
                 // stops the robot
                 MoveRobot(0, 0);
-                // if the robot moved for at least five seconds
-                if (TimeNow > 5) {
+                // if the robot stopped for at least 50% power
+                if ( TimeNow > 5) {
                     // increase the value of move_state
                     move_state++;
                     // give a new value to Variance
@@ -184,6 +185,7 @@ public class AutoRed1 extends Telemetry9926 {
         telemetry.addData("12", "Clock: " + getRuntime());
         telemetry.addData("13", "Var: "+ Variance);
         telemetry.addData("14", "TimeNow: "+ TimeNow );
+        //Telemetry data includes state number and time
     }
 
     @Override

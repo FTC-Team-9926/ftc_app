@@ -19,6 +19,7 @@ public class TwoGamepads extends Telemetry9926 {
     public void start() {
         // Call the PushBotHardware (super/base class) start method.
         super.start ();
+        Set_Servo2_position(1);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
-        if (gamepad1.dpad_up && Dpad < .9) {
+        if (gamepad1.dpad_up && Dpad < .9 | gamepad2.dpad_up && Dpad < .9) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Adds 0.1 to "Dpad"
@@ -62,7 +63,7 @@ public class TwoGamepads extends Telemetry9926 {
             }
         }
         // If Gamepad 1's Dpad is pressed down and "Dpad" is greater than 0.1
-        else if (gamepad1.dpad_down && Dpad > 0.1) {
+        else if (gamepad1.dpad_down && Dpad > .1 | gamepad2.dpad_down && Dpad > .1) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Subtracts 0.1 from "Dpad"
