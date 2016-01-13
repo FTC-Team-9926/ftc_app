@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by ibravo on 10/30/15.
- * To place all the hardware components
+ * An area where all the hardware recognition scripts go
  *
  */
 public class HardwareMap9926 extends OpMode {
@@ -258,26 +258,7 @@ public class HardwareMap9926 extends OpMode {
         }
         return encoder_return;
     }
-    boolean turn_color_sensor_light_on(boolean light){
-        if(Color1 != null) {
-            if (light == true) {
-                Color1.enableLed(true);
-            } else {
-                Color1.enableLed(false);
-            }
-        }
-        return light;
-    }
-    boolean is_button_pressed(){
-        boolean button_state;
-        if(Touch1.isPressed()){
-            button_state = true;
-        }
-        else{
-            button_state = false;
-        }
-        return button_state;
-    }
+
 
 
 }
