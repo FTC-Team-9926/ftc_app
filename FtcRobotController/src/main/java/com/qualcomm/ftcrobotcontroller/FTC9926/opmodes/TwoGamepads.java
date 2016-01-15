@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
-    double Dpad = 0.5;
+    double Dpad = 0.6;
     boolean ChangeTopSpeed = true;
     boolean Forwards = true;
     @Override
@@ -52,7 +52,7 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
-        if (gamepad1.dpad_up && Dpad < .9 || gamepad2.dpad_up && Dpad < .9) {
+        if (gamepad1.dpad_up && Dpad < .7 || gamepad2.dpad_up && Dpad < .7) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Adds 0.1 to "Dpad"
