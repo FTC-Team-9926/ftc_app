@@ -112,17 +112,13 @@
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="Hardware-release-" level="project" />
     <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
-<<<<<<< a8a40e72d3581590e4d2c3755cf5d2a3f0b89200
+
 
     <orderEntry type="library" exported="" name="usb-android-19" level="project" />
     <orderEntry type="library" exported="" name="effects-android-19" level="project" />
 
     <orderEntry type="library" exported="" name="maps-android-19" level="project" />
 
-=======
-    <orderEntry type="library" exported="" name="usb-android-19" level="project" />
-    <orderEntry type="library" exported="" name="effects-android-19" level="project" />
-    <orderEntry type="library" exported="" name="maps-android-19" level="project" />
->>>>>>> Removed any point before the program where the servo moves
+
   </component>
 </module>
