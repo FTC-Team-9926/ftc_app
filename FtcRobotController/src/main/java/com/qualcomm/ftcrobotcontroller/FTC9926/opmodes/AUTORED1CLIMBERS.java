@@ -15,7 +15,6 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
     int move_state = 0;
     double Variance = 0;
     double TimeNow = 0;
-    double SM1_Position;
     double time = 0;
     DcMotor Motor3;
 //initial state is 0
@@ -26,12 +25,12 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
         //
         // Call the PushBotHardware (super/base class) start method.
         //
-        Define_Hardware_Config_Names();
-        Servo1 = hardwareMap.servo.get("SM1");
-        Servo1.setPosition(SM1_Position);
-        Motor2.setDirection(DcMotor.Direction.REVERSE);
-        Set_Servo2_position(0.5);
-        Motor3 = hardwareMap.dcMotor.get("M3");
+//        Define_Hardware_Config_Names();
+//        Servo1 = hardwareMap.servo.get("SM1");
+//        Servo1.setPosition(SM1_Position);
+          Motor2.setDirection(DcMotor.Direction.REVERSE);
+//        Set_Servo2_position(0.5);
+//        Motor3 = hardwareMap.dcMotor.get("M3");
         super.start();
     }
 
@@ -48,7 +47,7 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
 
             case 1:
                 MoveRobot(.5, .5);
-                if (TimeNow > 4.5) {
+                if (TimeNow > 5.6) {
                     //if time is greater than one second then move forwards for 3 seconds
                     move_state++;
                     Variance = getRuntime();
@@ -67,7 +66,7 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
 
             case 3:
                 MoveRobot(.6, 0);
-                if (TimeNow > 1.5) {
+                if (TimeNow > 1.3) {
                     //if time is greater than 5 seconds point turn towards rescue zone
                     move_state++;
                     Variance = getRuntime();
@@ -104,26 +103,24 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
                 break;
             case 7:
                 MoveArm(.1);
-                if (TimeNow > 3)
+                if (TimeNow > 3) {
                     move_state++;
-                Variance = getRuntime();
-                TimeNow = 0;
+                    Variance = getRuntime();
+                    TimeNow = 0;
+                }
                 break;
             case 8:
                 move_state++;
                 Variance = getRuntime();
                 TimeNow = 0;
             case 9:
-                SM1_Position = 0.2;
-                Set_Servo_position(SM1_Position);
-                if ((getRuntime() - time) >= 20)
-                {
-                    move_state++;
-                    time = getRuntime();
-                }
+            //    SM1_Position = 0.2;
+                Set_Servo_position(0.2);
+                move_state++;
                 break;
             case 10:
                 MoveRobot(0, 0);
+                MoveArm(0);
                 if (TimeNow > 5) {
                     //if time is greater than nine seconds move forwards for 5 seconds
                     move_state++;
@@ -131,9 +128,6 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
                     TimeNow = 0;
                 }
                 break;
-
-
-
 
 
             default:
