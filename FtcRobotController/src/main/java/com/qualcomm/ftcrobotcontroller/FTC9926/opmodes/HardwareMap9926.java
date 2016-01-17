@@ -34,6 +34,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor1;
     DcMotor Motor2;
     DcMotor Motor3;
+    DcMotor Motor4;
 
 
     @Override
@@ -47,6 +48,7 @@ public class HardwareMap9926 extends OpMode {
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
+        Motor4 = hardwareMap.dcMotor.get("M4");
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
@@ -162,6 +164,15 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
+    void MovePull (double Engine4)
+    {
+        {
+            if (Motor4 != null)
+            {
+                Motor4.setPower (Engine4);
+            }
+        }
+    }
     void Turn (double Turn){
         {
             if (Motor1 != null)
@@ -193,6 +204,10 @@ public class HardwareMap9926 extends OpMode {
         if (Motor3 != null)
         {
             Motor3.setPower(0);
+        }
+        if (Motor4 != null)
+        {
+            Motor4.setPower(0);
         }
     }
 }

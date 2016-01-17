@@ -11,9 +11,8 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
-    double Dpad = 0.5;
+    double Dpad = 0.6;
     boolean ChangeTopSpeed = true;
-    boolean Claw = true;
     boolean Forwards = true;
     @Override
     public void start() {
@@ -53,7 +52,7 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
-        if (gamepad1.dpad_up && Dpad < .9 | gamepad2.dpad_up && Dpad < .9) {
+        if (gamepad1.dpad_up && Dpad < .7 || gamepad2.dpad_up && Dpad < .7) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Adds 0.1 to "Dpad"
@@ -63,7 +62,7 @@ public class TwoGamepads extends Telemetry9926 {
             }
         }
         // If Gamepad 1's Dpad is pressed down and "Dpad" is greater than 0.1
-        else if (gamepad1.dpad_down && Dpad > .1 | gamepad2.dpad_down && Dpad > .1) {
+        else if (gamepad1.dpad_down && Dpad > .1 || gamepad2.dpad_down && Dpad > .1) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Subtracts 0.1 from "Dpad"
@@ -86,6 +85,15 @@ public class TwoGamepads extends Telemetry9926 {
         M3Power = (float)scaleInput(M3Power);
         // Writes the values to the arm
         MoveArm(M3Power * 0.2);
+
+        // Makes "M4Power" equal Gamepad 2's left stick
+        double M4Power = (gamepad2.left_stick_y);
+        // Adds boundaries to not exceed certain values
+        M4Power = Range.clip(M4Power, -1, 1);
+        // Adds "scaleInput" to make easier to control
+        M4Power = (float)scaleInput(M4Power);
+        // Writes the values to the arm
+        MovePull(M4Power);
 
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
