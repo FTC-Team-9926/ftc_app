@@ -25,9 +25,6 @@ public class HardwareMap9926 extends OpMode {
     // Servo ARM
     Servo Servo1;
     Servo Servo2;
-//    DcMotor Motor1;
-//    DcMotor Motor2;
-//    DcMotor Motor3;
     double SM1_Position;
     double SM2_Position;
     double Get_Servo_Position;
@@ -35,6 +32,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor2;
     DcMotor Motor3;
     DcMotor Motor4;
+    DcMotor Motor5;
 
 
     @Override
@@ -266,12 +264,25 @@ public class HardwareMap9926 extends OpMode {
         } // set_arm_power
     }
 
-    void MovePull (double Engine4)
+
+
+    void MoveDrawer (double Engine4)
+
     {
         {
             if (Motor4 != null)
             {
                 Motor4.setPower (Engine4);
+            }
+        }
+    }
+
+    void MovePull (double Engine5)
+    {
+        {
+            if (Motor5 != null)
+            {
+                Motor5.setPower (Engine5);
             }
         }
     }
@@ -307,10 +318,6 @@ public class HardwareMap9926 extends OpMode {
         if (Motor3 != null)
         {
             Motor3.setPower(0);
-        }
-        if (Motor4 != null)
-        {
-            Motor4.setPower(0);
         }
     }
 

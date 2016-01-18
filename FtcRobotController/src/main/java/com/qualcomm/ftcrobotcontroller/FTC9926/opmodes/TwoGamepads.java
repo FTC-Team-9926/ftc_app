@@ -77,6 +77,30 @@ public class TwoGamepads extends Telemetry9926 {
             ChangeTopSpeed = true;
         }
 
+        // If Gamepad 2's right bumper OR left bumper are being pressed
+        if (gamepad2.right_bumper || gamepad2.left_bumper) {
+            // If Gamepad 2's right bumper is being pressed
+            if (gamepad2.right_bumper) {
+                // Extend the hook
+                MovePull(1);
+            }
+            // If Gamepad 2's left bumper is being pressed
+            else if (gamepad2.left_bumper) {
+                // Retract the hook
+                MovePull(-1);
+            }
+        }
+        // If Gamepad 2's right bumper and left bumper are BOTH being pressed
+        else if (gamepad2.right_bumper && gamepad2.left_bumper) {
+            // Stop the hook
+            MovePull(0);
+        }
+        // If Gamepad 2's right bumper and left bumper are NOT being pressed
+        else if (!gamepad2.right_bumper && !gamepad2.left_bumper) {
+            // Stop the hook
+            MovePull(0);
+        }
+
         // Makes "M3Power" equal Gamepad 2's right stick
         double M3Power = (-gamepad2.right_stick_y);
         // Adds boundaries to not exceed certain values
@@ -93,7 +117,7 @@ public class TwoGamepads extends Telemetry9926 {
         // Adds "scaleInput" to make easier to control
         M4Power = (float)scaleInput(M4Power);
         // Writes the values to the arm
-        MovePull(M4Power);
+        MoveDrawer(M4Power);
 
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
