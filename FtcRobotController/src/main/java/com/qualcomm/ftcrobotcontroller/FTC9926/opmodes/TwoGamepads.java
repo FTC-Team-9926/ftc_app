@@ -77,6 +77,17 @@ public class TwoGamepads extends Telemetry9926 {
             ChangeTopSpeed = true;
         }
 
+        // If Gamepad 2's A button is being pressed and the B button is not
+        if (gamepad2.a && !gamepad2.b) {
+            // Extend the drawer slides
+            MoveDrawer(0.7);
+        }
+        // If Gamepad 2's B button is being pressed and the A button is not
+        if (gamepad2.b && !gamepad2.a) {
+            // Bring back the drawer slides
+            MoveDrawer(-0.1);
+        }
+
         // If Gamepad 2's right bumper OR left bumper are being pressed
         if (gamepad2.right_bumper || gamepad2.left_bumper) {
             // If Gamepad 2's right bumper is being pressed
@@ -110,14 +121,14 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the arm
         MoveArm(M3Power * 0.2);
 
-        // Makes "M4Power" equal Gamepad 2's left stick
-        double M4Power = (gamepad2.left_stick_y);
+        // Makes "M6Power" equal Gamepad 2's left stick
+        double M6Power = (gamepad2.left_stick_y);
         // Adds boundaries to not exceed certain values
-        M4Power = Range.clip(M4Power, -1, 1);
+        M6Power = Range.clip(M6Power, -1, 1);
         // Adds "scaleInput" to make easier to control
-        M4Power = (float)scaleInput(M4Power);
+        M6Power = (float)scaleInput(M6Power);
         // Writes the values to the arm
-        MoveDrawer(M4Power);
+        MoveAim(M6Power);
 
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
