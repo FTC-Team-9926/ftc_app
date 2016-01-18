@@ -33,6 +33,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor3;
     DcMotor Motor4;
     DcMotor Motor5;
+    DcMotor Motor6;
 
 
     @Override
@@ -162,7 +163,16 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
-    void MoveDrawer (double Engine4)
+    void MoveAim (double Engine6)
+    {
+        {
+            if (Motor6 != null)
+            {
+                Motor6.setPower (Engine6);
+            }
+        }
+    }
+    void MovePull (double Engine4)
     {
         {
             if (Motor4 != null)
@@ -171,7 +181,7 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
-    void MovePull (double Engine5)
+    void MoveDrawer (double Engine5)
     {
         {
             if (Motor5 != null)
