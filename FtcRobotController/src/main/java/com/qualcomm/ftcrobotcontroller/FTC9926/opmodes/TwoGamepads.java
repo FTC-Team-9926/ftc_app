@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
-    double Dpad = 0.6;
+    double Dpad = 0.5;
     boolean ChangeTopSpeed = true;
     boolean Forwards = true;
     @Override
