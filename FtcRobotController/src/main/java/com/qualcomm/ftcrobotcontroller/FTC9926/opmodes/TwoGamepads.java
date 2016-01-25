@@ -93,12 +93,12 @@ public class TwoGamepads extends Telemetry9926 {
             // If Gamepad 2's right bumper is being pressed
             if (gamepad2.right_bumper) {
                 // Extend the hook
-                MovePull(1);
+                MovePull(-1);
             }
             // If Gamepad 2's left bumper is being pressed
             else if (gamepad2.left_bumper) {
                 // Retract the hook
-                MovePull(-1);
+                MovePull(1);
             }
         }
         // If Gamepad 2's right bumper and left bumper are BOTH being pressed
