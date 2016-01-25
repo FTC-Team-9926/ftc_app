@@ -128,7 +128,7 @@ public class TwoGamepads extends Telemetry9926 {
         // Adds "scaleInput" to make easier to control
         M6Power = (float)scaleInput(M6Power);
         // Writes the values to the arm
-        MoveAim(M6Power * 0.2);
+        MoveAim(M6Power);
 
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
