@@ -25,8 +25,10 @@ public class HardwareMap9926 extends OpMode {
     // Servo ARM
     Servo Servo1;
     Servo Servo2;
+    Servo Servo3;
     double SM1_Position;
     double SM2_Position;
+    double SM3_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
     DcMotor Motor2;
@@ -44,6 +46,7 @@ public class HardwareMap9926 extends OpMode {
 
         Servo1 = hardwareMap.servo.get("SM1");
         Servo2 = hardwareMap.servo.get("SM2");
+        Servo3 = hardwareMap.servo.get("SM3");
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
@@ -105,6 +108,18 @@ public class HardwareMap9926 extends OpMode {
     void Set_Servo2_position (double position2) {
         SM2_Position = Range.clip(position2,0,1);
         Servo2.setPosition(SM2_Position);
+    }
+
+    void Set_Flap_position (double flap) {
+        if (flap == 1) {
+            SM1_Position = .25;
+            Servo1.setPosition(SM1_Position);
+        }
+        else if (flap == 3) {
+            SM3_Position = -.25;
+            Servo3.setPosition(SM3_Position);
+        }
+
     }
 
     /*

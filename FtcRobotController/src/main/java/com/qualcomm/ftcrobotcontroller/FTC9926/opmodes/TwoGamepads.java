@@ -137,6 +137,14 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo2Gamepad);
 
+        if (gamepad2.dpad_left) {
+            Set_Flap_position(1);
+        }
+
+        if (gamepad2.dpad_right) {
+            Set_Flap_position(3);
+        }
+
         // Updates the telemetry
         UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
