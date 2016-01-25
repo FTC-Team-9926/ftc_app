@@ -25,8 +25,10 @@ public class HardwareMap9926 extends OpMode {
     // Servo ARM
     Servo Servo1;
     Servo Servo2;
+    Servo Servo3;
     double SM1_Position;
     double SM2_Position;
+    double SM3_Position;
     double Get_Servo_Position;
     DcMotor Motor1;
     DcMotor Motor2;
@@ -80,7 +82,9 @@ public class HardwareMap9926 extends OpMode {
         SM2_Position = 1;
 
 
-        Servo2 = hardwareMap.servo.get("SM2");
+
+        
+        Servo3 = hardwareMap.servo.get("SM3");
 
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
@@ -148,6 +152,7 @@ public class HardwareMap9926 extends OpMode {
         Servo2.setPosition(SM2_Position);
     }
 
+<<<<<<< 5cb4a443ac0638b253866209cfe9040d04c0e1e6
 
 
     void Move (double Motor1power, double Motor2power){
@@ -209,6 +214,20 @@ public class HardwareMap9926 extends OpMode {
 
 
 
+=======
+    void Set_Flap_position (double flap) {
+        if (flap == 1) {
+            SM1_Position = .25;
+            Servo1.setPosition(SM1_Position);
+        }
+        else if (flap == 3) {
+            SM3_Position = -.25;
+            Servo3.setPosition(SM3_Position);
+        }
+
+    }
+
+>>>>>>> Added Set_Flap_position and set it to the dpad left & right
     /*
  * This method scales the joystick input so for low joystick values, the
  * scaled value is less than linear.  This is to make it easier to drive
