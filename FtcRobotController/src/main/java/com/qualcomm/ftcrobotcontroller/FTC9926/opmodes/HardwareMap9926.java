@@ -56,7 +56,8 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
-
+        Servo1.setPosition(1);
+        Servo3.setPosition(0);
     }
 
     @Override public void start(){
@@ -112,11 +113,11 @@ public class HardwareMap9926 extends OpMode {
 
     void Set_Flap_position (double flap) {
         if (flap == 1) {
-            SM1_Position = .25;
+            SM1_Position = .75;
             Servo1.setPosition(SM1_Position);
         }
         else if (flap == 3) {
-            SM3_Position = -.25;
+            SM3_Position = .25;
             Servo3.setPosition(SM3_Position);
         }
 
