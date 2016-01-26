@@ -111,6 +111,11 @@ public class HardwareMap9926 extends OpMode {
         Servo2.setPosition(SM2_Position);
     }
 
+    void Set_Servo3_position (double position3) {
+        SM3_Position = Range.clip(position3,0,1);
+        Servo3.setPosition(SM3_Position);
+    }
+
     void Set_Flap_position (double flap) {
         if (flap == 1) {
             SM2_Position = .75;
