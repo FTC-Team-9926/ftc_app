@@ -80,7 +80,7 @@ public class TwoGamepads extends Telemetry9926 {
         // If Gamepad 2's A button is being pressed and the B button is not
         if (gamepad2.a && !gamepad2.b) {
             // Extend the drawer slides
-            MoveDrawer(0.2);
+            MoveDrawer(0.4);
         }
         // If Gamepad 2's B button is being pressed and the A button is not
         if (gamepad2.b && !gamepad2.a) {
