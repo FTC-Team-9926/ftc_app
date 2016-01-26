@@ -148,11 +148,11 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo2Gamepad);
 
-        double LeftFlapper = gamepad1.left_trigger;
+        double LeftFlapper = (1-gamepad1.left_trigger);
         LeftFlapper = Range.clip(LeftFlapper, 0, 1);
         Set_Servo2_position(LeftFlapper);
 
-        double RightFlapper = (1-gamepad1.right_trigger);
+        double RightFlapper = gamepad1.right_trigger;
         RightFlapper = Range.clip(RightFlapper, 0, 1);
         Set_Servo3_position(RightFlapper);
 
