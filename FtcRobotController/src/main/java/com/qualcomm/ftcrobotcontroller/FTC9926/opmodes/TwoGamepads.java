@@ -78,16 +78,16 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // If Gamepad 2's A button is being pressed and the B button is not
-        if (gamepad2.a && !gamepad2.b) {
+        if (gamepad2.b && !gamepad2.a) {
             // Extend the drawer slides
             MoveDrawer(0.4);
         }
         // If Gamepad 2's B button is being pressed and the A button is not
-        if (gamepad2.b && !gamepad2.a) {
+        if (gamepad2.a && !gamepad2.b) {
             // Bring back the drawer slides
             MoveDrawer(-0.05);
         }
-        if (!gamepad2.a && !gamepad2.b) {
+        if (!gamepad2.b && !gamepad2.a) {
             MoveDrawer(0);
         }
 
@@ -131,7 +131,15 @@ public class TwoGamepads extends Telemetry9926 {
         // Adds "scaleInput" to make easier to control
         M6Power = (float)scaleInput(M6Power);
         // Writes the values to the arm
-        MoveAim(M6Power * 0.4);
+        if (gamepad2.left_stick_y < 0) {
+            MoveAim(M6Power * 0.4);
+        }
+        else if (gamepad2.left_stick_y > 0) {
+            MoveAim(M6Power * 0.2);
+        }
+        else {
+            Motor6.setPower(0);
+        }
 
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
@@ -140,12 +148,18 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo2Gamepad);
 
-        if (gamepad2.dpad_left) {
+        if (gamepad1.left_trigger > 0) {
             Set_Flap_position(1);
         }
+        else if (gamepad1.left_trigger == 0) {
+            ResetFlap();
+        }
 
-        if (gamepad2.dpad_right) {
+        if (gamepad1.right_trigger > 0) {
             Set_Flap_position(3);
+        }
+        else if (gamepad1.right_trigger == 0) {
+            ResetFlap();
         }
 
         // Updates the telemetry
