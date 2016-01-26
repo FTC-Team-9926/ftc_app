@@ -80,6 +80,7 @@ public class FtcOpModeRegister implements OpModeRegister {
 
 >>>>>>> Removed duplicated with Git.
     */
+
     manager.register("MoveForward", MoveForward.class);
 
     manager.register("NullOp", NullOp.class);
@@ -100,6 +101,7 @@ public class FtcOpModeRegister implements OpModeRegister {
 
 //    manager.register("NullOp", NullOp.class);
     */
+
     //manager.register("MoveForward", MoveForward.class);
 //    manager.register("Servo", MoveServo.class);
 //    manager.register("Stick", MoveStick.class);
@@ -119,7 +121,7 @@ public class FtcOpModeRegister implements OpModeRegister {
       manager.register("Red 2", AutoRed2.class);
       manager.register("Blue 1", AutoBlue1.class);
       manager.register("Blue 2", AutoBlue2.class);
-      manager.register("CLIMBERS",AUTORED1CLIMBERS.class);
+
 
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
@@ -131,6 +133,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
+
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
 

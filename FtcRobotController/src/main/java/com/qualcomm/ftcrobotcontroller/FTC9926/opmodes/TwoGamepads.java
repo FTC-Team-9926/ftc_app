@@ -11,8 +11,14 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
     double Dpad = 0.5;
     boolean ChangeTopSpeed = true;
+=======
+    double Dpad = 0.6;
+    boolean ChangeTopSpeed = true;
+    boolean Claw = true;
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
     boolean Forwards = true;
     @Override
     public void start() {
@@ -52,7 +58,11 @@ public class TwoGamepads extends Telemetry9926 {
         }
 
         // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
         if (gamepad1.dpad_up && Dpad < .7 || gamepad2.dpad_up && Dpad < .7) {
+=======
+        if (gamepad1.dpad_up && Dpad < .6 | gamepad2.dpad_up && Dpad < .6) {
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Adds 0.1 to "Dpad"
@@ -62,7 +72,11 @@ public class TwoGamepads extends Telemetry9926 {
             }
         }
         // If Gamepad 1's Dpad is pressed down and "Dpad" is greater than 0.1
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
         else if (gamepad1.dpad_down && Dpad > .2 || gamepad2.dpad_down && Dpad > .2) {
+=======
+        else if (gamepad1.dpad_down && Dpad > .1 | gamepad2.dpad_down && Dpad > .1) {
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Subtracts 0.1 from "Dpad"
@@ -77,6 +91,7 @@ public class TwoGamepads extends Telemetry9926 {
             ChangeTopSpeed = true;
         }
 
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
         // If Gamepad 2's A button is being pressed and the B button is not
         if (gamepad2.b && !gamepad2.a) {
             // Extend the drawer slides
@@ -115,6 +130,8 @@ public class TwoGamepads extends Telemetry9926 {
             MovePull(0);
         }
 
+=======
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
         // Makes "M3Power" equal Gamepad 2's right stick
         double M3Power = (-gamepad2.right_stick_y);
         // Adds boundaries to not exceed certain values
@@ -124,6 +141,7 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the arm
         MoveArm(M3Power * 0.2);
 
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
         // Makes "M6Power" equal Gamepad 2's left stick
         double M6Power = (gamepad2.left_stick_y);
         // Adds boundaries to not exceed certain values
@@ -141,6 +159,8 @@ public class TwoGamepads extends Telemetry9926 {
             Motor6.setPower(0);
         }
 
+=======
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
         // Makes "Servo2Gamepad" equal Gamepad 2's left trigger
         double Servo2Gamepad = (1 - gamepad2.left_trigger);
         // Makes boundaries to not exceed certain values
@@ -148,6 +168,7 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo2Gamepad);
 
+<<<<<<< 4f56fb868d4004031f6842ae8491fcc45178324e
         double LeftFlapper = gamepad1.left_trigger;
         LeftFlapper = Range.clip(LeftFlapper, 0, 1);
         Set_Servo2_position(LeftFlapper);
@@ -156,6 +177,8 @@ public class TwoGamepads extends Telemetry9926 {
         RightFlapper = Range.clip(RightFlapper, 0, 1);
         Set_Servo3_position(RightFlapper);
 
+=======
+>>>>>>> Merge branch 'master' of C:\Users\jackhogan\AndroidStudioProjects\ftc_app with conflicts.
         // Updates the telemetry
         UpdateTelemetry();
         telemetry.addData("Text", "*** Robot Data***");
