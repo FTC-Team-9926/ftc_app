@@ -122,6 +122,12 @@ public class HardwareMap9926 extends OpMode {
         }
 
     }
+    void ResetFlap() {
+        SM2_Position = 1;
+        SM3_Position = 0;
+        Servo2.setPosition(SM2_Position);
+        Servo3.setPosition(SM3_Position);
+    }
 
     /*
  * This method scales the joystick input so for low joystick values, the
