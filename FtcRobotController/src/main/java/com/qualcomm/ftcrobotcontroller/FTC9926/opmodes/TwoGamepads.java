@@ -132,10 +132,10 @@ public class TwoGamepads extends Telemetry9926 {
         M6Power = (float)scaleInput(M6Power);
         // Writes the values to the arm
         if (gamepad2.left_stick_y < 0) {
-            MoveAim(M6Power * 0.4);
+            MoveAim(M6Power * 0.2);
         }
         else if (gamepad2.left_stick_y > 0) {
-            MoveAim(M6Power * 0.2);
+            MoveAim(M6Power * 0.4);
         }
         else {
             Motor6.setPower(0);
@@ -148,19 +148,13 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the motors
         Set_Servo_position(Servo2Gamepad);
 
-        if (gamepad1.left_trigger > 0) {
-            Set_Flap_position(1);
-        }
-        else if (gamepad1.left_trigger == 0) {
-            ResetFlap();
-        }
+        double LeftFlapper = gamepad1.left_trigger;
+        LeftFlapper = Range.clip(LeftFlapper, 0, 1);
+        Set_Servo2_position(LeftFlapper);
 
-        if (gamepad1.right_trigger > 0) {
-            Set_Flap_position(3);
-        }
-        else if (gamepad1.right_trigger == 0) {
-            ResetFlap();
-        }
+        double RightFlapper = (1-gamepad1.right_trigger);
+        RightFlapper = Range.clip(RightFlapper, 0, 1);
+        Set_Servo3_position(RightFlapper);
 
         // Updates the telemetry
         UpdateTelemetry();
