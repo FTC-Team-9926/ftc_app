@@ -166,7 +166,7 @@ public class TwoGamepads extends Telemetry9926 {
         double LeftFlapper = (1-gamepad1.left_trigger);
 
 
-            
+
         LeftFlapper = Range.clip(LeftFlapper, 0, 1);
         Set_Servo2_position(LeftFlapper);
 
