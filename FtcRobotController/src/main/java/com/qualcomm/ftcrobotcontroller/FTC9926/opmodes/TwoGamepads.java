@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.util.Range;
  
 public class TwoGamepads extends Telemetry9926 {
 
+<<<<<<< 11cb17f163b7531f54ffb64a244e0045ac3bee83
 
 
 
@@ -18,6 +19,12 @@ public class TwoGamepads extends Telemetry9926 {
     boolean ChangeTopSpeed = true;
     boolean Claw = true;
 
+=======
+    double Dpad = 0.5;
+    double Drawers = 0.5;
+    boolean ChangeTopSpeed = true;
+    boolean ChangeDrawerSpeed = true;
+>>>>>>> Added a way to change the speed of the drawer slides
     boolean Forwards = true;
     @Override
     public void start() {
@@ -88,11 +95,26 @@ public class TwoGamepads extends Telemetry9926 {
             ChangeTopSpeed = true;
         }
 
-
+        if (gamepad2.dpad_right && Drawers < 1) {
+            if (ChangeDrawerSpeed) {
+                Drawers = Drawers + 0.05;
+                ChangeDrawerSpeed = false;
+            }
+        }
+        else if (gamepad2.dpad_left && Drawers > 0.05) {
+            if (ChangeDrawerSpeed) {
+                Drawers = Drawers - 0.05;
+                ChangeDrawerSpeed = false;
+            }
+        }
+        else {
+            ChangeDrawerSpeed = true;
+        }
+            
         // If Gamepad 2's A button is being pressed and the B button is not
         if (gamepad2.b && !gamepad2.a) {
             // Extend the drawer slides
-            MoveDrawer(0.4);
+            MoveDrawer(Drawers);
         }
         // If Gamepad 2's B button is being pressed and the A button is not
         if (gamepad2.a && !gamepad2.b) {
