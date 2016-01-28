@@ -220,5 +220,7 @@ public class TwoGamepads extends Telemetry9926 {
         telemetry.addData("Servo", "Servo/Arm:  " + String.format("%.2f", Servo2Gamepad) + "/" + String.format("%.2f", M3Power));
         // Displays the power of the treads
         telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
+        // Displays the power of the drawer slides
+        telemetry.addData("Drawer Slides", "Drawer Slides: " + String.format("%.2f", Drawers));
     }
 }
