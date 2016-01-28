@@ -52,6 +52,7 @@ public class HardwareMap9926 extends OpMode {
         // Define Config Name in Driver Station
         double l_hand_position = 0;
 
+        // Initializing the attachments
         Servo1 = hardwareMap.servo.get("SM1");
 
 
@@ -147,7 +148,7 @@ public class HardwareMap9926 extends OpMode {
     } // PushBotManual::a_hand_position
 
     //--------------------------------------------------------------------------
-    // Set the hand position.
+    // Set the arm/flap positions.
     //--------
 
     void Set_Servo_position (double p_position)
@@ -292,6 +293,7 @@ public class HardwareMap9926 extends OpMode {
         return dScale;
     }
 
+    // Method that is used to drive the robot
     void MoveRobot (double Engine1, double Engine2)
     {
         {
@@ -306,6 +308,8 @@ public class HardwareMap9926 extends OpMode {
                 Motor2.setPower (Engine2);
             }
     }
+
+    //Method that is used to move the arm
     void MoveArm (double Engine3)
     {
         {
@@ -316,6 +320,7 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
+
 
 
 
@@ -332,6 +337,8 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
+
+    //Method that is used to pull the robot up the mountain
     void MovePull (double Engine4)
 
     {
@@ -347,6 +354,7 @@ public class HardwareMap9926 extends OpMode {
     void MovePull (double Engine5)
 
 
+
     void MoveDrawer (double Engine5)
 
     {
@@ -357,6 +365,7 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
+
 
     void Turn (double Turn){
         {
@@ -374,6 +383,8 @@ public class HardwareMap9926 extends OpMode {
         *  If you put a negative input, then the robot will turn left
         *  If you put a positive input, then the robot will turn right */
     }
+
+    //This method is used to stop the motors
     void StopMotor() {
         {
             if (Motor1 != null)

@@ -110,7 +110,7 @@ public class TwoGamepads extends Telemetry9926 {
         else {
             ChangeDrawerSpeed = true;
         }
-            
+
         // If Gamepad 2's A button is being pressed and the B button is not
         if (gamepad2.b && !gamepad2.a) {
             // Extend the drawer slides

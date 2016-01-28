@@ -87,35 +87,6 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< 8852dce48a41b1ea4b84184deb10e82c35617caa
-
-
-=======
->>>>>>> swapped the flappers
-    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
-    <orderEntry type="library" exported="" name="ModernRobotics-release-" level="project" />
-    <orderEntry type="library" exported="" name="Analytics-release-" level="project" />
-    <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
-    <orderEntry type="library" exported="" name="WirelessP2p-release-" level="project" />
-    <orderEntry type="library" exported="" name="Hardware-release-" level="project" />
-    <orderEntry type="library" exported="" name="RobotCore-release-" level="project" />
-    <orderEntry type="library" exported="" name="effects-android-19" level="project" />
-    <orderEntry type="library" exported="" name="usb-android-19" level="project" />
-<<<<<<< 8852dce48a41b1ea4b84184deb10e82c35617caa
-
-    <orderEntry type="library" exported="" name="RobotCore-release-" level="project" />
-    <orderEntry type="library" exported="" name="ModernRobotics-release-" level="project" />
-    <orderEntry type="library" exported="" name="WirelessP2p-release-" level="project" />
-
-    <orderEntry type="library" exported="" name="RobotCore-release-" level="project" />
-    <orderEntry type="library" exported="" name="ModernRobotics-release-" level="project" />
-    <orderEntry type="library" exported="" name="WirelessP2p-release-" level="project" />
-
-=======
->>>>>>> swapped the flappers
-    <orderEntry type="library" exported="" name="maps-android-19" level="project" />
-
-
 
   </component>
 </module>
