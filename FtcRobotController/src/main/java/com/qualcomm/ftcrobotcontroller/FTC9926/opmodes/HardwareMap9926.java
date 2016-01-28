@@ -57,8 +57,6 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
-        Servo2.setPosition(1);
-        Servo3.setPosition(0);
     }
 
     @Override public void start(){
