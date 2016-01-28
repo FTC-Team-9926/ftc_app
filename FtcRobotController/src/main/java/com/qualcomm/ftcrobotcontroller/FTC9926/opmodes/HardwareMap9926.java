@@ -44,6 +44,7 @@ public class HardwareMap9926 extends OpMode {
         // Define Config Name in Driver Station
         double l_hand_position = 0;
 
+        // Initializing the attachments
         Servo1 = hardwareMap.servo.get("SM1");
         Servo2 = hardwareMap.servo.get("SM2");
         Servo3 = hardwareMap.servo.get("SM3");
@@ -89,7 +90,7 @@ public class HardwareMap9926 extends OpMode {
     } // PushBotManual::a_hand_position
 
     //--------------------------------------------------------------------------
-    // Set the hand position.
+    // Set the arm/flap positions.
     //--------
 
     void Set_Servo_position (double p_position)
@@ -168,6 +169,7 @@ public class HardwareMap9926 extends OpMode {
         return dScale;
     }
 
+    // Method that is used to drive the robot
     void MoveRobot (double Engine1, double Engine2)
     {
         {
@@ -182,6 +184,8 @@ public class HardwareMap9926 extends OpMode {
                 Motor2.setPower (Engine2);
             }
     }
+
+    //Method that is used to move the arm
     void MoveArm (double Engine3)
     {
         {
@@ -192,6 +196,8 @@ public class HardwareMap9926 extends OpMode {
 
         } // set_arm_power
     }
+
+    //Method that is used to angle the extension mechanism
     void MoveAim (double Engine6)
     {
         {
@@ -201,6 +207,8 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
+
+    //Method that is used to pull the robot up the mountain
     void MovePull (double Engine4)
     {
         {
@@ -210,6 +218,8 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
+
+    //Method that is used to extend/retract the drawer slides
     void MoveDrawer (double Engine5)
     {
         {
@@ -219,6 +229,8 @@ public class HardwareMap9926 extends OpMode {
             }
         }
     }
+
+    //this method is used to make the robot turn
     void Turn (double Turn){
         {
             if (Motor1 != null)
@@ -235,6 +247,8 @@ public class HardwareMap9926 extends OpMode {
         *  If you put a negative input, then the robot will turn left
         *  If you put a positive input, then the robot will turn right */
     }
+
+    //This method is used to stop the motors
     void StopMotor() {
         {
             if (Motor1 != null)
