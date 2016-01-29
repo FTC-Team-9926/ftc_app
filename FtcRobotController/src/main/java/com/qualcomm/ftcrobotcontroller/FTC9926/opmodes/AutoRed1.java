@@ -74,7 +74,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // turns the robot with 60% power on Motor 1
                 MoveRobot(.6, 0);
                 // if the robot moved for at least 1.5 seconds
-                if (TimeNow > 1.5) {
+                if (TimeNow > 2) {
                     // adds one to move_state
                     move_state++;
                     // gives a new value to Variance
@@ -102,7 +102,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // moves the robot forwards at 60% power
                 MoveRobot(.6, .6);
                 // if the robot moves for at least 2.2 seconds
-                if (TimeNow > 2.2) {
+                if (TimeNow > 2.5) {
                     // increase the value of move_state
                     move_state++;
                     // give a new value to Variance
