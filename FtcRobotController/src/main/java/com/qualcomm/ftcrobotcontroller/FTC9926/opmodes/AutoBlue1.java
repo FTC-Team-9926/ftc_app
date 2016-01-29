@@ -75,7 +75,7 @@ public class AutoBlue1 extends Telemetry9926{
                 // turns the robot with 60% power on Motor 2
                 MoveRobot(0, .6);
                 // if the robot moved for at least 1.5 seconds
-                if ( TimeNow > 1.5) {
+                if ( TimeNow > 2) {
                     // adds one to move_state
                     move_state++;
                     // gives a new value to Variance
@@ -103,7 +103,7 @@ public class AutoBlue1 extends Telemetry9926{
                 // moves the robot forwards at 60% power
                 MoveRobot(.6, .6);
                 // if the robot moves for at least 2.2 seconds
-                if ( TimeNow > 2.2) {
+                if ( TimeNow > 2.5) {
                     // increase the value of move_state
                     move_state++;
                     // give a new value to Variance
@@ -131,7 +131,7 @@ public class AutoBlue1 extends Telemetry9926{
                 // turns the robot in reverse at 60% power on Motor 1
                 MoveRobot(-.6, 0);
                 // if the robot turned for at least 1 second
-                if ( TimeNow > 1.0) {
+                if ( TimeNow > 1.3) {
                     // add one to the counter
                     move_state++;
                     // give a new value to Variance
@@ -145,7 +145,7 @@ public class AutoBlue1 extends Telemetry9926{
                 // move the robot forwards at 50% power
                 MoveRobot(.5, .5);
                 // if the robot moved for at least 1.75 seconds
-                if ( TimeNow > 1.75) {
+                if ( TimeNow > 2) {
                     // add one to move_state
                     move_state++;
                     // give a new value to Variance

@@ -130,7 +130,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // turns the robot in reverse at 60% power on Motor2
                 MoveRobot(0, -.6);
                 // if the robot turned for at least 1 second
-                if (TimeNow > 1.0) {
+                if (TimeNow > 1.3) {
                     // add one to the counter
                     move_state++;
                     // give a new value to Variance
@@ -144,7 +144,7 @@ public class AutoRed1 extends Telemetry9926 {
                 // move the robot forwards at 50% power
                 MoveRobot(.5, .5);
                 // if the robot moved for at least 1.75 seconds
-                if (TimeNow > 1.75) {
+                if (TimeNow > 2) {
                     // add one to move_state
                     move_state++;
                     // give a new value to Variance
