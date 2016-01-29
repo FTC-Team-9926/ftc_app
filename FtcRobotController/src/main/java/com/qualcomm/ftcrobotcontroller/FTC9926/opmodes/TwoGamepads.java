@@ -183,7 +183,7 @@ public class TwoGamepads extends Telemetry9926 {
         // If Gamepad 2's left stick (y) is greater than
         else if (gamepad2.left_stick_y > 0) {
             // Writes the values to the motor
-            MoveAim(M6Power * 0.4);
+            MoveAim(M6Power);
         }
         // If neither apply
         else {
