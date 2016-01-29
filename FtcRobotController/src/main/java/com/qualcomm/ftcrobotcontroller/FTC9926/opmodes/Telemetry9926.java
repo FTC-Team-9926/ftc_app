@@ -11,8 +11,9 @@ public class Telemetry9926 extends HardwareMap9926
     {
         // servo position
         // timer?
-        telemetry.addData
-                ("01","Time: " + getRuntime());
+        telemetry.addData("01","Time: " + getRuntime());
+        telemetry.addData("Text", "*** Robot Data***");
+
     }
 }
 
