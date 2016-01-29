@@ -117,7 +117,7 @@ public class TwoGamepads extends Telemetry9926 {
 
         =====================================
          */
-        if (gamepad2.dpad_right && Drawers < 1) {
+        if (gamepad2.dpad_right && Drawers < 0.95) {
             if (ChangeDrawerSpeed) {
                 Drawers = Drawers + 0.05;
                 ChangeDrawerSpeed = false;
@@ -200,12 +200,12 @@ public class TwoGamepads extends Telemetry9926 {
         // If Gamepad 2's left stick (y) is less than 0
         if (gamepad2.left_stick_y < 0) {
             // Writes the values to the motor
-            MoveAim(M6Power * 0.2);
+            MoveAim(M6Power * 0.6);
         }
         // If Gamepad 2's left stick (y) is greater than
         else if (gamepad2.left_stick_y > 0) {
             // Writes the values to the motor
-            MoveAim(M6Power);
+            MoveAim(M6Power * 0.8);
         }
         // If neither apply
         else {
