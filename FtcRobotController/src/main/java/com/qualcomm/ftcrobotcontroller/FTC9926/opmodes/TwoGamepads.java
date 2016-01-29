@@ -79,16 +79,8 @@ public class TwoGamepads extends Telemetry9926 {
             }
         }
 
-
-        // If Gamepad 1's Dpad is pressed up and "Dpad" is less than 0.9
-
-
-        // If Gamepad 1's or Gamepad 2's Dpad is pressed up and "Dpad" is less than 0.7
-
-        if (gamepad1.dpad_up && Dpad < .7 || gamepad2.dpad_up && Dpad < .7) {
-
-        if (gamepad1.dpad_up && Dpad < .6 | gamepad2.dpad_up && Dpad < .6) {
-
+        // If Gamepad 1's or Gamepad 2's Dpad is pressed up and "Dpad" is less than 1
+        if (gamepad1.dpad_up && Dpad < 1 || gamepad2.dpad_up && Dpad < 1) {
             // If "ChangeTopSpeed" is true
             if (ChangeTopSpeed) {
                 // Adds 0.1 to "Dpad"
