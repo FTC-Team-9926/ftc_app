@@ -47,7 +47,7 @@ public class AUTORED1CLIMBERS extends Telemetry9926 {
 
             case 1:
                 MoveRobot(.5, .5);
-                if (TimeNow > 5.6) {
+                if (TimeNow > 5.8) {
                     //if time is greater than one second then move forwards for 3 seconds
                     move_state++;
                     Variance = getRuntime();
