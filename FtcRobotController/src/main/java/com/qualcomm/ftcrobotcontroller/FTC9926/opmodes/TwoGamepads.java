@@ -20,13 +20,20 @@ public class TwoGamepads extends Telemetry9926 {
     // Sets the direction of the robot
     boolean Forwards = true;
 
+    // Sets Aim Increments & Location
+    double Aim_Increment = 40;
+    double Aim_New_Location = 0;
+    double Aim_Curr_Location =0;
+
+
     @Override
     public void start() {
         // Call the PushBotHardware (super/base class) start method.
-        super.start ();
+        super.start();
 
         // Sets default position of the servo
         Set_Servo2_position(1);
+        reset_drive_encoders();
     }
 
     @Override
@@ -136,26 +143,33 @@ public class TwoGamepads extends Telemetry9926 {
         // Writes the values to the arm
         MoveArm(M3Power * 0.2);
 
+        /**
+         * Define Running with Encoders for ARM
+         */
         // Makes "M6Power" equal Gamepad 2's left stick
         double M6Power = (gamepad2.left_stick_y);
         // Adds boundaries to not exceed certain values
         M6Power = Range.clip(M6Power, -1, 1);
-        // Adds "scaleInput" to make easier to control
-        M6Power = (float)scaleInput(M6Power);
-        // If Gamepad 2's left stick (y) is less than 0
-        if (gamepad2.left_stick_y < 0) {
-            // Writes the values to the motor
-            MoveAim(M6Power * 0.6);
+
+        // Common section
+        run_using_encoders();
+
+        //Defines New Location of the Aim based on Power of Joystick
+        Aim_New_Location = (M6Power * Aim_Increment) + Aim_New_Location;
+        Aim_New_Location = Range.clip (Aim_New_Location, 0, 720);
+
+        Aim_Curr_Location = get_encoder_position();
+
+        // Move motor to reach the encoder value
+        if (Aim_New_Location > Aim_Curr_Location){
+            //Move AIM in one direction at full power
+            MoveAim(1);
         }
-        // If Gamepad 2's left stick (y) is greater than
-        else if (gamepad2.left_stick_y > 0) {
-            // Writes the values to the motor
-            MoveAim(M6Power * 0.8);
+        else if (Aim_New_Location < Aim_Curr_Location) {
+            MoveAim(-1);
         }
-        // If neither apply
         else {
-            // Don't move the motor
-            Motor6.setPower(0);
+            MoveAim(0);
         }
 
         // Makes "Servo2Gamepad" equal 1 - Gamepad 2's left trigger
@@ -188,5 +202,6 @@ public class TwoGamepads extends Telemetry9926 {
         // Displays the power of the treads
         telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
         // Displays the power of the drawer slides
+        telemetry.addData("AIM", "AIM Cur/Set: " + String.format("%.2f",Aim_Curr_Location) + "/" + String.format("%.2f",Aim_New_Location));
     }
 }
