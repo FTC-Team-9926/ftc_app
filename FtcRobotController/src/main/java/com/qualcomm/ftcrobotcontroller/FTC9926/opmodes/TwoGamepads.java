@@ -145,6 +145,15 @@ public class TwoGamepads extends Telemetry9926 {
 
         /**
          * Define Running with Encoders for ARM
+         * RUN_USING_ENCODERS means: use the encoders to maintain a constant speed (specified by the setPower() method).
+         * RUN_TO_POSITION means: go to the encoder target position specified by the setTargetPosition() method, and move at a speed UP-TO the one set by setPower()
+
+         * Both commands use the encoders, but RUN_TO_POSITION uses them for both speed AND position control.
+
+         * Note: If you have encoders installed you can read them at any time, regardless of the current motor mode.
+         * One possible reason to switch between RUN_TO_POSITION and RUN_USING_ENCODERS is if you want to turn off the "positioning" feature while you change actions or target positions.
+         * Source: http://ftcforum.usfirst.org/showthread.php?6369-Need-Help-With-Run_To_Position
+         *
          */
         // Makes "M6Power" equal Gamepad 2's left stick
         double M6Power = (gamepad2.left_stick_y);
@@ -152,15 +161,19 @@ public class TwoGamepads extends Telemetry9926 {
         M6Power = Range.clip(M6Power, -1, 1);
 
         // Common section
-        run_using_encoders();
+        //run_using_encoders();
+        run_to_position();
 
         //Defines New Location of the Aim based on Power of Joystick
         Aim_New_Location = (M6Power * Aim_Increment) + Aim_New_Location;
-        Aim_New_Location = Range.clip (Aim_New_Location, 0, 720);
+        Aim_New_Location = Range.clip(Aim_New_Location, 0, 720);
 
-        Aim_Curr_Location = get_encoder_position();
+//        Aim_Curr_Location = get_encoder_position();
 
-        MoveAim(M6Power);
+//      Move the motor at full power
+        MoveAim(1);
+        Motor6.setTargetPosition(Aim_New_Location);
+
 
         // Move motor to reach the encoder value
         if (Aim_New_Location > (Aim_Curr_Location + Aim_Error)){
