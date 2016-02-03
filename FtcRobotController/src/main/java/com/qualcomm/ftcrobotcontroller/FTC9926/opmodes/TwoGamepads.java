@@ -24,7 +24,7 @@ public class TwoGamepads extends Telemetry9926 {
     double Aim_Increment = 40;
     double Aim_New_Location = 0;
     double Aim_Curr_Location =0;
-
+    double Aim_Error = 20;
 
     @Override
     public void start() {
@@ -160,16 +160,18 @@ public class TwoGamepads extends Telemetry9926 {
 
         Aim_Curr_Location = get_encoder_position();
 
+        MoveAim(M6Power);
+
         // Move motor to reach the encoder value
-        if (Aim_New_Location > Aim_Curr_Location){
+        if (Aim_New_Location > (Aim_Curr_Location + Aim_Error)){
             //Move AIM in one direction at full power
-            MoveAim(1);
+//            MoveAim(Dpad);
         }
-        else if (Aim_New_Location < Aim_Curr_Location) {
-            MoveAim(-1);
+        else if (Aim_New_Location < (Aim_Curr_Location - Aim_Error)) {
+//            MoveAim(-Dpad);
         }
         else {
-            MoveAim(0);
+//            MoveAim(0);
         }
 
         // Makes "Servo2Gamepad" equal 1 - Gamepad 2's left trigger
