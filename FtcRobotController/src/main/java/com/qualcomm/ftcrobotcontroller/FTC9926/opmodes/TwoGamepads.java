@@ -25,9 +25,9 @@ public class TwoGamepads extends Telemetry9926 {
     boolean Forwards = true;
 
     // Sets Aim Increments & Location
-    double Aim_Increment = 40;
-    double Aim_New_Location = 0;
-    double Aim_Curr_Location =0;
+    int Aim_Increment = 40;
+    int Aim_New_Location = 0;
+    int Aim_Curr_Location =0;
     double Aim_Error = 20;
 
     @Override
@@ -176,8 +176,8 @@ public class TwoGamepads extends Telemetry9926 {
         run_to_position();
 
         //Defines New Location of the Aim based on Power of Joystick
-        Aim_New_Location = (M6Power * Aim_Increment) + Aim_New_Location;
-        Aim_New_Location = Range.clip(Aim_New_Location, 0, 720);
+        Aim_New_Location = (int) (M6Power * Aim_Increment) + Aim_New_Location;
+        Aim_New_Location = (int) Range.clip(Aim_New_Location, 0, 720);
 
 //        Aim_Curr_Location = get_encoder_position();
 
@@ -235,6 +235,6 @@ public class TwoGamepads extends Telemetry9926 {
         // Displays the power of the treads
         telemetry.addData("Power", "Power: " + String.format("%.2f", Dpad));
         // Displays the power of the drawer slides
-        telemetry.addData("AIM", "AIM Cur/Set: " + String.format("%.2f",Aim_Curr_Location) + "/" + String.format("%.2f",Aim_New_Location));
+        telemetry.addData("AIM", "AIM Cur/Set: " + String.valueOf(Aim_Curr_Location) + "/" + String.valueOf(Aim_New_Location));
     }
 }
