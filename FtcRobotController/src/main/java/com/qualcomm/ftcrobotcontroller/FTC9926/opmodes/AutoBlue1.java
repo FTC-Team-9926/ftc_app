@@ -103,7 +103,7 @@ public class AutoBlue1 extends Telemetry9926{
                 // moves the robot forwards at 60% power
                 MoveRobot(.6, .6);
                 // if the robot moves for at least 2.2 seconds
-                if ( TimeNow > 2.5) {
+                if ( TimeNow > 3) {
                     // increase the value of move_state
                     move_state++;
                     // give a new value to Variance
