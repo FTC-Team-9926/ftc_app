@@ -31,7 +31,7 @@ public class ultrasonic extends OpMode {
 
     @Override public void loop(){
         Dist = UL2.getUltrasonicLevel();
-        telemetry.addData("UL2","UL2: " & Dist);
+        telemetry.addData("UL2","UL2: " + Dist);
     }
 
     @Override public void stop(){
