@@ -30,6 +30,7 @@ public class HardwareMap9926 extends OpMode {
     double SM2_Position;
     double SM3_Position;
     double Get_Servo_Position;
+    double Encoder_Position;
     DcMotor Motor1;
     DcMotor Motor2;
     DcMotor Motor3;
@@ -264,4 +265,32 @@ public class HardwareMap9926 extends OpMode {
             Motor3.setPower(0);
         }
     }
+
+    /** Running with encoders
+     *
+     */
+    public void run_using_encoders ()
+
+    {
+        if (Motor6 != null)
+        {
+            Motor6.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        }
+    } // run_using_encoders
+
+    public void reset_drive_encoders ()
+
+    {
+        if (Motor6 != null)
+        {
+            Motor6.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        }
+    } // reset_encoders
+
+    public double get_encoder_position()
+    {
+        Encoder_Position = Motor6.getCurrentPosition();
+        return Encoder_Position;
+    }
+
 }
