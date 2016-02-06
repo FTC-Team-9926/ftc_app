@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.Range;
  * This program is to control the movements of the robot,
  * with the profile 1. It is based on MoveTank
  */
+
 public class Control_1 extends Telemetry9926 {
 
     // position of the claw servo

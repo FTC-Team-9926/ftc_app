@@ -4,6 +4,7 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
  * Created by ibravo on 11/25/15.
  * Based on PushBotAuto class
  */
+
 public class Auto9926 extends Telemetry9926 {
 
     public Auto9926 (){

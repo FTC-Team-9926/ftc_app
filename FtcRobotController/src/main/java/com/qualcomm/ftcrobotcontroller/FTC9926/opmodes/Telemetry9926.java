@@ -5,6 +5,7 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
  * Sends telemetry information to driver phone
  * based on AutoProgram
  */
+
 public class Telemetry9926 extends HardwareMap9926
 {
     public void UpdateTelemetry ()

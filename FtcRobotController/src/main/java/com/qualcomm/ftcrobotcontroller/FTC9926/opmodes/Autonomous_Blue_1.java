@@ -1,7 +1,9 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
 /**
- * Created by vijay on 12/15/2015.
+ Created by vijay on 12/15/2015.
+ For use in the Autonomous Portion of the match
+ Moves the robot when on the Blue Team
  */
 public class Autonomous_Blue_1 extends Telemetry9926{
 

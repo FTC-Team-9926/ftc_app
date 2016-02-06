@@ -5,7 +5,9 @@ import com.qualcomm.ftcrobotcontroller.FTC9926.opmodes.Telemetry9926;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
- * Created by nicolasbravo on 12/17/15.
+ Created by Nicolas Bravo on 12/17/15.
+ For use in the Autonomous Portion of the match
+ Moves the robot when on the Blue Team
  */
 public class AutoBlue1 extends Telemetry9926{
 

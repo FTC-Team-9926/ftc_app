@@ -3,7 +3,9 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
- * Created by Nicolas Bravo on 12/17/2015.
+ Created by Nicolas Bravo on 12/17/2015.
+ For use in the Autonomous Portion of the match
+ Moves the robot when on the red team
  */
 public class AutoRed2 extends Telemetry9926 {
 
