@@ -278,6 +278,15 @@ public class HardwareMap9926 extends OpMode {
         }
     } // run_using_encoders
 
+    public void run_to_position ()
+
+    {
+        if (Motor6 != null)
+        {
+            Motor6.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        }
+    } // run_to_position
+
     public void reset_drive_encoders ()
 
     {
