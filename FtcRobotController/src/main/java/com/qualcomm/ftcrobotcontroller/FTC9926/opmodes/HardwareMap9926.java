@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.LegacyModule;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 import com.qualcomm.robotcore.util.Range;
 import java.util.Set;
 
@@ -37,7 +39,10 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor4;
     DcMotor Motor5;
     DcMotor Motor6;
-    LegacyModule Ultrasonic;
+    // Ultrasonic implementation http://ftcforum.usfirst.org/showthread.php?4807-Has-anyone-come-up-with-a-way-to-measure-distance
+    //LegacyModule UL1;
+    UltrasonicSensor UL2;
+    //OpticalDistanceSensor ODS1; //this one measures reflected light, not distance
 
 
     @Override
@@ -59,8 +64,11 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
-        Ultrasonic = hardwareMap.legacyModule.get("U1");
-        Ultrasonic.enable9v(5, true);
+        //UL1 = hardwareMap.legacyModule.get("UL1");
+        //UL1.enable9v(5, true);
+        UL2 = hardwareMap.ultrasonicSensor.get("UL2");
+        //ODS1=hardwareMap.opticalDistanceSensor.get("ODS1");
+
     }
 
     @Override public void start(){
@@ -243,7 +251,7 @@ public class HardwareMap9926 extends OpMode {
         } // set_drive_power
         if (Motor2 != null)
         {
-            Motor2.setPower (Turn);
+            Motor2.setPower(Turn);
         }
         /* Left motor is Motor2, right one is Motor1
         *  If you put a negative input, then the robot will turn left

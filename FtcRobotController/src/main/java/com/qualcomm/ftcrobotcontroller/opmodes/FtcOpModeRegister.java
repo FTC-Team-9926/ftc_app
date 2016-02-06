@@ -78,6 +78,8 @@ public class FtcOpModeRegister implements OpModeRegister {
       manager.register("Blue 2", AutoBlue2.class);
 
       manager.register("Ultrasonic", AutoUltrasonic.class);
+      manager.register("Ultrasonic_Dad", ultrasonic.class);
+
 
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
