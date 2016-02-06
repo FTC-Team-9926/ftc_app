@@ -24,6 +24,6 @@ public class AutoUltrasonic extends Telemetry9926 {
 
     @Override public void loop()
     {
-        Ultrasonic.readAnalog(30);
+        //Ultrasonic.readAnalog(30);
     }
 }
