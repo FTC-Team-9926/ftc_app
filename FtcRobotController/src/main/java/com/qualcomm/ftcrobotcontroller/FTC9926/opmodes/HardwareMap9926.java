@@ -3,6 +3,7 @@ package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.LegacyModule;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 import java.util.Set;
@@ -36,6 +37,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor4;
     DcMotor Motor5;
     DcMotor Motor6;
+    LegacyModule Ultrasonic;
 
 
     @Override
@@ -57,6 +59,8 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
+        Ultrasonic = hardwareMap.legacyModule.get("U1");
+        Ultrasonic.enable9v(5, true);
     }
 
     @Override public void start(){

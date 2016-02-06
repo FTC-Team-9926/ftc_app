@@ -1,6 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.FTC9926.opmodes;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 
 /**
  Created by Nicolas Bravo on 2/5/16.
@@ -23,6 +24,6 @@ public class AutoUltrasonic extends Telemetry9926 {
 
     @Override public void loop()
     {
-
+        Ultrasonic.readAnalog(30);
     }
 }
