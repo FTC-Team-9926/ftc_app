@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class HardwareMap9926 extends OpMode {
 
-     //Define what hardware to use:
+    //Define what hardware to use:
     // Motor Controller
 //    private DcMotorController v_dc_motor_controller_drive;
 
@@ -25,18 +25,10 @@ public class HardwareMap9926 extends OpMode {
     // Servo ARM
     Servo Servo1;
     Servo Servo2;
-
     Servo Servo3;
     double SM1_Position;
     double SM2_Position;
     double SM3_Position;
-
-//    DcMotor Motor1;
-//    DcMotor Motor2;
-//    DcMotor Motor3;
-    double SM1_Position;
-    double SM2_Position;
-
     double Get_Servo_Position;
     double Encoder_Position;
     DcMotor Motor1;
@@ -55,66 +47,14 @@ public class HardwareMap9926 extends OpMode {
 
         // Initializing the attachments
         Servo1 = hardwareMap.servo.get("SM1");
-
-
-        Servo1.setPosition(SM1_Position);
-
-
-        
-        
-        SM1_Position = 0.5;
-
         Servo2 = hardwareMap.servo.get("SM2");
-        Servo2.setPosition(SM2_Position);
-        SM2_Position = 0.5;
-
-
-        SM1_Position = 0;
-        Servo2 = hardwareMap.servo.get("SM2");
-        Servo2.setPosition(SM2_Position);
-        SM2_Position = 0;
-
-
-        SM1_Position = 1;
-        Servo2 = hardwareMap.servo.get("SM2");
-        Servo2.setPosition(SM2_Position);
-        SM2_Position = 1;
-
-
-        SM1_Position = 0;
-        Servo2 = hardwareMap.servo.get("SM2");
-        Servo2.setPosition(SM2_Position);
-        SM2_Position = 0;
-
-
-        SM1_Position = 1;
-        Servo2 = hardwareMap.servo.get("SM2");
-        Servo2.setPosition(SM2_Position);
-        SM2_Position = 1;
-
-
-
-        
         Servo3 = hardwareMap.servo.get("SM3");
-
         Motor1 = hardwareMap.dcMotor.get("M1");
         Motor2 = hardwareMap.dcMotor.get("M2");
         Motor3 = hardwareMap.dcMotor.get("M3");
-
-        Servo2 = hardwareMap.servo.get("SM2");
-        Motor1 = hardwareMap.dcMotor.get("M1");
-        Motor2 = hardwareMap.dcMotor.get("M2");
-        Motor3 = hardwareMap.dcMotor.get("M3");
-        Define_Hardware_Config_Names();
-        Motor1.setDirection(DcMotor.Direction.FORWARD);
-        Motor2.setDirection(DcMotor.Direction.FORWARD);
-
-
         Motor4 = hardwareMap.dcMotor.get("M4");
-
         Motor5 = hardwareMap.dcMotor.get("M5");
         Motor6 = hardwareMap.dcMotor.get("M6");
-
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
@@ -139,7 +79,7 @@ public class HardwareMap9926 extends OpMode {
 
     public double Get_Servo_Position()
     {
-      //  SM1_Position = 0.2;
+        //  SM1_Position = 0.2;
         Servo1 = hardwareMap.servo.get("SM1");
         return Servo1.getPosition();
 
@@ -171,75 +111,10 @@ public class HardwareMap9926 extends OpMode {
         Servo2.setPosition(SM2_Position);
     }
 
-
-
-
-
-    void Move (double Motor1power, double Motor2power){
-    void MoveMotor (double Motor1power, double Motor2power){
-
-        Motor1.setPower(Motor1power);
-        Motor2.setPower(-1 * Motor2power);
-    void MoveMotor (double Motor1power, double Motor2power)
-    {
-        if (Motor1 != null)
-        {
-            Motor1.setPower (Motor1power);
-        }
-        // set_drive_power
-        if (Motor2 != null)
-        {
-            Motor2.setPower (Motor2power);
-        }
-    }
-    void Turn (double Turn){
-        {
-            if (Motor1 != null)
-            {
-                Motor1.setPower (-1 * Turn);
-            }
-
-        } // set_drive_power
-        if (Motor2 != null)
-        {
-            Motor2.setPower (Turn);
-        }
-        /* Left motor is Motor2, right one is Motor1
-        *  If you put a negative input, then the robot will turn left
-        *  If you put a positive input, then the robot will turn right */
-    }
-    void MoveArm (double ArmMotorPower, double ArmServoPower){
-        
-        Motor3.setPower(ArmMotorPower);
-        SM1_Position = ArmServoPower;
-        Set_Servo_position(SM1_Position);
-    }
-    void StopMotor() {
-        {
-            if (Motor1 != null)
-            {
-                Motor1.setPower (0);
-            }
-
-        } // set_drive_power
-        if (Motor2 != null)
-        {
-            Motor2.setPower (0);
-        }
-        if (Motor3 != null)
-        {
-            Motor3.setPower(0);
-        }
-    }
-
-
-
-
     void Set_Servo3_position (double position3) {
         SM3_Position = Range.clip(position3,0,1);
         Servo3.setPosition(SM3_Position);
     }
-
 
     void Set_Flap_position (double flap) {
         if (flap == 1) {
@@ -258,7 +133,6 @@ public class HardwareMap9926 extends OpMode {
         Servo2.setPosition(SM2_Position);
         Servo3.setPosition(SM3_Position);
     }
-
 
     /*
  * This method scales the joystick input so for low joystick values, the
@@ -304,10 +178,10 @@ public class HardwareMap9926 extends OpMode {
             }
 
         } // set_drive_power
-            if (Motor2 != null)
-            {
-                Motor2.setPower (Engine2);
-            }
+        if (Motor2 != null)
+        {
+            Motor2.setPower (Engine2);
+        }
     }
 
     //Method that is used to move the arm
@@ -322,13 +196,7 @@ public class HardwareMap9926 extends OpMode {
         } // set_arm_power
     }
 
-
-
-
-
-    void MoveDrawer (double Engine4)
-
-
+    //Method that is used to angle the extension mechanism
     void MoveAim (double Engine6)
     {
         {
@@ -341,7 +209,6 @@ public class HardwareMap9926 extends OpMode {
 
     //Method that is used to pull the robot up the mountain
     void MovePull (double Engine4)
-
     {
         {
             if (Motor4 != null)
@@ -351,13 +218,8 @@ public class HardwareMap9926 extends OpMode {
         }
     }
 
-
-    void MovePull (double Engine5)
-
-
-
+    //Method that is used to extend/retract the drawer slides
     void MoveDrawer (double Engine5)
-
     {
         {
             if (Motor5 != null)
@@ -367,7 +229,7 @@ public class HardwareMap9926 extends OpMode {
         }
     }
 
-
+    //this method is used to make the robot turn
     void Turn (double Turn){
         {
             if (Motor1 != null)
@@ -403,7 +265,6 @@ public class HardwareMap9926 extends OpMode {
             Motor3.setPower(0);
         }
     }
-
 
     /** Running with encoders
      *
@@ -442,4 +303,3 @@ public class HardwareMap9926 extends OpMode {
     }
 
 }
-
