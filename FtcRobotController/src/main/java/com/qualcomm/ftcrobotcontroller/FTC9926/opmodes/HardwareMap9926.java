@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 import java.util.Set;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 
 /**
  * Created by ibravo on 10/30/15.
@@ -37,7 +38,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor4;
     DcMotor Motor5;
     DcMotor Motor6;
-
+    UltrasonicSensor UL2;
 
     @Override
     public void init(){
@@ -58,6 +59,7 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
+        UL2 = hardwareMap.ultrasonicSensor.get("UL2");
     }
 
     @Override public void start(){
