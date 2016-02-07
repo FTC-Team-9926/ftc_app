@@ -122,6 +122,7 @@ public class FtcOpModeRegister implements OpModeRegister {
       manager.register("Red 2", AutoRed2.class);
       manager.register("Blue 1", AutoBlue1.class);
       manager.register("Blue 2", AutoBlue2.class);
+      manager.register("Ultrasonic", Ultrasonic.class);
 
 
 
