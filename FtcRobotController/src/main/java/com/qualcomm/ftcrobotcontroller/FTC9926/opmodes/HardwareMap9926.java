@@ -38,6 +38,7 @@ public class HardwareMap9926 extends OpMode {
     DcMotor Motor4;
     DcMotor Motor5;
     DcMotor Motor6;
+    DcMotor Motor7;
     UltrasonicSensor UL2;
 
     @Override
@@ -56,6 +57,7 @@ public class HardwareMap9926 extends OpMode {
         Motor4 = hardwareMap.dcMotor.get("M4");
         Motor5 = hardwareMap.dcMotor.get("M5");
         Motor6 = hardwareMap.dcMotor.get("M6");
+        Motor7 = hardwareMap.dcMotor.get("M7");
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
