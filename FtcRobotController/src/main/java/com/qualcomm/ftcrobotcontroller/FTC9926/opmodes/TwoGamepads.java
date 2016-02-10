@@ -26,10 +26,6 @@ public class TwoGamepads extends Telemetry9926 {
     int Aim_Curr_Location =650;
     double Aim_Error = 20;
 
-    boolean Hoppy = true;
-    int HoppyOn = -1;
-    boolean HoppyBool = false;
-
     @Override
     public void start() {
         // Call the PushBotHardware (super/base class) start method.
@@ -139,56 +135,6 @@ public class TwoGamepads extends Telemetry9926 {
         else if (!gamepad2.right_bumper && !gamepad2.left_bumper) {
             // Stop the hook
             MovePull(0);
-        }
-
-        if (HoppyBool) {
-            if (gamepad1.right_bumper) {
-                if (Hoppy) {
-                    if (HoppyOn == -1) {
-                        Motor7.setPower(1);
-                        Hoppy = false;
-                        HoppyOn = HoppyOn * -1;
-                    }
-                    else if (HoppyOn == 1) {
-                        Motor7.setPower(0);
-                        Hoppy = false;
-                        HoppyOn = HoppyOn * -1;
-                    }
-                }
-            }
-            if (gamepad1.left_bumper) {
-                if (Hoppy) {
-                    if (HoppyOn == -1) {
-                        Motor7.setPower(-1);
-                        Hoppy = false;
-                        HoppyOn = HoppyOn * -1;
-                    }
-                    else if (HoppyOn == 1) {
-                        Motor7.setPower(0);
-                        Hoppy = false;
-                        HoppyOn = HoppyOn * -1;
-                    }
-                }
-            }
-        }
-
-        if (!HoppyBool) {
-            if (!Hoppy) {
-                Hoppy = true;
-            }
-        }
-
-        if (gamepad1.right_bumper || gamepad1.left_bumper) {
-            HoppyBool = true;
-        }
-
-        if ((!gamepad1.right_bumper && !gamepad1.left_bumper) || (!gamepad1.left_bumper || !gamepad1.right_bumper)) {
-            if (gamepad1.right_bumper || gamepad1.left_bumper) {
-                HoppyBool = true;
-            }
-            else {
-                HoppyBool = false;
-            }
         }
 
         // Makes "M3Power" equal Gamepad 2's right stick
