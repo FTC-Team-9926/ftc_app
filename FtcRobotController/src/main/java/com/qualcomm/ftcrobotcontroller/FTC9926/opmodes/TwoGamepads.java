@@ -28,6 +28,7 @@ public class TwoGamepads extends Telemetry9926 {
 
     boolean Hoppy = true;
     int HoppyOn = -1;
+    boolean HoppyBool = false;
 
     @Override
     public void start() {
@@ -140,9 +141,9 @@ public class TwoGamepads extends Telemetry9926 {
             MovePull(0);
         }
 
-        if (gamepad1.right_bumper || gamepad1.left_bumper) {
+        if (HoppyBool) {
             if (gamepad1.right_bumper) {
-                if (Hoppy == true) {
+                if (Hoppy) {
                     if (HoppyOn == -1) {
                         Motor7.setPower(1);
                         Hoppy = false;
@@ -156,7 +157,7 @@ public class TwoGamepads extends Telemetry9926 {
                 }
             }
             if (gamepad1.left_bumper) {
-                if (Hoppy == true) {
+                if (Hoppy) {
                     if (HoppyOn == -1) {
                         Motor7.setPower(-1);
                         Hoppy = false;
@@ -171,9 +172,22 @@ public class TwoGamepads extends Telemetry9926 {
             }
         }
 
-        if ((!gamepad1.right_bumper && !gamepad1.left_bumper) || (!gamepad1.left_bumper || !gamepad1.right_bumper)) {
-            if (Hoppy == false) {
+        if (!HoppyBool) {
+            if (!Hoppy) {
                 Hoppy = true;
+            }
+        }
+
+        if (gamepad1.right_bumper || gamepad1.left_bumper) {
+            HoppyBool = true;
+        }
+
+        if ((!gamepad1.right_bumper && !gamepad1.left_bumper) || (!gamepad1.left_bumper || !gamepad1.right_bumper)) {
+            if (gamepad1.right_bumper || gamepad1.left_bumper) {
+                HoppyBool = true;
+            }
+            else {
+                HoppyBool = false;
             }
         }
 
