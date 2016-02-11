@@ -59,7 +59,6 @@ public class HardwareMap9926 extends OpMode {
         Define_Hardware_Config_Names();
         Motor1.setDirection(DcMotor.Direction.FORWARD);
         Motor2.setDirection(DcMotor.Direction.FORWARD);
-        UL2 = hardwareMap.ultrasonicSensor.get("UL2");
     }
 
     @Override public void start(){
